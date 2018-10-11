@@ -1,0 +1,43 @@
+spring: 
+  application:
+    name: microservice-provider-web
+  profiles:
+    active:
+    - dev
+    
+eureka: 
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}  
+
+---
+server:
+  port: 7900
+
+spring:
+  profiles: dev
+api: 
+  docs: enable
+
+---
+server:
+  port: 7901
+
+spring:
+  profiles: test
+api: 
+  docs: enable
+  
+---
+server:
+  port: 7902
+
+spring:
+  profiles: prod  
+
+api: 
+  docs: disable
+  
