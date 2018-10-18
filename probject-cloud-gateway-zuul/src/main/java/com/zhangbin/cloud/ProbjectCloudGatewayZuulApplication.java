@@ -1,0 +1,14 @@
+package com.zhangbin.cloud;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+
+@SpringBootApplication
+@EnableZuulProxy
+public class ProbjectCloudGatewayZuulApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ProbjectCloudGatewayZuulApplication.class, args);
+	}
+}
