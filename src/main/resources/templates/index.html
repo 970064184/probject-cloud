@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title>首页</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link th:href="@{/webjars/font-awesome/4.0.3/css/font-awesome.min.css}"  rel="stylesheet" type="text/css"/>
+<link th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
+
+<link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body class="page-header-fixed">
+<div class="header navbar navbar-fixed-top">
+	<div class="header-inner">
+		<!-- BEGIN LOGO -->
+		<a class="navbar-brand" href="index.html">
+			<img src="assets/img/logo.png" alt="logo" class="img-responsive"/>
+		</a>
+		<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<img src="assets/img/menu-toggler.png" alt=""/>
+		</a>
+		<ul class="nav navbar-nav pull-right">
+			
+		</ul>
+	</div>
+</div>
+<div class="page-container">
+	<div class="page-sidebar-wrapper">
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- 左边菜单栏 -->
+			<ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+				<!-- 隐藏菜单栏 -->
+				<li class="sidebar-toggler-wrapper">
+					<div class="sidebar-toggler hidden-phone">
+					</div>
+				</li>
+				<!-- 查询搜索框 -->
+				<li class="sidebar-search-wrapper">
+					<form class="sidebar-search" action="extra_search.html" method="POST">
+						<div class="form-container">
+							<div class="input-box">
+								<a href="javascript:;" class="remove">
+								</a>
+								<input type="text" placeholder="Search..."/>
+								<input type="button" class="submit" value=" "/>
+							</div>
+						</div>
+					</form>
+				</li>
+				<li class="start active ">
+					<a href="index">
+						<i class="fa fa-home"></i>
+						<span class="title">
+							Dashboard
+						</span>
+						<span class="selected">
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;">
+						<i class="fa fa-shopping-cart"></i>
+						<span class="title">
+							E-Commerce
+						</span>
+						<span class="arrow ">
+						</span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="ecommerce_index.html">
+								<i class="fa fa-bullhorn"></i>
+								Dashboard
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li th:each = "menu :${menus}">
+					<a th:href="${menu?.url}">
+						<i class="fa"><img alt="" th:src="${menu?.logo}"/></i>
+						<span class="title" th:text="${menu?.name}">
+							E-Commerce
+						</span>
+						<span class="arrow ">
+						</span>
+					</a>
+					<!-- <ul th:if="${menu?.children} !=''" th:each="children :${menu?.children}" class="sub-menu">
+						<li>
+							<a href="${children.url}">
+								<i class="fa"><img alt="" th:src="${children.logo}"/></i>
+								<span th:text="${children.name}">二级菜单</span>
+							</a>
+						</li>
+					</ul> -->
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<div class="footer-inner">
+		 2018 &copy; Metronic by miss zhang.
+	</div>
+	<div class="footer-tools">
+		<span class="go-top">
+			<i class="fa fa-angle-up"></i>
+		</span>
+	</div>
+</div>
+<script th:src="@{/webjars/jquery/1.10.2/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/bootstrap/3.1.1/js/bootstrap.min.js}" type="text/javascript"></script>
+<script src="assets/scripts/core/app.js" type="text/javascript"></script>
+<script>
+jQuery(document).ready(function() {    
+   App.init(); // initlayout and core plugins
+});
+
+</script>
+<script th:inline="javascript">
+	menu = [[${menu}]];
+	console.log(menu);
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title>首页</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link th:href="@{/webjars/font-awesome/4.0.3/css/font-awesome.min.css}"  rel="stylesheet" type="text/css"/>
+<link th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
+
+<link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+<link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body class="page-header-fixed">
+<div class="header navbar navbar-fixed-top">
+	<div class="header-inner">
+		<!-- BEGIN LOGO -->
+		<a class="navbar-brand" href="index.html">
+			<img src="assets/img/logo.png" alt="logo" class="img-responsive"/>
+		</a>
+		<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<img src="assets/img/menu-toggler.png" alt=""/>
+		</a>
+		<ul class="nav navbar-nav pull-right">
+		</ul>
+	</div>
+</div>
+<div class="page-container">
+	<div class="page-sidebar-wrapper">
+		<div class="page-sidebar navbar-collapse collapse">
+			<ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+				<li class="last ">
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<div class="footer-inner">
+		 2018 &copy; Metronic by miss zhang.
+	</div>
+	<div class="footer-tools">
+		<span class="go-top">
+			<i class="fa fa-angle-up"></i>
+		</span>
+	</div>
+</div>
+<script th:src="@{/webjars/jquery/1.10.2/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/bootstrap/3.1.1/js/bootstrap.min.js}" type="text/javascript"></script>
+<script src="assets/scripts/core/app.js" type="text/javascript"></script>
+<script>
+jQuery(document).ready(function() {    
+   App.init(); // initlayout and core plugins
+});
+</script>
+</body>
+</html>
