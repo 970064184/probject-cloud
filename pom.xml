@@ -66,5 +66,7 @@
 		<module>probject-cloud-web</module>
 		<module>probject-cloud-discovery-eureka</module>
 		<module>probject-cloud-gateway-zuul</module>
+		<module>probject-cloud-order</module>
+		<module>probject-cloud-feign</module>
 	</modules>
 </project>
