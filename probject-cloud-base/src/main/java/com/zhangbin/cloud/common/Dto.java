@@ -9,11 +9,12 @@ import lombok.Data;
 
 /**统一结果返回格式
  * @author admin
+ * @param <T>
  *
  */
 @ApiModel("统一结果返回值")
 @Data
-public class Dto {
+public class Dto<T> {
 	
 	@ApiModelProperty("状态码")
 	private String code ="200";
@@ -22,7 +23,11 @@ public class Dto {
 	private String msg;
 	
 	@ApiModelProperty("返回值")
-	private Object data;
+	private T data;
+	
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 	
 	/**
 	 * 设置详细信息及相关状态码

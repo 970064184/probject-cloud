@@ -30,7 +30,6 @@ spring:
 #      connect-properties: 
 #       druid: stat.mergeSql=true;druid.stat.sflowSqlMillis:500  # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
       use-global-data-source-stat: true # 合并多个DruidDataSource的监控数据
-    
   
 #eureka client    
 eureka: 
@@ -40,4 +39,7 @@ eureka:
   instance:
     prefer-ip-address: true
     instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
-       
+
+
+
+  

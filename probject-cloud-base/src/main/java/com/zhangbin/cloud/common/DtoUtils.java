@@ -26,6 +26,18 @@ public class DtoUtils {
 		return dto.toJson();
 	}
 	/**
+	 * 成功，有参返回
+	 * @param <T>
+	 * @param data
+	 * @return
+	 */
+	public static <T> Dto<T> returnSuccess(T data) {
+		Dto<T> dto = new Dto<>();
+		dto.setMsg(CodeEnum.SUCCESS);
+		dto.setData(data);
+		return dto;
+	}
+	/**
 	 * 系统异常，无参返回
 	 * @return
 	 */
