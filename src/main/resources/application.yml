@@ -24,7 +24,8 @@ spring:
       html-application-cache: true
 
 microservice: 
-  data:
-    url: http://localhost:8040
+  url: http://localhost:8030
+  system: /microservice-provider-web
+  
   
       

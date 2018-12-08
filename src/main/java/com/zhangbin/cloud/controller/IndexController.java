@@ -15,12 +15,15 @@ public class IndexController {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	@Value("${microservice.data.url}")
+	@Value("${microservice.url}")
 	private String prefixUrl; 
+	
+	@Value("${microservice.system}")
+	private String systemUrl; 
 	
 	@RequestMapping("/index")
 	public String index(Model model) {
-		String url =prefixUrl+"/microservice-provider-web/system/getAllMenu";
+		String url = prefixUrl+systemUrl+"/getAllMenu";
 		JSONObject forObject = restTemplate.getForObject(url, JSONObject.class);
 		model.addAttribute("menus", forObject.get("data"));
 		return "index";
