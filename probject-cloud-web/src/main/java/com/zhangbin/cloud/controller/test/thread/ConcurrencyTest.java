@@ -48,6 +48,10 @@ public class ConcurrencyTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		/**
+		 * count:5000
+		 * count:4999
+		 */
 	}
 	
 	public static void add() {
