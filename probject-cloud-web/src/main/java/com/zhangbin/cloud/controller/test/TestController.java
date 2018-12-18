@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiParam;
 public class TestController {
 	
 	@ApiOperation(value = "测试接口", notes = "环境测试接口")
-	@GetMapping(value="/test")
+	@PostMapping(value="/test")
 	public String test() {
 		return "hello world！";
 	}

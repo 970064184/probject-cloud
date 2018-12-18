@@ -1,5 +1,8 @@
 package com.zhangbin.cloud.controller.test;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class TestBaseJava {
 	
 	public static void main(String[] args) {
@@ -9,6 +12,7 @@ public class TestBaseJava {
 //		test2();
 //		test();
 //		test1();
+		Map<String, String> map = new ConcurrentHashMap<>();
 	}
 	
 	private static void test4() {
