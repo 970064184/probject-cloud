@@ -1,18 +1,33 @@
 package com.zhangbin.cloud.controller.test;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class TestBaseJava {
 	
 	public static void main(String[] args) {
 //		test5();
 //		test4();
-		test3();
+//		test3();
 //		test2();
 //		test();
 //		test1();
-		Map<String, String> map = new ConcurrentHashMap<>();
+		Set<String> set = new HashSet<>();
+		set.add("a");
+		set.add("d");
+		set.add("e");
+		System.out.println(set.size());
+		Iterator<String> iterator = set.iterator();
+		while(iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
+		
+		for (Iterator iterator2 = set.iterator(); iterator2.hasNext();) {
+			String string = (String) iterator2.next();
+			System.out.println(string);
+		}
+		
 	}
 	
 	private static void test4() {

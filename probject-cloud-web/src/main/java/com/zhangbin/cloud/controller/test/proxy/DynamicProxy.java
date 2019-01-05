@@ -35,11 +35,12 @@ public class DynamicProxy implements InvocationHandler{
 		
 		Marry proxy = (Marry) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(),new Class[] {Marry.class}, p);
 		proxy.marry();
+		proxy.honeymoon();
 		
-		He he = new He();
+		/*He he = new He();
 		DynamicProxy p2 = new DynamicProxy(he);
 		
 		Marry proxy2 = (Marry) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(),new Class[] {Marry.class}, p2);
-		proxy2.marry();
+		proxy2.marry();*/
 	}
 }

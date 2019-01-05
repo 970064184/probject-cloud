@@ -58,5 +58,6 @@
 		<module>probject-cloud-gateway-zuul</module>
 		<module>probject-cloud-order</module>
 		<module>probject-cloud-feign</module>
+		<module>probject-cloud-user</module>
 	</modules>
 </project>

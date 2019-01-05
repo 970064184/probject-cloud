@@ -30,4 +30,11 @@ public	class WeddingCompany implements Marry{
 		you.marry();
 		after();
 	}
+
+	@Override
+	public void honeymoon() {
+		before();
+		you.honeymoon();
+		after();
+	}
 }

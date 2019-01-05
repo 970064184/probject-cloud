@@ -11,4 +11,9 @@ public class He  implements Marry{
 	public void marry() {
 		System.out.println("he and 嫦娥结婚了。。。。");
 	}
+
+	@Override
+	public void honeymoon() {
+		System.out.println("度蜜月啦。。。。");
+	}
 }

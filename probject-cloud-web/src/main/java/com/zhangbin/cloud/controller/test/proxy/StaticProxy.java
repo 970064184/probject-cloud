@@ -10,9 +10,10 @@ public class StaticProxy {
 		You you  = new You();
 		WeddingCompany con = new WeddingCompany(you);
 		con.marry();
-		He he  = new He();
+		con.honeymoon();
+		/*He he  = new He();
 		WeddingCompany con1 = new WeddingCompany(he);
-		con1.marry();
+		con1.marry();*/
  	}
 }
 

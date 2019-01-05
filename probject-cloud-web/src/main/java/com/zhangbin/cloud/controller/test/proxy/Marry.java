@@ -9,4 +9,6 @@ public interface Marry{
 	
 	public abstract void marry();
 	
+	public abstract void honeymoon();
+	
 }

@@ -17,27 +17,6 @@
 			<artifactId>probject-cloud-base</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency> -->
-		<!-- mysql -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		<!-- druid -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>1.1.6</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-		</dependency>
-		<!-- redis -->
-		 <dependency>  
-            <groupId>org.springframework.boot</groupId>  
-            <artifactId>spring-boot-starter-data-redis</artifactId>  
-        </dependency> 
         <!-- test -->
         <dependency>
 			<groupId>org.springframework.boot</groupId>
