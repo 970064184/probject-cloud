@@ -8,6 +8,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.zhangbin.cloud.service.UserService;
 
@@ -15,11 +16,20 @@ import com.zhangbin.cloud.service.UserService;
  * @author admin
  *
  */
+@Component
 public class MyShiroRealm extends AuthorizingRealm {
 	
 	@Autowired
 	private UserService userService;
 	
+	/**
+     * 必须重写此方法，不然会报错
+     */
+    @Override
+    public boolean supports(AuthenticationToken token) {
+        return token instanceof JwtToken;
+    }
+
 	
 	/**
 	 * Authorization(授权)：访问控制。比如某个用户是否具有某个操作的使用权限
@@ -38,7 +48,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		System.out.println("MyShiroRealm.doGetAuthenticationInfo()");
+		System.out.println("————身份认证方法————");
 		//获取用户的输入的账号
 		String jwtToken = (String) token.getPrincipal();
 		System.out.println(jwtToken);

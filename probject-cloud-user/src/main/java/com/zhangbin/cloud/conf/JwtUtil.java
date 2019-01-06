@@ -23,8 +23,8 @@ public class JwtUtil {
 	public static final String SECRET = "52DTHVwS8YYP7ay0";
 	
 	/** token 过期时间：30秒*/
-	public static final int calendarField = Calendar.HOUR;
-	public static final int calendarInterval = 1;
+	public static final int calendarField = Calendar.MINUTE;
+	public static final int calendarInterval = 2;
 	
 	/**
 	 * JWT生成Token

@@ -57,6 +57,7 @@ public class ShiroConfig {
 		 */
 		
 		filterChainDefinitionMap.put("/**", "jwt");
+//		filterChainDefinitionMap.put("/unauthorized/**", "jwt");
 		//如果不设置默认会自动寻找web工程根目录下的/login页面
 		//前后端分离中，登录界面跳转应由前端路由控制，后台仅返回json数据
 		shiroFilterFactoryBean.setLoginUrl("/notLogin");
@@ -72,20 +73,20 @@ public class ShiroConfig {
 	 * 
 	 * @return
 	 */
-	@Bean
+	/*@Bean
 	public MyShiroRealm myShiroRealm() {
 		MyShiroRealm myShiroRealm = new MyShiroRealm();
 		return myShiroRealm;
-	}
+	}*/
 	
 	/**
 	 * 
 	 * @return
 	 */
 	@Bean
-	public SecurityManager securityManager() {
+	public SecurityManager securityManager(MyShiroRealm myShiroRealm) {
 		DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-		securityManager.setRealm(myShiroRealm());
+		securityManager.setRealm(myShiroRealm);
 		
 		/**
 		 * 关闭shiro自带的session，用自定义的jwt token做无状态登录校验
