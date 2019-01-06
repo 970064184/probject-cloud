@@ -17,4 +17,9 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByUserName(userName);
 	}
 
+	@Override
+	public TbUser findByOne(Long userId) {
+		return userRepository.findOne(userId);
+	}
+
 }

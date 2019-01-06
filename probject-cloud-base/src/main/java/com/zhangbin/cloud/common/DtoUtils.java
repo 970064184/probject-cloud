@@ -6,13 +6,23 @@ package com.zhangbin.cloud.common;
  */
 public class DtoUtils {
 	/**
+	 * 成功，有参返回
+	 * @return
+	 */
+	public static <T>Dto<T> isSuccess(CodeEnum codeEnum,T data) {
+		Dto<T> dto = new Dto<>();
+		dto.setMsg(codeEnum);
+		dto.setData(data);
+		return dto;
+	}
+	/**
 	 * 成功，无参返回
 	 * @return
 	 */
-	public static String isSuccess() {
-		Dto dto = new Dto();
-		dto.setMsg(CodeEnum.SUCCESS);
-		return dto.toJson();
+	public static <T>Dto<T> isSuccess(CodeEnum codeEnum) {
+		Dto<T> dto = new Dto<>();
+		dto.setMsg(codeEnum);
+		return dto;
 	}
 	/**
 	 * 成功，有参返回
@@ -66,6 +76,18 @@ public class DtoUtils {
 		Dto dto  = new Dto();
 		dto.setMsg(codeEnum);
 		return dto.toJson();
+	}
+	
+	/**
+	 * 异常信息，无参返回
+	 * @param codeEnum
+	 * @param data
+	 * @return
+	 */
+	public static <T> Dto<T> returnError(CodeEnum codeEnum) {
+		Dto dto  = new Dto();
+		dto.setMsg(codeEnum);
+		return dto;
 	}
 	/**
 	 * 异常信息，有参返回

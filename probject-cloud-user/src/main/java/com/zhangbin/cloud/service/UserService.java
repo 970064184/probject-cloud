@@ -9,4 +9,10 @@ public interface UserService {
 	 * @return
 	 */
 	TbUser findByUserName(String userName);
+	/**
+	 * 根据用户id查找记录
+	 * @param userId
+	 * @return
+	 */
+	TbUser findByOne(Long userId);
 }

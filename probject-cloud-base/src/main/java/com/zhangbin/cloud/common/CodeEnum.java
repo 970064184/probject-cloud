@@ -13,6 +13,12 @@ public enum CodeEnum {
 	
 	SUCCESS("成功","200"),
 	
+	SYSTEM_LOGIN_SUCCESS("欢迎登录","S200"),
+	
+	SYSTEM_LOGIN_EXCEPTION("您尚未登录","403"),
+	
+	SYSTEM_USERNAME_ISNOTEXIST("用户不存在","S404"),
+	
 	WEB_SYSTEM_EXCEPTION("系统异常","SWEB500");
 	
 	private String code;

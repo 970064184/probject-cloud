@@ -1,6 +1,6 @@
 package com.zhangbin.cloud.test;
 
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -11,7 +11,7 @@ import io.swagger.annotations.ApiOperation;
 public class TestController {
 	
 	@ApiOperation(value = "测试接口", notes = "环境测试接口")
-	@PostMapping(value="/test")
+	@GetMapping(value="/test")
 	public String test() {
 		return "hello world！";
 	}

@@ -7,10 +7,8 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.zhangbin.cloud.domain.TbUser;
 import com.zhangbin.cloud.service.UserService;
 
 /**自定义权限匹配和账号密码匹配
@@ -21,6 +19,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 	
 	@Autowired
 	private UserService userService;
+	
 	
 	/**
 	 * Authorization(授权)：访问控制。比如某个用户是否具有某个操作的使用权限
@@ -41,12 +40,25 @@ public class MyShiroRealm extends AuthorizingRealm {
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		System.out.println("MyShiroRealm.doGetAuthenticationInfo()");
 		//获取用户的输入的账号
+		String jwtToken = (String) token.getPrincipal();
+		System.out.println(jwtToken);
+		Long userId = JwtUtil.getAppUID(jwtToken);
+		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
+				jwtToken,
+				jwtToken,
+				getName()
+				);
+		return authenticationInfo;
+		//获取用户的输入的账号
+		/*System.out.println("MyShiroRealm.doGetAuthenticationInfo()");
+		//获取用户的输入的账号
 		String userName = (String) token.getPrincipal();
 		System.out.println(userName);
 		TbUser tbUser = userService.findByUserName(userName);
 		if(null == tbUser) {
 			return null;
 		}
+//		Long userId = JwtUtil.getAppUID(token.getCredentials());
 		String salt = "123";
 		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
 				tbUser,
@@ -54,7 +66,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 				ByteSource.Util.bytes(salt),
 				getName()
 				);
-		return authenticationInfo;
+		return authenticationInfo;*/
 	}
 
 }
