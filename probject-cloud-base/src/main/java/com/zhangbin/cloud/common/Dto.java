@@ -33,10 +33,11 @@ public class Dto<T> {
 	 * 设置详细信息及相关状态码
 	 * @param codeEnum
 	 */
-	public void setMsg(CodeEnum codeEnum) {
+	public void setMsg(CodeEnum codeEnum,Object...args) {
 		this.code = codeEnum.getCode();
-		this.msg = codeEnum.getDesc();
+		this.msg = String.format(codeEnum.getDesc(), args);
 	}
+	
 	/**
 	 * 对象转换成json字符串
 	 * @return

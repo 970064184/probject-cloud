@@ -3,7 +3,7 @@ package com.zhangbin.cloud.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.zhangbin.cloud.domain.TbUser;
+import com.zhangbin.cloud.domain.system.TbUser;
 import com.zhangbin.cloud.repository.UserRepository;
 import com.zhangbin.cloud.service.UserService;
 @Service

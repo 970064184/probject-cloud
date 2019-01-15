@@ -80,13 +80,13 @@ public class DtoUtils {
 	
 	/**
 	 * 异常信息，无参返回
-	 * @param codeEnum
+	 * @param object
 	 * @param data
 	 * @return
 	 */
-	public static <T> Dto<T> returnError(CodeEnum codeEnum) {
-		Dto dto  = new Dto();
-		dto.setMsg(codeEnum);
+	public static <T> Dto<T> returnError(CodeEnum codeEnum,Object...args) {
+		Dto<T> dto  = new Dto<>();
+		dto.setMsg(codeEnum,args);
 		return dto;
 	}
 	/**

@@ -1,6 +1,6 @@
 package com.zhangbin.cloud.service;
 
-import com.zhangbin.cloud.domain.TbUser;
+import com.zhangbin.cloud.domain.system.TbUser;
 
 public interface UserService {
 	/**

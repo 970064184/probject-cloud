@@ -11,15 +11,19 @@ package com.zhangbin.cloud.common;
  */
 public enum CodeEnum {
 	
-	SUCCESS("成功","200"),
+	SUCCESS("200","成功"),
 	
-	SYSTEM_LOGIN_SUCCESS("欢迎登录","S200"),
+	SYSTEM_LOGIN_SUCCESS("S200","欢迎登录"),
 	
-	SYSTEM_LOGIN_EXCEPTION("您尚未登录","403"),
+	SYSTEM_AUTHENTICATIONTOKEN_EXCEPTION("403","访问异常：%s"),
 	
-	SYSTEM_USERNAME_ISNOTEXIST("用户不存在","S404"),
+	SYSTEM_LOGIN_EXCEPTION("401","访问异常：%s"),
 	
-	WEB_SYSTEM_EXCEPTION("系统异常","SWEB500");
+	SYSTEM_UNAUTHENTICATED_EXCEPTION("403","您没有权限，请联系管理员：%s"),
+	
+	SYSTEM_USERNAME_ISNOTEXIST("S404","用户不存在"),
+	
+	WEB_SYSTEM_EXCEPTION("SWEB500","系统异常：%s");
 	
 	private String code;
 	
@@ -37,7 +41,7 @@ public enum CodeEnum {
 	public void setCode(String code) {
 		this.code = code;
 	}
-
+	
 	public String getDesc() {
 		return desc;
 	}

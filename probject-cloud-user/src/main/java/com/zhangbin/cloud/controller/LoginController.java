@@ -1,28 +1,20 @@
 package com.zhangbin.cloud.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Date;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.session.Session;
-import org.apache.shiro.session.mgt.SessionManager;
-import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zhangbin.cloud.common.CodeEnum;
 import com.zhangbin.cloud.common.Dto;
 import com.zhangbin.cloud.common.DtoUtils;
 import com.zhangbin.cloud.conf.JwtUtil;
-import com.zhangbin.cloud.domain.TbUser;
+import com.zhangbin.cloud.domain.system.TbUser;
 import com.zhangbin.cloud.dto.LoginReq;
 import com.zhangbin.cloud.service.UserService;
 
@@ -90,9 +82,14 @@ public class LoginController {
 			}
 //		}
 */	}
-	
-	@RequestMapping(path = "/unauthorized/{message}")
+	/**
+	 * 
+	 * @param message
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
+	@GetMapping(path = "/unauthorized/{message}")
     public Dto<Object> unauthorized(@PathVariable String message) throws UnsupportedEncodingException {
-        return DtoUtils.isSuccess(CodeEnum.SYSTEM_LOGIN_EXCEPTION,message);
+        return DtoUtils.returnError(CodeEnum.SYSTEM_LOGIN_EXCEPTION,message);
     }
 }

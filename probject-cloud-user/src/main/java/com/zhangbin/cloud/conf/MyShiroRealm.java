@@ -1,15 +1,25 @@
 package com.zhangbin.cloud.conf;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.zhangbin.cloud.repository.AuthorityRepository;
+import com.zhangbin.cloud.repository.RoleRepository;
+import com.zhangbin.cloud.repository.TbRolesMenuRepository;
+import com.zhangbin.cloud.repository.UserRoleRepository;
 import com.zhangbin.cloud.service.UserService;
 
 /**自定义权限匹配和账号密码匹配
@@ -19,8 +29,19 @@ import com.zhangbin.cloud.service.UserService;
 @Component
 public class MyShiroRealm extends AuthorizingRealm {
 	
+	public static final ThreadLocal<Long> THREADLOCAL = new ThreadLocal<>();
+	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private UserRoleRepository userRoleRepository;
+	@Autowired 
+	private RoleRepository roleRepository;
+	@Autowired
+	private TbRolesMenuRepository tbRolesMenuRepository;
+	@Autowired
+	private AuthorityRepository authorityRepository;
+	
 	
 	/**
      * 必须重写此方法，不然会报错
@@ -40,7 +61,37 @@ public class MyShiroRealm extends AuthorizingRealm {
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		System.out.println("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
-		return null;
+		String token =(String) principals.getPrimaryPrincipal();
+		System.out.println(token);
+		Long userId = JwtUtil.getUserId(token);
+		System.out.println(userId);
+		//利用登录的用户信息来查询当前登录用户的角色或权限
+		Set<String> roles = new HashSet<>();
+		Set<String> permissions = new HashSet<>();
+		//获得该用户角色
+		List<Long> roleId = userRoleRepository.findByUserId(userId);
+		if(!CollectionUtils.isEmpty(roleId)) {
+			List<String> roleCodeList = roleRepository.findByRoleIdIn(roleId);
+			roles.addAll(roleCodeList);
+			//每个角色拥有默认的权限
+			List<Long> authList = tbRolesMenuRepository.findByRoleIdIn(roleId);
+			if(!CollectionUtils.isEmpty(authList)) {
+				List<String> authUrlList = authorityRepository.findByAuthIdIn(authList);
+				permissions.addAll(authUrlList);
+			}
+			//每个用户可以设置的新的权限
+			
+			//需要将role,permission封装到set作为info.setRoles()，info.setStringPermissions()的参数
+			if(1 == userId) {
+//			roles.add("admin");
+				permissions.add("/test");
+			}
+		}
+		//创建SimpleAuthorizationInfo，并设置其roles属性
+		SimpleAuthorizationInfo authenticationInfo = new SimpleAuthorizationInfo();
+		authenticationInfo.setRoles(roles);
+		authenticationInfo.setStringPermissions(permissions);
+		return authenticationInfo;
 	}
 	/**
 	 * Authentication(认证)：用户身份识别，通常都被称为用户“登录”
@@ -53,6 +104,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 		String jwtToken = (String) token.getPrincipal();
 		System.out.println(jwtToken);
 		Long userId = JwtUtil.getAppUID(jwtToken);
+		THREADLOCAL.set(userId);
 		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
 				jwtToken,
 				jwtToken,
