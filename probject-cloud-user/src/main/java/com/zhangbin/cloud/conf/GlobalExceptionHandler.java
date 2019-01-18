@@ -24,6 +24,7 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(Exception.class)
 	public Object globalExceptionHandle(HttpServletRequest request, Exception e){
+		e.printStackTrace();
 		return DtoUtils.returnError(CodeEnum.WEB_SYSTEM_EXCEPTION,e.getMessage());
 	}
 	

@@ -15,9 +15,9 @@ import lombok.Getter;
 public class LoginReq {
 	
 	@ApiModelProperty(value="用户名",required=true)
-	private String userName;
+	private String username;
 	
 	@ApiModelProperty(value="密码",required=true)
-	private String userPwd;
+	private String password;
 
 }

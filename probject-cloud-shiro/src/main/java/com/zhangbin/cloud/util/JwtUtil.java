@@ -1,4 +1,4 @@
-package com.zhangbin.cloud.conf;
+package com.zhangbin.cloud.util;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -16,7 +16,7 @@ import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
 /**登录Token的生成和解析
- * @author admin
+ * @author zb
  *
  */
 public class JwtUtil {
@@ -105,30 +105,4 @@ public class JwtUtil {
 		return Long.valueOf(userIdClaim.asString());
 	}
 	
-	
-	public static void main(String[] args) throws Exception {
-		//获取token
-		/*Long userId = 1111L;
-		String createToken = createToken(userId);
-		System.out.println("获取token:"+createToken);*/
-		//解析token
-		String token1 = "2.0YCTRX1tE_7h4YseKAgqlttrbA8w2iPt3ooZ6V95n_8";
-		getAppUID(token1);
-		System.out.println("解析token:"+token1);
-		/*String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJBUFAiLCJpc3MiOiJTZXJ2aWNlIiwiZXhwIjoxNTQ2NTA1NzEyLCJ1c2VySWQiOiIxMTExIiwiaWF0IjoxNTQ2NTA1NjgyfQ.NVSo4OkUm2K8q8XuoljLVxuuOzymTMDiurzGfVuoL9o";
-		Map<String, Claim> verifyToken = verifyToken(token);
-		System.out.println("解析token:"+verifyToken);*/
-		//根据token获取userId
-		/*Long appUID = getAppUID(token);
-		System.out.println("根据token获取userId:"+appUID);*/
-		/**
-		 * 	获取token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJBUFAiLCJpc3MiOiJTZXJ2aWNlIiwiZXhwIjoxNTQ3MzY5MDAxLCJ1c2VySWQiOiIxMTExIiwiaWF0IjoxNTQ2NTA1MDAxfQ.DWye2Yhdbi5ufeK6Z9ukxcghWiQF6k2uJA9YlcGDLo8
-			解析token:{aud=com.auth0.jwt.impl.JsonNodeClaim@70ed52de, iss=com.auth0.jwt.impl.JsonNodeClaim@496bc455, exp=com.auth0.jwt.impl.JsonNodeClaim@59402b8f, userId=com.auth0.jwt.impl.JsonNodeClaim@7188af83, iat=com.auth0.jwt.impl.JsonNodeClaim@6be968ce}
-			根据token获取userId:1111
-			
-			获取token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJBUFAiLCJpc3MiOiJTZXJ2aWNlIiwiZXhwIjoxNTQ3MzY5MDM3LCJ1c2VySWQiOiIxMTEyIiwiaWF0IjoxNTQ2NTA1MDM3fQ.NBxyu0j7HiaBrm10nQLKz5cVFGpYo2mJORlFHIZLoKM
-			解析token:{aud=com.auth0.jwt.impl.JsonNodeClaim@5ddeb7cb, iss=com.auth0.jwt.impl.JsonNodeClaim@70ed52de, exp=com.auth0.jwt.impl.JsonNodeClaim@496bc455, userId=com.auth0.jwt.impl.JsonNodeClaim@59402b8f, iat=com.auth0.jwt.impl.JsonNodeClaim@7188af83}
-			根据token获取userId:1112
-		 */
-	}
 }

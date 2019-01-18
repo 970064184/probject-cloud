@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zhangbin.cloud.common.CodeEnum;
 import com.zhangbin.cloud.common.Dto;
 import com.zhangbin.cloud.common.DtoUtils;
-import com.zhangbin.cloud.conf.JwtUtil;
 import com.zhangbin.cloud.domain.system.TbUser;
 import com.zhangbin.cloud.dto.LoginReq;
 import com.zhangbin.cloud.service.UserService;
+import com.zhangbin.cloud.util.JwtUtil;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -41,11 +41,11 @@ public class LoginController {
 	@PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Dto<Object> login(@RequestBody LoginReq loginReq) {
 		System.out.println("登录接口：" + loginReq);
-		TbUser tbUser = userService.findByUserName(loginReq.getUserName());
+		TbUser tbUser = userService.findByUserName(loginReq.getUsername());
 		if(tbUser == null) {
 			return DtoUtils.returnError(CodeEnum.SYSTEM_USERNAME_ISNOTEXIST);
 		}
-		if(!tbUser.getUserPwd().equals(loginReq.getUserPwd())) {
+		if(!tbUser.getUserPwd().equals(loginReq.getPassword())) {
 			return DtoUtils.returnError(CodeEnum.SYSTEM_USERNAME_ISNOTEXIST);
 		}
 		try {

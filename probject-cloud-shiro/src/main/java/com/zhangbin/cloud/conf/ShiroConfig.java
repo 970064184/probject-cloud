@@ -11,8 +11,12 @@ import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 /**
  * ShiroConfig
@@ -47,16 +51,16 @@ public class ShiroConfig {
 		 * anon：匿名拦截器，即不需要登录即可访问 logout：退出拦截器 authc:基于表单的拦截器，如果没有登录会跳转到相应的登录页面登录
 		 * roles:角色授权拦截器，验证用户是否拥有所有角色 perms:权限授权拦截器，验证用户是否拥有所有权限 port：端口拦截器
 		 */
-		filterChainDefinitionMap.put("/webjars/**", "anon");
-		filterChainDefinitionMap.put("/v2/api-docs", "anon");
+		filterChainDefinitionMap.put("/**/webjars/**", "anon");
+		filterChainDefinitionMap.put("/**/v2/api-docs", "anon");
 		filterChainDefinitionMap.put("/**/favicon.ico", "anon");
-		filterChainDefinitionMap.put("/swagger-resources/**", "anon");
-		filterChainDefinitionMap.put("/swagger-ui.html", "anon");
-		filterChainDefinitionMap.put("/doc.html", "anon");
-		filterChainDefinitionMap.put("/druid/**", "anon");
-		filterChainDefinitionMap.put("/login", "anon");
+		filterChainDefinitionMap.put("/**/swagger-resources/**", "anon");
+		filterChainDefinitionMap.put("/**/swagger-ui.html", "anon");
+		filterChainDefinitionMap.put("/**/doc.html", "anon");
+		filterChainDefinitionMap.put("/**/druid/**", "anon");
+		filterChainDefinitionMap.put("/**/login", "anon");
 		// 配置退出，过滤器，其中的具体的退出代码shiro已经替我们实现了
-		filterChainDefinitionMap.put("/logout", "logout");
+		filterChainDefinitionMap.put("/**/logout", "logout");
 		/**
 		 * 过滤器定义，从上向下顺序执行，一般将/**放在最为下边 authc：所有url都必须认证通过才可以访问；anon：所有url都可以匿名访问
 		 */
@@ -66,7 +70,6 @@ public class ShiroConfig {
 		// 如果不设置默认会自动寻找web工程根目录下的/login页面
 		// 前后端分离中，登录界面跳转应由前端路由控制，后台仅返回json数据
 //		shiroFilterFactoryBean.setUnauthorizedUrl("/unauthorized/您暂无权限，请联系管理员");
-		shiroFilterFactoryBean.setLoginUrl("/notLogin");
 		// 登录成功后要跳转的链接
 		// shiroFilterFactoryBean.setSuccessUrl("/index");
 		// 未授权界面,无权限时跳转的url
@@ -110,5 +113,24 @@ public class ShiroConfig {
 		AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
 		advisor.setSecurityManager(securityManager);
 		return advisor;
+	}
+	
+	/**
+	 * 跨域
+	 * @return
+	 */
+	@Bean
+	public FilterRegistrationBean corsFilter() {
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	    CorsConfiguration config = new CorsConfiguration();
+	    config.setAllowCredentials(true); 
+	    config.addAllowedOrigin("*");
+	    config.addAllowedHeader("*");
+	    config.addAllowedMethod("*");
+	    source.registerCorsConfiguration("/**", config); // CORS 配置对所有接口都有效
+	    
+	    FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source) );
+	    bean.setOrder(0);
+	    return bean;
 	}
 }

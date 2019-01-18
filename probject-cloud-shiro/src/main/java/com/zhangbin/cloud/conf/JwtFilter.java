@@ -13,43 +13,32 @@ import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * 自定义jwt过滤器来作为shiro的过滤器
  * 
  * @author Administrator
  *
  */
-@Slf4j
 public class JwtFilter extends BasicHttpAuthenticationFilter {
 
 	@Override
 	protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue)
 			throws UnauthorizedException {
 		// 判断请求的请求头是否带上 "Authorication"
-		/*
-		 * if (isLoginAttempt(request, response)) { //如果存在，则进入 executeLogin 方法执行登入，检查
-		 * token 是否正确 try { executeLogin(request, response); return true; } catch
-		 * (Exception e) { //token 错误 throw new
-		 * RuntimeException("token校验失败:"+e.getMessage()); // responseError(response,
-		 * e.getMessage()); } } //如果请求头不存在 Authorication，则可能是执行登陆操作或者是游客状态访问，无需检查
-		 * token，直接返回 true return true;
-		 */
 		try {
 			executeLogin(request, response);
-			//认证通过后执行授权
-			HttpServletRequest  req = (HttpServletRequest) request;
+			// 认证通过后执行授权
+			HttpServletRequest req = (HttpServletRequest) request;
 			System.out.println(SecurityUtils.getSubject().isAuthenticated());
 			SecurityUtils.getSubject().checkPermission(req.getRequestURI());
 		} catch (UnauthenticatedException e) {// 授权异常
-//			return false;
-			responseError(response,e.getMessage());
-		}catch (UnauthorizedException e) {//没有访问权限，访问异常
-			responseError(response,"您暂无权限，请联系管理员");
-		}catch (Exception e) {
-//			return false;
-			responseError(response,e.getMessage());
+			// return false;
+			responseError(response, e.getMessage());
+		} catch (UnauthorizedException e) {// 没有访问权限，访问异常
+			responseError(response, "您暂无权限，请联系管理员");
+		} catch (Exception e) {
+			// return false;
+			responseError(response, e.getMessage());
 		}
 		/**
 		 * UnsupportedTokenException:验证不通过，500 401，无Authorication头
@@ -68,14 +57,14 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
 		// 如果没有抛出异常则代表登入成功，返回true
 		return true;
 	}
-
+	
 	@Override
 	protected boolean isLoginAttempt(ServletRequest request, ServletResponse response) {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String token = req.getHeader("Authorication");
 		return token != null;
 	}
-
+	
 	/**
 	 * 将非法请求跳转到 /unauthorized/**
 	 */
@@ -86,7 +75,6 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
 			message = URLEncoder.encode(message, "UTF-8");
 			httpServletResponse.sendRedirect("/unauthorized/" + message);
 		} catch (IOException e) {
-			log.error(e.getMessage());
 		}
 	}
 }
