@@ -4,7 +4,7 @@ server:
 #thymeleaf-springboot配置
 spring:
   thymeleaf: #页面模板引擎
-    cache: true #是否缓存，有缓存时会导致页面没法及时看到更新后的效果
+    cache: false #是否缓存，有缓存时会导致页面没法及时看到更新后的效果
     content-type: text/html; charset=utf-8
     enabled: true #是否启用
     encoding: UTF-8

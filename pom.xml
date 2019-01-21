@@ -57,6 +57,12 @@
 			<artifactId>bootstrap</artifactId>
 			<version>3.1.1</version>
 		</dependency>
+		<!-- bootstrap validator -->
+		<!-- <dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>bootstrap-validator</artifactId>
+			<version>0.11.9</version>
+		</dependency> -->
 		<!-- font-awesome -->
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -71,17 +77,17 @@
 		</dependency>
 		<!-- fastjson -->
 		<dependency>
-		    <groupId>com.alibaba</groupId>
-		    <artifactId>fastjson</artifactId>
-		    <version>1.2.44</version>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.44</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.seleniumhq.selenium</groupId>
-		    <artifactId>selenium-java</artifactId>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
 		</dependency>
-		
-		
+
+
 	</dependencies>
 
 	<build>

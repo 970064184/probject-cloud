@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
-<!--<![endif]-->
-<!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
 <title>首页</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
 <link th:href="@{/webjars/font-awesome/4.0.3/css/font-awesome.min.css}"  rel="stylesheet" type="text/css"/>
 <link th:href="@{/webjars/bootstrap/3.1.1/css/bootstrap.min.css}" rel="stylesheet" type="text/css"/>
-
 <link href="assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
@@ -16,6 +14,7 @@
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <body class="page-header-fixed">
+<!-- 头部 -->
 <div class="header navbar navbar-fixed-top">
 	<div class="header-inner">
 		<!-- BEGIN LOGO -->
@@ -30,6 +29,7 @@
 		</ul>
 	</div>
 </div>
+<!-- 中部：左边菜单栏+中部内容 -->
 <div class="page-container">
 	<div class="page-sidebar-wrapper">
 		<div class="page-sidebar navbar-collapse collapse">
@@ -82,9 +82,9 @@
 					</ul>
 				</li>
 				<li th:each = "menu :${menus}">
-					<a th:href="${menu?.url}">
-						<i class="fa"><img alt="" th:src="${menu?.logo}"/></i>
-						<span class="title" th:text="${menu?.name}">
+					<a th:href="${menu?.authUrl}">
+						<i class="fa"><img alt="" th:src="${menu?.authLogo}"/></i>
+						<span class="title" th:text="${menu?.authName}">
 							E-Commerce
 						</span>
 						<span class="arrow ">
@@ -107,6 +107,7 @@
 		</div>
 	</div>
 </div>
+<!-- 底部 -->
 <div class="footer">
 	<div class="footer-inner">
 		 2018 &copy; Metronic by miss zhang.
@@ -125,10 +126,6 @@ jQuery(document).ready(function() {
    App.init(); // initlayout and core plugins
 });
 
-</script>
-<script th:inline="javascript">
-	menu = [[${menu}]];
-	console.log(menu);
 </script>
 </body>
 </html>
