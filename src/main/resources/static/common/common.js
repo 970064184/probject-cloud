@@ -5,7 +5,7 @@ var http = {};
 http.ajax = function(params){
 	var flag=true;
 	if(params.id){
-		if(!params.before){
+		if(params.before){
 			$(params.id).bootstrapValidator('validate');
 			flag = $(params.id).data("bootstrapValidator").isValid();
 		}
@@ -32,7 +32,7 @@ http.ajax = function(params){
 			contentType:params.contentType,
 			dataType:params.dataType,
 			error:function(data){
-				params.error(data);
+				alert("系统异常");
 			},
 			success:function(data){
 				params.success(data);

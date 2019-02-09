@@ -24,6 +24,7 @@
 		<a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 			<img src="assets/img/menu-toggler.png" alt=""/>
 		</a>
+		<!-- 顶部导航栏 -->
 		<ul class="nav navbar-nav pull-right">
 			
 		</ul>
@@ -90,14 +91,14 @@
 						<span class="arrow ">
 						</span>
 					</a>
-					<!-- <ul th:if="${menu?.children} !=''" th:each="children :${menu?.children}" class="sub-menu">
+					<ul th:if="${menu?.children} !=''" th:each="children :${menu?.children}" class="sub-menu">
 						<li>
-							<a href="${children.url}">
-								<i class="fa"><img alt="" th:src="${children.logo}"/></i>
-								<span th:text="${children.name}">二级菜单</span>
+							<a href="${children.authUrl}">
+								<i class="fa"><img alt="" th:src="${children.authLogo}"/></i>
+								<span th:text="${children.authName}">二级菜单</span>
 							</a>
 						</li>
-					</ul> -->
+					</ul>
 				</li>
 			</ul>
 		</div>
