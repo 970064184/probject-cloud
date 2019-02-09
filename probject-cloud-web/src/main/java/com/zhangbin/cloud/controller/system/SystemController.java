@@ -25,7 +25,6 @@ public class SystemController {
 	@ApiOperation(value ="获取所有菜单",notes = "获取所有菜单")
 	@GetMapping(value = "/getAllMenu1",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String getAllMenu(HttpServletRequest request) {
-		System.out.println(request.getHeader("Authorication"));
 		return DtoUtils.isSuccess(systemService.findAll());
 	}
 	

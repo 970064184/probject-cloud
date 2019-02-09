@@ -30,11 +30,13 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
 			// 认证通过后执行授权
 			HttpServletRequest req = (HttpServletRequest) request;
 			System.out.println(SecurityUtils.getSubject().isAuthenticated());
+			System.out.println(req.getRequestURI());
 			SecurityUtils.getSubject().checkPermission(req.getRequestURI());
 		} catch (UnauthenticatedException e) {// 授权异常
 			// return false;
 			responseError(response, e.getMessage());
 		} catch (UnauthorizedException e) {// 没有访问权限，访问异常
+			e.printStackTrace();
 			responseError(response, "您暂无权限，请联系管理员");
 		} catch (Exception e) {
 			// return false;

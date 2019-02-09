@@ -30,3 +30,8 @@ lombok、  mysql 、jpa
 - probject-cloud-user
 
   - 登录
+
+# 疑问 
+
+- zuul网关层做拦截？那岂不是要配jpa数据源配置？
+- ​

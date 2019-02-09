@@ -26,7 +26,7 @@ public class JwtUtil {
 	
 	/** token 过期时间：30分钟*/
 	public static final int calendarField = Calendar.MINUTE;
-	public static final int calendarInterval = 60;
+	public static final int calendarInterval = 60*3;
 	
 	/**
 	 * JWT生成Token
