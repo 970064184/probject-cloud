@@ -32,11 +32,32 @@ CREATE TABLE `tb_authority` (
   `created` date DEFAULT NULL COMMENT '创建时间',
   `updated` date DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`auth_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tb_authority` */
 
-insert  into `tb_authority`(`auth_id`,`auth_name`,`auth_logo`,`auth_url`,`auth_type`,`sort`,`is_hide`,`p_id`,`created`,`updated`) values (1,'用户管理','/','http://localhost:8761',2,1,0,NULL,'2018-10-12','2018-10-12'),(2,'权限管理','/','https://www.baidu.com/',2,2,0,NULL,'2018-11-14','2018-11-14'),(3,'测试API','/','/test',3,0,0,NULL,'2019-01-15','2019-01-15'),(4,'测试microservice-provider-web','/','/microservice-provider-web/test',2,0,0,NULL,'2019-01-15','2019-01-15'),(5,'/microservice-provider-web/getAllCode','/','/microservice-provider-web/getAllCode',2,0,0,NULL,'2019-01-15','2019-01-15');
+insert  into `tb_authority`(`auth_id`,`auth_name`,`auth_logo`,`auth_url`,`auth_type`,`sort`,`is_hide`,`p_id`,`created`,`updated`) values (1,'用户管理','/','http://localhost:8761',2,1,0,NULL,'2018-10-12','2018-10-12'),(2,'权限管理','/','https://www.baidu.com/',2,2,0,7,'2018-11-14','2018-11-14'),(3,'测试API','/','/test',3,0,0,NULL,'2019-01-15','2019-01-15'),(4,'测试microservice-provider-web','/','/microservice-provider-web/test',3,0,0,NULL,'2019-01-15','2019-01-15'),(5,'/microservice-provider-web/getAllCode','/','/microservice-provider-web/getAllCode',3,0,0,NULL,'2019-01-15','2019-01-15'),(6,'/microservice-provider-web/getAllMenu','/','/microservice-provider-web/getAllMenu',3,0,0,NULL,'2019-01-15','2019-01-15'),(7,'基础配置管理','/','',2,0,0,NULL,'2019-01-22','2019-01-22'),(8,'菜单管理','/','http://localhost:8761',2,0,0,2,'2019-01-22','2019-01-22');
+
+/*Table structure for table `tb_menu` */
+
+DROP TABLE IF EXISTS `tb_menu`;
+
+CREATE TABLE `tb_menu` (
+  `id` bigint(20) NOT NULL COMMENT 'id',
+  `name` varchar(200) NOT NULL COMMENT '菜单名称',
+  `logo` varchar(200) DEFAULT NULL COMMENT '菜单图标',
+  `url` varchar(200) DEFAULT NULL COMMENT '跳转url',
+  `sort` int(11) DEFAULT NULL COMMENT '排序',
+  `is_hide` smallint(6) DEFAULT NULL COMMENT '是否隐藏',
+  `p_id` bigint(20) DEFAULT NULL COMMENT '父id',
+  `created` date DEFAULT NULL COMMENT '创建时间',
+  `updated` date DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tb_menu` */
+
+insert  into `tb_menu`(`id`,`name`,`logo`,`url`,`sort`,`is_hide`,`p_id`,`created`,`updated`) values (1,'用户管理','/','http://localhost:8761',1,0,NULL,'2018-10-12','2018-10-12'),(2,'权限管理','/','https://www.baidu.com/',2,0,NULL,'2018-11-14','2018-11-14');
 
 /*Table structure for table `tb_roles` */
 
@@ -68,11 +89,11 @@ CREATE TABLE `tb_roles_menu` (
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色id',
   `auth_id` bigint(20) DEFAULT NULL COMMENT '权限id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tb_roles_menu` */
 
-insert  into `tb_roles_menu`(`id`,`role_id`,`auth_id`) values (1,1,3),(2,2,1),(3,1,4),(4,1,5);
+insert  into `tb_roles_menu`(`id`,`role_id`,`auth_id`) values (1,1,3),(2,2,1),(3,1,4),(4,1,5),(5,1,6);
 
 /*Table structure for table `tb_user` */
 
