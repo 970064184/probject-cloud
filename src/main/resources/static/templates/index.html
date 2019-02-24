@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>主页</title>
+<link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<!-- 头部区域（可配合layui已有的水平导航） -->
+		<div class="layui-header">
+			<div class="layui-logo">主页logo</div>
+			<!-- 头部左边 -->
+			<ul class="layui-nav layui-layout-left" lay-filter="">
+				<li class="layui-nav-item"><a href="">最新活动</a></li>
+				<li class ="layui-nav-item">
+					<a href ="javascript:;">解决方案</a>
+					<dl class ="layui-nav-child">
+						<dd><a href="">电商平台</a></dd>
+						<dd><a href="">新闻中心</a></dd>
+					</dl>
+				</li>
+			</ul>
+			<!-- 头部右边 -->
+			<ul class ="layui-nav layui-layout-right" lay-filter="">
+				<li class="layui-nav-item">
+					<a href="javascript:;">
+					<img alt="个人头像" src="http://t.cn/RCzsdCq" class ="layui-nav-img">哈哈
+					</a>
+					<dl class="layui-nav-child">
+						<dd><a href="">基本资料</a></dd>
+						<dd><a href="">退出</a></dd>
+					</dl>
+				</li>
+			</ul>
+		</div>
+		<!-- 中间区域：侧边导航栏和中部内容 -->	
+		<div class="layui-side layui-bg-black">
+			<!-- 滚动条隐藏的样式：overflow-x -->
+			<!-- <div class="layui-side-scroll">
+				<ul class ="layui-nav layui-nav-tree" lay-filter = "">
+					<li class ="layui-nav-item layui-nav-itemed">
+						<a class ="" href="javascript:;">系统管理</a>
+						<dl class ="layui-nav-child">
+							<dd><a href="javascript:;">列表一</a></dd>
+							<dd><a href="javascript:;">列表二</a></dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item"><a href="">用户管理</a></li>
+				</ul>
+			</div>	 -->
+				<div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side"></div>
+		</div>
+		<!-- 中间主体内容区域 -->
+		<div class = "layui-body">
+			<div style="padding:15px;">主页内容部分</div>
+		</div>
+		<!-- 底部固定区域 -->
+		<div class = "layui-footer">
+			 2019 &copy; layui page by miss zhang.
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="../common/jquery.min.js"></script>
+	<script type="text/javascript" src="../layui/layui.js"></script>
+	<script type="text/javascript" src="../datas/nav.js"></script>
+<!-- 	<script type="text/javascript" src="../common/common.js"></script>
+ -->	<script  src="../js/index.js"></script>
+	
+</body>
+</html>
