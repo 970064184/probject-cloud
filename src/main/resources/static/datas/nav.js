@@ -1,93 +1,76 @@
-var navs = [{
-	"title": "基本元素",
-	"icon": "fa-cubes",
-	"spread": true,
-	"children": [{
-		"title": "按钮",
-		"icon": "&#xe641;",
-		"href": "button.html"
-	}, {
-		"title": "表单",
-		"icon": "&#xe63c;",
-		"href": "form.html"
-	}, {
-		"title": "表格",
-		"icon": "&#xe63c;",
-		"href": "table.html"
-	}, {
-		"title": "导航",
-		"icon": "&#xe609;",
-		"href": "nav.html"
-	}, {
-		"title": "辅助性元素",
-		"icon": "&#xe60c;",
-		"href": "auxiliar.html"
-	}]
+navs = [ {
+	"title" : "主页",
+	"href" : "www.sys.com",
+	"children" : null,
+	"icon":"&#xe66c",
 }, {
-	"title": "组件",
-	"icon": "fa-cogs",
-	"spread": false,
-	"children": [{
-		"title": "BTable",
-		"icon": "fa-table",
-		"href": "btable.html"
-	}, {
-		"title": "Navbar组件",
-		"icon": "fa-navicon",
-		"href": "navbar.html"
-	}, {
-		"title": "Tab组件",
-		"icon": "&#xe62a;",
-		"href": "tab.html"
-	}, {
-		"title": "Laytpl+Laypage",
-		"icon": "&#xe628;",
-		"href": "paging.html"
-	}]
+	"title" : "系统设置",
+	"href" : "www.sys.com",
+	"icon":"&#xe66c",
+	"children" : [ {
+		"title" : "权限模块",
+		"href" : "www.sys.com",
+		"icon":"&#xe66c",
+		"children" : null
+	} ]
 }, {
-	"title": "第三方组件",
-	"icon": "&#x1002;",
-	"spread": false,
-	"children": [{
-		"title": "iCheck组件",
-		"icon": "fa-check-square-o",
-		"href": "icheck.html"
-	}]
-}, {
-	"title": "地址本",
-	"icon": "fa-address-book",
-	"href": "",
-	"spread": false,
-	"children": [{
-		"title": "Github",
-		"icon": "fa-github",
-		"href": "https://www.github.com/"
+	"title" : "业务系统",
+	"href" : "www.manager.com",
+	"icon":"&#xe66c",
+	"children" : [ {
+		"title" : "销售系统",
+		"href" : "www.child01.com",
+		"icon":"&#xe66c",
+		"children" : [ {
+			"title" : "订单系统",
+			"href" : "www.order.com",
+			"icon":"&#xe653",
+			"children" : [ {
+				"title" : "未完成订单",
+				"href" : "www.undo.com",
+				"icon":"&#xe653",
+				"children" : [ {
+					"title" : "服装部订单",
+					"href" : "www.clothes.com",
+					"icon":"&#xe653",
+					"children" : [ {
+						"title" : "成人部分",
+						"href" : "www.clothes.com",
+						"icon":"&#xe653",
+						"children" : null
+					}, {
+						"title" : "儿童部分",
+						"href" : "www.clothes.com",
+						"icon":"&#xe653",
+						"children" : null
+					} ]
+				}, {
+					"title" : "玩具部订单",
+					"href" : "www.clothes.com",
+					"icon":"&#xe653",
+					"children" : [ {
+						"title" : "成人部分",
+						"href" : "www.clothes.com",
+						"icon":"",
+						"children" : null
+					}, {
+						"title" : "儿童部分",
+						"href" : "www.clothes.com",
+						"icon":"",
+						"children" : null
+					} ]
+				} ]
+			} ]
+		}, {
+			"title" : "结算系统",
+			"href" : "www.order.com",
+			"icon":"",
+			"children" : null
+		} ]
 	}, {
-		"title": "QQ",
-		"icon": "fa-qq",
-		"href": "http://www.qq.com/"
-	}, {
-		"title": "Fly社区",
-		"icon": "&#xe609;",
-		"href": "http://fly.layui.com/"
-	}, {
-		"title": "新浪微博",
-		"icon": "fa-weibo",
-		"href": "http://weibo.com/"
-	}]
-}, {
-	"title": "这是一级导航",
-	"icon": "fa-stop-circle",
-	"href": "https://www.baidu.com",
-	"spread": false
-}, {
-	"title": "其他",
-	"icon": "fa-stop-circle",
-	"href": "#",
-	"spread": false,
-	"children": [{
-		"title": "子窗体中打开选项卡",
-		"icon": "fa-github",
-		"href": "cop.html"
-	}]
-}];
+		"title" : "公关系统",
+		"href" : "www.child02.com",
+		"icon":"",
+		"children" : null
+	} ]
+} ];

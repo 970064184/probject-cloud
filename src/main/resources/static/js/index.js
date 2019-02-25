@@ -15,15 +15,13 @@ layui.config({
 		},
 		success:function(data){
 			if(data.code == "200"){
-				console.log(data.data);
 				var data = navbarData(data.data);
-				console.log(data);
 				 //设置navbar
 			    navbar.set({
-			        spreadOne: false,
 			        elem: '#admin-navbar-side',
+			        data: data  ,//	navs
+			        spreadOne: false,
 			        cached: false,
-			        data: data
 			    });
 			    //渲染navbar
 			    navbar.render();

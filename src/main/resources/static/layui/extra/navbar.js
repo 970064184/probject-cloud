@@ -1,4 +1,3 @@
-/** navbar.js By Beginner Emain:zheng_jinfan@126.com HomePage:http://www.zhengjinfan.cn */
 layui.define(['element', 'common'], function (exports) {
     "use strict";
     var $ = layui.jquery,
@@ -192,54 +191,26 @@ layui.define(['element', 'common'], function (exports) {
     function getHtml(data) {
         //debugger;
         var ulHtml = '<ul class="layui-nav layui-nav-tree beg-navbar">';
-        for (var i = 0; i < data.length; i++) {
-            if (data[i].spread) {
-                ulHtml += '<li class="layui-nav-item layui-nav-itemed">';
-            } else {
-                ulHtml += '<li class="layui-nav-item">';
+        // 遍历生成主菜单
+        for( var i = 0; i <data.length; i++){
+            // 判断是否存在子菜单
+        	if(data[i].spread){
+        		ulHtml+="<li class=\"layui-nav-item layui-nav-itemed\">";
+        	}else{
+        		ulHtml+="<li class=\"layui-nav-item\">";
+        	}
+            if(data[i].children!=null&&data[i].children.length>0){
+                ulHtml+="<a class=\"\" href=\"javascript:;\"><i class='layui-icon' >"+data[i].icon+"</i> "+data[i].title+"</a>\n"+
+                            "<dl class=\"layui-nav-child\">\n";
+                // 遍历获取子菜单
+                for( var k = 0; k <data[i].children.length; k++){
+                    ulHtml+=getChildMenu(data[i].children[k],0);
+                }
+                ulHtml+="</dl></li>";
+            }else{
+                ulHtml+="<a class=\"\" href=\""+data[i].href+"\"><i class='layui-icon' >"+data[i].icon+"</i> "+data[i].title+"</a></li>";
             }
-            if (data[i].children !== undefined && data[i].children !== null && data[i].children.length > 0) {
-                ulHtml += '<a href="javascript:;">';
-                if (data[i].icon !== undefined && data[i].icon !== '') {
-                    if (data[i].icon.indexOf('fa-') !== -1) {
-                        ulHtml += '<i class="fa ' + data[i].icon + '" aria-hidden="true" data-icon="' + data[i].icon + '"></i>';
-                    } else {
-                        ulHtml += '<i class="layui-icon" data-icon="' + data[i].icon + '">' + data[i].icon + '</i>';
-                    }
-                }
-                ulHtml += '<cite>' + data[i].title + '</cite>'
-                ulHtml += '</a>';
-                ulHtml += '<dl class="layui-nav-child">'
-                for (var j = 0; j < data[i].children.length; j++) {
-                    ulHtml += '<dd title="' + data[i].children[j].title + '">';
-                    ulHtml += '<a href="javascript:;" data-url="' + data[i].children[j].href + '">';
-                    if (data[i].children[j].icon !== undefined && data[i].children[j].icon !== '') {
-                        if (data[i].children[j].icon.indexOf('fa-') !== -1) {
-                            ulHtml += '<i class="fa ' + data[i].children[j].icon + '" data-icon="' + data[i].children[j].icon + '" aria-hidden="true"></i>';
-                        } else {
-                            ulHtml += '<i class="layui-icon" data-icon="' + data[i].children[j].icon + '">' + data[i].children[j].icon + '</i>';
-                        }
-                    }
-                    ulHtml += '<cite>' + data[i].children[j].title + '</cite>';
-                    ulHtml += '</a>';
-                    ulHtml += '</dd>';
-                }
-                ulHtml += '</dl>';
-            } else {
-                var dataUrl = (data[i].href !== undefined && data[i].href !== '') ? 'data-url="' + data[i].href + '"' : '';
-                ulHtml += '<a href="javascript:;" ' + dataUrl + '>';
-                if (data[i].icon !== undefined && data[i].icon !== '') {
-                    if (data[i].icon.indexOf('fa-') !== -1) {
-                        ulHtml += '<i class="fa ' + data[i].icon + '" aria-hidden="true" data-icon="' + data[i].icon + '"></i>';
-                    } else {
-                        ulHtml += '<i class="layui-icon" data-icon="' + data[i].icon + '">' + data[i].icon + '</i>';
-                    }
-                }
-                ulHtml += '<cite>' + data[i].title + '</cite>'
-                ulHtml += '</a>';
-            }
-            ulHtml += '</li>';
-        }
+        };
         ulHtml += '</ul>';
 
         return ulHtml;
@@ -251,3 +222,26 @@ layui.define(['element', 'common'], function (exports) {
         return navbar.set(options);
     });
 });
+
+//递归生成子菜单
+function getChildMenu(subMenu,num) {
+	var menuCell = 5;
+    num++;
+    var subStr = "";
+    if(subMenu.children!=null&&subMenu.children.length>0){
+    	if(subMenu.spread){
+    		subStr+="<li class=\"layui-nav-item layui-nav-itemed\">";
+    	}else{
+    		subStr+="<li class=\"layui-nav-item\">";
+    	}
+    	subStr+="<a class=\"\" href=\"javascript:;\"><i class='layui-icon' >"+subMenu.icon+"</i> "+subMenu.title+"</a>\n"+
+         "<dl class=\"layui-nav-child\">\n";
+        for( var k = 0; k <subMenu.children.length; k++){
+        	subStr+=getChildMenu(subMenu.children[k],0);
+        }
+        subStr+="</dl></li>";
+    }else{
+    	subStr+="<dd><a style=\"margin-Left:"+num*menuCell+"px\" href=\""+subMenu.href+"\"><i class='layui-icon' >"+subMenu.icon+"</i> "+subMenu.title+"</a></dd>";
+    }
+    return subStr;
+}
