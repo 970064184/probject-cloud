@@ -1,10 +1,13 @@
 layui.config({
 	base: '../layui/extra/'
-}).use(['layer','element','navbar'],function(){
+}).use(['layer','element','navbar','tab'],function(){
 	var element = layui.element,
+	$ = layui.$;
 	layer = layui.layer,
 	navbar = layui.navbar(),
-	$ = layui.$;
+	tab = layui.tab({
+        elem: '.admin-nav-card' //设置选项卡容器
+    });
 	
 	http.ajax({
 		url:"http://localhost:8030/microservice-provider-web/getAllMenu",
@@ -15,16 +18,21 @@ layui.config({
 		},
 		success:function(data){
 			if(data.code == "200"){
-				var data = navbarData(data.data);
-				 //设置navbar
-			    navbar.set({
-			        elem: '#admin-navbar-side',
-			        data: data  ,//	navs
-			        spreadOne: false,
-			        cached: false,
-			    });
-			    //渲染navbar
-			    navbar.render();
+				var menu = navbarData(data.data);
+				//设置navbar
+				navbar.set({
+					spreadOne: true,
+					elem: '#admin-navbar-side',
+					cached: true,
+					data: menu//navs
+				});
+				//渲染navbar
+				navbar.render();
+				//监听点击事件
+				navbar.on('click(side)', function (data) {
+					console.log(data);
+					tab.tabAdd(data.field);
+				});
 			}else if(data.code == "401"){
 				window.location.href="login.html"; 
 			}else{

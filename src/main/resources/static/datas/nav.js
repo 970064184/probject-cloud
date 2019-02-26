@@ -1,12 +1,13 @@
 navs = [ {
 	"title" : "主页",
-	"href" : "www.sys.com",
+	"href" : "cop.html",
 	"children" : null,
 	"icon":"&#xe66c",
 }, {
 	"title" : "系统设置",
 	"href" : "www.sys.com",
 	"icon":"&#xe66c",
+	"spread":true,
 	"children" : [ {
 		"title" : "权限模块",
 		"href" : "www.sys.com",
@@ -17,10 +18,12 @@ navs = [ {
 	"title" : "业务系统",
 	"href" : "www.manager.com",
 	"icon":"&#xe66c",
+	"spread":true,
 	"children" : [ {
 		"title" : "销售系统",
 		"href" : "www.child01.com",
 		"icon":"&#xe66c",
+		"spread":false,
 		"children" : [ {
 			"title" : "订单系统",
 			"href" : "www.order.com",
@@ -51,12 +54,12 @@ navs = [ {
 					"children" : [ {
 						"title" : "成人部分",
 						"href" : "www.clothes.com",
-						"icon":"",
+						"icon":"&#xe653",
 						"children" : null
 					}, {
 						"title" : "儿童部分",
 						"href" : "www.clothes.com",
-						"icon":"",
+						"icon":"&#xe653",
 						"children" : null
 					} ]
 				} ]
@@ -64,13 +67,14 @@ navs = [ {
 		}, {
 			"title" : "结算系统",
 			"href" : "www.order.com",
-			"icon":"",
+			"icon":"&#xe653",
 			"children" : null
 		} ]
 	}, {
 		"title" : "公关系统",
 		"href" : "www.child02.com",
-		"icon":"",
-		"children" : null
+		"icon":"&#xe653",
+		"children" : null,
+		"spread":false
 	} ]
 } ];

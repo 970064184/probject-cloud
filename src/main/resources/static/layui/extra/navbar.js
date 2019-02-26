@@ -1,3 +1,8 @@
+/**
+ * 导航栏
+ * @param exports
+ * @returns
+ */
 layui.define(['element', 'common'], function (exports) {
     "use strict";
     var $ = layui.jquery,
@@ -136,7 +141,7 @@ layui.define(['element', 'common'], function (exports) {
         var eventName = events.substr(0, lIndex);
         var filter = events.substring(lIndex + 1, events.indexOf(')'));
         if (eventName === 'click') {
-            if (_con.attr('lay-filter') !== undefined) {
+            if (_con && _con.attr('lay-filter') !== undefined) {
                 _con.children('ul').find('li').each(function () {
                     var $this = $(this);
                     if ($this.find('dl').length > 0) {
@@ -200,7 +205,7 @@ layui.define(['element', 'common'], function (exports) {
         		ulHtml+="<li class=\"layui-nav-item\">";
         	}
             if(data[i].children!=null&&data[i].children.length>0){
-                ulHtml+="<a class=\"\" href=\"javascript:;\"><i class='layui-icon' >"+data[i].icon+"</i> "+data[i].title+"</a>\n"+
+                ulHtml+="<a class=\"\" href=\"javascript:;\"><i class='layui-icon' data-icon='"+data[i].icon+"'>"+data[i].icon+"</i><cite>" + data[i].title + "</cite></a>\n"+
                             "<dl class=\"layui-nav-child\">\n";
                 // 遍历获取子菜单
                 for( var k = 0; k <data[i].children.length; k++){
@@ -208,7 +213,7 @@ layui.define(['element', 'common'], function (exports) {
                 }
                 ulHtml+="</dl></li>";
             }else{
-                ulHtml+="<a class=\"\" href=\""+data[i].href+"\"><i class='layui-icon' >"+data[i].icon+"</i> "+data[i].title+"</a></li>";
+                ulHtml+="<a class=\"\" data-url=\""+data[i].href+"\"><i class='layui-icon' data-icon='"+data[i].icon+"'>"+data[i].icon+"</i><cite>" + data[i].title + "</cite></a></li>";
             }
         };
         ulHtml += '</ul>';
@@ -234,14 +239,14 @@ function getChildMenu(subMenu,num) {
     	}else{
     		subStr+="<li class=\"layui-nav-item\">";
     	}
-    	subStr+="<a class=\"\" href=\"javascript:;\"><i class='layui-icon' >"+subMenu.icon+"</i> "+subMenu.title+"</a>\n"+
+    	subStr+="<a class=\"\" href=\"javascript:;\"><i class='layui-icon' data-icon='"+subMenu.icon+"'> "+subMenu.icon+"</i><cite>" + subMenu.title + "</cite></a>\n"+
          "<dl class=\"layui-nav-child\">\n";
         for( var k = 0; k <subMenu.children.length; k++){
         	subStr+=getChildMenu(subMenu.children[k],0);
         }
         subStr+="</dl></li>";
     }else{
-    	subStr+="<dd><a style=\"margin-Left:"+num*menuCell+"px\" href=\""+subMenu.href+"\"><i class='layui-icon' >"+subMenu.icon+"</i> "+subMenu.title+"</a></dd>";
+    	subStr+="<dd><a style=\"margin-Left:"+num*menuCell+"px\" data-url=\""+subMenu.href+"\"><i class='layui-icon'data-icon= '"+subMenu.icon+"'> "+subMenu.icon+"</i><cite>" + subMenu.title + "</cite></a></dd>";
     }
     return subStr;
 }

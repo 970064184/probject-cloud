@@ -1,4 +1,8 @@
-/** common.js By Beginner Emain:zheng_jinfan@126.com HomePage:http://www.zhengjinfan.cn */
+/**
+ * 公共异常信息
+ * @param exports
+ * @returns
+ */
 layui.define(['layer'], function(exports) {
 	"use strict";
 
