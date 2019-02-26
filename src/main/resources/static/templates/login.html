@@ -3,31 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximun-scale=1">
-<title>登录页</title>
+<title>登录</title>
 <link rel="stylesheet" href="../layui/css/layui.css">
+<link rel="stylesheet" href="../layui/extra/css/login.css">
 </head>
-<body>
-	
-	<div>
-		<form class = "layui-form" action="" lay-filter="loginForm">
-			<div class ="layui-form-item">
-				<label class ="layui-form-label">用户名</label>
-				<div class="layui-input-inline">
+<body class="beg-login-bg">
+	<div class="beg-login-box">
+		<header>
+			<h1>欢迎登录</h1>
+		</header>
+		<div class="beg-login-main">
+			<form class = "layui-form" action="" lay-filter="loginForm">
+				<div class ="layui-form-item">
+					<label class="beg-login-icon"><i class="layui-icon layui-icon-username"></i></label>
 					<input type="text" name="username" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input"/>
+					<!-- <div class="layui-input-inline">
+						<input type="text" name="username" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input"/>
+					</div> -->
 				</div>
-			</div>
-			<div class ="layui-form-item">
-				<label class="layui-form-label">密码</label>
-				<div class ="layui-input-inline">
+				<div class ="layui-form-item">
+					<label class="beg-login-icon"><i class="layui-icon layui-icon-password"></i></label>
 					<input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" />
 				</div>
-			</div>
-			<div class ="layui-form-item">
-				<div class="layui-input-block">
-					<button class="layui-btn" lay-submit lay-filter="login">登录</button>
+				<div class ="layui-form-item">
+					<div class="layui-input-block beg-pull-right">
+						<button class="layui-btn layui-btn-primary" lay-submit lay-filter="login"> <i class="layui-icon">&#xe650;</i> 登录</button>
+					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
+		<footer>
+				<p>2019 © layui page by miss zhang.</p>
+		</footer>
 	</div>
 	
 	<script type="text/javascript" src="../layui/layui.js"></script>

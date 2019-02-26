@@ -1,5 +1,5 @@
 layui.config({
-	base: '../layui/extra/'
+	base: '../layui/extra/js/'
 }).use(['layer','element','navbar','tab'],function(){
 	var element = layui.element,
 	$ = layui.$;
