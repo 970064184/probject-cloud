@@ -9,6 +9,16 @@ layui.config({
         elem: '.admin-nav-card' //设置选项卡容器
     });
 	
+	/**
+	 * 用户信息
+	 * 头像、用户名
+	 */
+	var user =JSON.parse(localStorage.getItem("user"));
+	if(user){
+		$("#userImgId .layui-nav-img").attr('src',user.userLogo);
+		$("#userImgId span").text(user.userName);
+	}
+	
 	http.ajax({
 		url:"http://localhost:8030/microservice-provider-web/getAllMenu",
 		type:"GET",
@@ -30,10 +40,10 @@ layui.config({
 				navbar.render();
 				//监听点击事件
 				navbar.on('click(side)', function (data) {
-					console.log(data);
 					tab.tabAdd(data.field);
 				});
 			}else if(data.code == "401"){
+				layer.msg(data.msg);
 				window.location.href="login.html"; 
 			}else{
 				layer.msg(data.msg);
@@ -53,6 +63,7 @@ function navbarData(data){
 		dataObj.title = data[key].authName;
 		dataObj.icon = data[key].authLogo;
 		dataObj.href = data[key].authUrl;
+		dataObj.spread = true;
 		if(data[key].children && data[key].children.length>0){
 			var children = navbarData(data[key].children);
 			dataObj.children = children;

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户管理</title>
+<link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+	
+	<!-- 操作栏 -->
+	<blockquote class="layui-elem-quote">
+		<a id="addRoleId" href="Javascript:;" class ="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-add-circle-fine"></i>添加角色</a>
+		<a id="editRoleId" href="Javascript:;" class ="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-edit"></i>编辑角色</a>
+	</blockquote>
+	<!-- 数据列表 -->
+	<fieldset class="layui-elem-field">
+		<legend>数据列表</legend>
+		<div class="layui-field-box">
+			<table class="layui-table" id="roleId" lay-filter="role"></table>
+		</div>
+	</fieldset>
+	
+	<script type="text/javascript" src="../common/jquery.min.js"></script>
+	<script type="text/javascript" src="../layui/layui.js"></script>
+	<script type="text/javascript" src="../js/role.js"></script>
+</body>
+</html>

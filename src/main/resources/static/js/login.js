@@ -10,7 +10,8 @@ layui.use(['layer','form'],function(){
 			data:data,
 			success:function(data){
 				if(data.code == "S200"){
-					localStorage.setItem("Authorication", data.data);
+					localStorage.setItem("Authorication", data.data.auth);
+					localStorage.setItem("user",JSON.stringify(data.data.user));
 					window.location.href="index.html"; 
 				}else{
 					layer.msg(data.msg);

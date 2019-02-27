@@ -31,8 +31,9 @@
 			</ul>
 			<!-- 头部右边 -->
 			<ul class="layui-nav layui-layout-right" lay-filter="">
-				<li class="layui-nav-item"><a href="javascript:;"> <img
-						alt="个人头像" src="http://t.cn/RCzsdCq" class="layui-nav-img">哈哈
+				<li class="layui-nav-item"><a href="javascript:;"
+					id="userImgId"> <img alt="个人头像" src="http://t.cn/RCzsdCq"
+						class="layui-nav-img"> <span>哈哈</span>
 				</a>
 					<dl class="layui-nav-child">
 						<dd>
@@ -46,24 +47,25 @@
 		</div>
 		<!-- 中间区域：侧边导航栏和中部内容 -->
 		<div class="layui-side layui-bg-black" id="admin-side">
-				<div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side"></div>
-			</div>
+			<div class="layui-side-scroll" id="admin-navbar-side"
+				lay-filter="side"></div>
+		</div>
 		<!-- 中间主体内容区域 -->
-		<div class="layui-body" style=" padding: 5px;" id="admin-body">
-				<div class="layui-tab admin-nav-card layui-tab-brief" lay-filter="admin-tab">
-					<ul class="layui-tab-title">
-						<li class="layui-this">
-							<i  aria-hidden="true"></i>
-							<cite>首页</cite>
-						</li>
-					</ul>
-					<div class="layui-tab-content" style="min-height: 150px; padding: 5px 0 0 0;">
-						<div class="layui-tab-item layui-show">
-							<iframe src="cop.html"></iframe>
-						</div>
+		<div class="layui-body" style="padding: 5px;bottom: 16px" id="admin-body">
+			<div class="layui-tab admin-nav-card layui-tab-brief"
+				lay-filter="admin-tab">
+				<ul class="layui-tab-title">
+					<li class="layui-this"><i aria-hidden="true"></i> <cite>首页</cite>
+					</li>
+				</ul>
+				<div class="layui-tab-content"
+					style="min-height: 150px; padding: 5px 0 0 0;">
+					<div class="layui-tab-item layui-show">
+						<iframe src="cop.html"></iframe>
 					</div>
 				</div>
 			</div>
+		</div>
 		<!-- 底部固定区域 -->
 		<div class="layui-footer">2019 &copy; layui page by miss zhang.
 		</div>
