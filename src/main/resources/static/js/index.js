@@ -20,7 +20,7 @@ layui.config({
 	}
 	
 	http.ajax({
-		url:"http://localhost:8030/microservice-provider-web/getAllMenu",
+		url:"http://localhost:8030/microservice-provider-user/system/getMenu?authType=2",
 		type:"GET",
 		beforeSend:function(xhr){
 			var authorication = localStorage.getItem("Authorication");
@@ -43,10 +43,10 @@ layui.config({
 					tab.tabAdd(data.field);
 				});
 			}else if(data.code == "401"){
-				layer.msg(data.msg);
-				window.location.href="login.html"; 
+				layer.msg(data.msg, {icon: 5});
 			}else{
-				layer.msg(data.msg);
+				layer.msg(data.msg, {icon: 5});
+				window.location.href="login.html"; 
 			}
 		}
 	});
