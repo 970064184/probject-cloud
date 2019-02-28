@@ -12,6 +12,11 @@ import com.zhangbin.cloud.domain.system.TbRole;
 @Repository
 public interface RoleRepository extends JpaRepository<TbRole, Long>, JpaSpecificationExecutor<TbRole> {
 	
+	/**
+	 * 根据角色id查找角色编码
+	 * @param roleid
+	 * @return
+	 */
 	@Query(value="SELECT ro.role_code FROM tb_roles ro WHERE ro.role_id IN (?1)",nativeQuery=true)
 	public List<String> findByRoleIdIn(List<Long> roleid);
 }

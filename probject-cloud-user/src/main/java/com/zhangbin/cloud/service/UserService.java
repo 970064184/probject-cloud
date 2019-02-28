@@ -1,5 +1,7 @@
 package com.zhangbin.cloud.service;
 
+import java.util.List;
+
 import com.zhangbin.cloud.domain.system.TbUser;
 
 public interface UserService {
@@ -15,4 +17,8 @@ public interface UserService {
 	 * @return
 	 */
 	TbUser findByOne(Long userId);
+	
+	List<String> findRoleByUserId(Long userId);
+	
+	List<String> findAuthorityByUserId(Long userId);
 }

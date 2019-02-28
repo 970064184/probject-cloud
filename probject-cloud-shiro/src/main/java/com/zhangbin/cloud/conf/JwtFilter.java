@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 
 /**
@@ -31,7 +32,12 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
 			HttpServletRequest req = (HttpServletRequest) request;
 			System.out.println(SecurityUtils.getSubject().isAuthenticated());
 			System.out.println(req.getRequestURI());
-			SecurityUtils.getSubject().checkPermission(req.getRequestURI());
+			 Subject subject = SecurityUtils.getSubject();
+			 if(subject.hasRole("admin")){
+				 //管理员拥有全部权限
+			 }else {
+				 SecurityUtils.getSubject().checkPermission(req.getRequestURI());
+			 }
 		} catch (UnauthenticatedException e) {// 授权异常
 			// return false;
 			responseError(response, e.getMessage());
