@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zhangbin.cloud.common.Dto;
 import com.zhangbin.cloud.common.DtoUtils;
-import com.zhangbin.cloud.controller.system.resData.TbAuthorityResData;
+import com.zhangbin.cloud.controller.system.resData.TbAuthorityResp;
 import com.zhangbin.cloud.domain.system.TbAuthority;
 import com.zhangbin.cloud.feign.SystemFeignClient;
 import com.zhangbin.cloud.service.SystemService;
@@ -28,7 +28,7 @@ public class SystemFeignController implements SystemFeignClient{
 	 */
 	@Override
 	public String getAllMenu(HttpServletRequest request) {
-		List<TbAuthorityResData> findByAuthTypeAndIsHide = systemService.findByAuthTypeAndIsHide(2);
+		List<TbAuthorityResp> findByAuthTypeAndIsHide = systemService.findByAuthTypeAndIsHide(2);
 		return DtoUtils.isSuccess(findByAuthTypeAndIsHide);
 	}
 

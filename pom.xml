@@ -60,5 +60,6 @@
 		<module>probject-cloud-feign</module>
 		<module>probject-cloud-user</module>
 		<module>probject-cloud-shiro</module>
+		<module>probject-cloud-common</module>
 	</modules>
 </project>

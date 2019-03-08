@@ -2,13 +2,18 @@ package com.zhangbin.cloud.feign;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zhangbin.cloud.common.Dto;
 import com.zhangbin.cloud.domain.system.TbUser;
+import com.zhangbin.cloud.feign.resData.EditUserReq;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -38,4 +43,13 @@ public interface UserFeignClient {
 	@ApiOperation(value ="根据用户id查找用户权限",notes = "根据用户id查找用户权限")
 	@GetMapping(value = "/findAuthorityByUserId",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	Dto<List<String>> findAuthorityByUserId(@RequestParam("userId")Long userId);
+	
+	/**
+	 * 修改用户信息
+	 * @param addUserReq
+	 * @return
+	 */
+	@ApiOperation(value="编辑用户",notes="编辑用户")
+	@PostMapping(value="/editUser",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Dto<Long> editUser( @Valid @RequestBody EditUserReq editUserReq);
 }

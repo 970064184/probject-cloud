@@ -23,7 +23,21 @@ public enum CodeEnum {
 	
 	SYSTEM_USERNAME_ISNOTEXIST("S404","用户不存在"),
 	
-	WEB_SYSTEM_EXCEPTION("SWEB500","系统异常：%s");
+	SYSTEM_PARAM_CHECK_ERROR("S405","参数校验失败:%s"),
+	
+	SYSTEM_EXCEL_IMPORT_ERROR("S406","请使用正确的excel模板"),
+	
+	WEB_SYSTEM_EXCEPTION("BWEB500","系统异常：%s"),
+	
+	USER_USERNAME_ISEXIST("BUSER600","用户名已存在"),
+	
+	USER_USERPHONE_ISEXIST("BUSER601","手机号码已注册"),
+	
+	USER_IMPORT_ERROR("BUSER602","导入用户失败：%s"),
+	
+	COMMON_FILE_ERROR("BCOMMON700","文件上传失败:%s");
+	
+	
 	
 	private String code;
 	

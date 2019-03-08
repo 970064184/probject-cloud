@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zhangbin.cloud.common.Dto;
 import com.zhangbin.cloud.common.DtoUtils;
-import com.zhangbin.cloud.controller.system.resData.TbAuthorityResData;
+import com.zhangbin.cloud.controller.system.resData.TbAuthorityResp;
 import com.zhangbin.cloud.service.SystemService;
 
 import io.swagger.annotations.Api;
@@ -28,11 +28,10 @@ public class SystemController {
 	
 	@ApiOperation(value ="获取菜单",notes = "获取菜单")
 	@GetMapping(value = "/getMenu",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Dto<List<TbAuthorityResData>> getAllMenu(@ApiParam(name="authType",value="菜单类型:1=导航，2=菜单，3=api，4=按钮",required=true) @RequestParam(value="authType") Integer authType) {
-		List<TbAuthorityResData> findByAuthTypeAndIsHide = systemService.findByAuthTypeAndIsHide(authType);
+	public Dto<List<TbAuthorityResp>> getAllMenu(@ApiParam(name="authType",value="菜单类型:1=导航，2=菜单，3=api，4=按钮",required=true) @RequestParam(value="authType") Integer authType) {
+		List<TbAuthorityResp> findByAuthTypeAndIsHide = systemService.findByAuthTypeAndIsHide(authType);
 		return DtoUtils.returnSuccess(findByAuthTypeAndIsHide);
 	}
-	
 	
 	
 }

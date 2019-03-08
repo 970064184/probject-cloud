@@ -2,6 +2,7 @@ package com.zhangbin.cloud.service.impl;
 
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,9 @@ public class AuthorityServiceImpl implements AuthorityService{
 
 	@Override
 	public List<String> findByAuthIdIn(List<Long> authList) {
+		if(!CollectionUtils.isEmpty(authList))
 		return authorityRepository.findByAuthIdIn(authList);
+		return null;
 	}
 
 }

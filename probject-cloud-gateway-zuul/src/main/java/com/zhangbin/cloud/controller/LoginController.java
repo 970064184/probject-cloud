@@ -2,6 +2,8 @@ package com.zhangbin.cloud.controller;
 
 import java.io.UnsupportedEncodingException;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +42,8 @@ public class LoginController {
 	
 	@ApiOperation(value = "登录接口", notes = "登录授权接口")
 	@PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Dto<Object> login(@RequestBody LoginReq loginReq) {
+	public Dto<Object> login(@Valid @RequestBody LoginReq loginReq) {
+//		RequestBodyCheckUtils.requesBodyCheck(bindingResult);
 		System.out.println("登录接口：" + loginReq);
 		TbUser tbUser = userFeignClient.findByUserName(loginReq.getUsername()).getData();
 		if(tbUser == null) {

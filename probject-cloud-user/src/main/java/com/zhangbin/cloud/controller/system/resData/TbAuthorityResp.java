@@ -9,7 +9,7 @@ import lombok.Data;
 
 @ApiModel(value="菜单栏返回实体")
 @Data
-public class TbAuthorityResData implements Serializable {
+public class TbAuthorityResp implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@ApiModelProperty(value="菜单id")
@@ -28,5 +28,5 @@ public class TbAuthorityResData implements Serializable {
 	private Long pId;
 	
 	@ApiModelProperty(value="子菜单")
-	private List<TbAuthorityResData> children;
+	private List<TbAuthorityResp> children;
 }

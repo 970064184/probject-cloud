@@ -2,7 +2,7 @@ package com.zhangbin.cloud.service;
 
 import java.util.List;
 
-import com.zhangbin.cloud.controller.system.resData.TbAuthorityResData;
+import com.zhangbin.cloud.controller.system.resData.TbAuthorityResp;
 import com.zhangbin.cloud.domain.system.TbAuthority;
 
 public interface SystemService {
@@ -17,6 +17,6 @@ public interface SystemService {
 	 * @param authType
 	 * @return
 	 */
-	List<TbAuthorityResData> findByAuthTypeAndIsHide(Integer authType);
+	List<TbAuthorityResp> findByAuthTypeAndIsHide(Integer authType);
 
 }

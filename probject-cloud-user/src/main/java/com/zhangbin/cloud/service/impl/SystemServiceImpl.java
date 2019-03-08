@@ -8,7 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.zhangbin.cloud.controller.system.resData.TbAuthorityResData;
+import com.zhangbin.cloud.controller.system.resData.TbAuthorityResp;
 import com.zhangbin.cloud.domain.system.TbAuthority;
 import com.zhangbin.cloud.repository.AuthorityRepository;
 import com.zhangbin.cloud.service.SystemService;
@@ -25,13 +25,13 @@ public class SystemServiceImpl implements SystemService {
 	}
 
 	@Override
-	public List<TbAuthorityResData> findByAuthTypeAndIsHide(Integer authType) {
+	public List<TbAuthorityResp> findByAuthTypeAndIsHide(Integer authType) {
 		List<TbAuthority> tbAuthorityList = tbAuthorityRepository.findByAuthTypeAndIsHide(authType);
-		List<TbAuthorityResData> list= new ArrayList<>();
+		List<TbAuthorityResp> list= new ArrayList<>();
 		if(!CollectionUtils.isEmpty(tbAuthorityList)) {
 			for (TbAuthority t : tbAuthorityList) {
 				if (t.getPId() == null) {
-					TbAuthorityResData r = new TbAuthorityResData();
+					TbAuthorityResp r = new TbAuthorityResp();
 					BeanUtils.copyProperties(t, r);
 					list.add(r);
 				}
@@ -46,15 +46,15 @@ public class SystemServiceImpl implements SystemService {
 	 * @param tbAuthorityList
 	 * @param list
 	 */
-	private void subFunction(List<TbAuthority> tbAuthorityList, List<TbAuthorityResData> list) {
+	private void subFunction(List<TbAuthority> tbAuthorityList, List<TbAuthorityResp> list) {
 		if(!CollectionUtils.isEmpty(list)) {
 			tbAuthorityList.removeAll(list);
 			if(!CollectionUtils.isEmpty(tbAuthorityList)) {
-				for (TbAuthorityResData tbAuthorityResData : list) {
-					List<TbAuthorityResData> children = new ArrayList<>();
+				for (TbAuthorityResp tbAuthorityResData : list) {
+					List<TbAuthorityResp> children = new ArrayList<>();
 					for (TbAuthority tbAuthority : tbAuthorityList) {
 						if(tbAuthorityResData.getAuthId().equals(tbAuthority.getPId())) {
-							TbAuthorityResData r = new TbAuthorityResData();
+							TbAuthorityResp r = new TbAuthorityResp();
 							BeanUtils.copyProperties(tbAuthority, r);
 							children.add(r);
 						}

@@ -25,11 +25,11 @@ public class TbUser implements Serializable {
 	private Date birthday;
 
 	@Column(name="blood_type")
-	private Integer bloodType;
+	private int bloodType;
 
 	private Date created;
 
-	private Integer eduction;
+	private int eduction;
 
 	@Column(name="live_address", length=200)
 	private String liveAddress;
@@ -38,13 +38,13 @@ public class TbUser implements Serializable {
 	private Date loginTime;
 
 	@Column(name="regist_type")
-	private Integer registType;
+	private int registType;
 
-	private Integer sex;
+	private int sex;
 
-	private Integer sort;
+	private int sort;
 
-	private Integer status;
+	private int status;
 
 	private Date updated;
 
@@ -93,11 +93,11 @@ public class TbUser implements Serializable {
 		this.birthday = birthday;
 	}
 
-	public Integer getBloodType() {
+	public int getBloodType() {
 		return this.bloodType;
 	}
 
-	public void setBloodType(Integer bloodType) {
+	public void setBloodType(int bloodType) {
 		this.bloodType = bloodType;
 	}
 
@@ -109,11 +109,11 @@ public class TbUser implements Serializable {
 		this.created = created;
 	}
 
-	public Integer getEduction() {
+	public int getEduction() {
 		return this.eduction;
 	}
 
-	public void setEduction(Integer eduction) {
+	public void setEduction(int eduction) {
 		this.eduction = eduction;
 	}
 
@@ -133,35 +133,35 @@ public class TbUser implements Serializable {
 		this.loginTime = loginTime;
 	}
 
-	public Integer getRegistType() {
+	public int getRegistType() {
 		return this.registType;
 	}
 
-	public void setRegistType(Integer registType) {
+	public void setRegistType(int registType) {
 		this.registType = registType;
 	}
 
-	public Integer getSex() {
+	public int getSex() {
 		return this.sex;
 	}
 
-	public void setSex(Integer sex) {
+	public void setSex(int sex) {
 		this.sex = sex;
 	}
 
-	public Integer getSort() {
+	public int getSort() {
 		return this.sort;
 	}
 
-	public void setSort(Integer sort) {
+	public void setSort(int sort) {
 		this.sort = sort;
 	}
 
-	public Integer getStatus() {
+	public int getStatus() {
 		return this.status;
 	}
 
-	public void setStatus(Integer status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 

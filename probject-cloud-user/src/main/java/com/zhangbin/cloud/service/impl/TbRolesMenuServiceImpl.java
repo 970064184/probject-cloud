@@ -2,6 +2,7 @@ package com.zhangbin.cloud.service.impl;
 
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,10 @@ public class TbRolesMenuServiceImpl implements TbRolesMenuService {
 
 	@Override
 	public List<Long> findByRoleIdIn(List<Long> roleId) {
-		return tbRolesMenuRepository.findByRoleIdIn(roleId);
+		if(!CollectionUtils.isEmpty(roleId)) {
+			return tbRolesMenuRepository.findByRoleIdIn(roleId);
+		}
+		return null;
 	}
 
 }
