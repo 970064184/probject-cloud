@@ -32,3 +32,5 @@ http.ajax = function(params) {
 		}
 	});
 }
+
+http.remoteUrl = "http://localhost:8030";

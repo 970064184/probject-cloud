@@ -48,17 +48,17 @@ layui.use(['layer','form','laydate','upload'],function(){
 	});
 	
 	/**
-	 * 监听添加用户
+	 * 监听编辑用户
 	 * @param data
 	 * @returns
 	 */
-	form.on('submit(addUser)',function(data){
+	form.on('submit(editUser)',function(data){
 		console.log(data.field);
 		layer.alert(JSON.stringify(data.field),{
 			title:'最终的提交信息'
 		})
 		http.ajax({
-			url:http.remoteUrl+"/microservice-provider-user/user/addUser",
+			url:http.remoteUrl+"/microservice-provider-user/editUser",
 			data:data,
 			beforeSend:function(xhr){
 				var authorication = localStorage.getItem("Authorication");

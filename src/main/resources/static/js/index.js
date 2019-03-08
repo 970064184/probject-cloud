@@ -15,7 +15,7 @@ layui.config({
 	 */
 	var user =JSON.parse(localStorage.getItem("user"));
 	if(user){
-		$("#userImgId .layui-nav-img").attr('src',user.userLogo);
+		$("#userImgId .layui-nav-img").attr('src',"file:///I:/zhangbin_workspace/probject-cloud/probject-cloud-common/"+user.userLogo);
 		$("#userImgId span").text(user.userName);
 	}
 	

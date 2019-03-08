@@ -9,18 +9,12 @@
 <body>
 	<div class="layui-container" style="padding: 20px 40px 20px 20px">
 		<form id = "formId" action="" class="layui-form">
+			<input type="text" hidden="true" id="userId" name="userId">
 			<div class="layui-form-item">
 				<label class="layui-form-label layui-col-md2 layui-myform-label">用户名</label>
 				<div class="layui-input-block layui-col-md10">
 					<input type="text" name="userName" lay-verify="required"
 						autocomplete="off" placeholder="请输入用户名" class="layui-input">
-				</div>
-			</div>
-			<div id="userPwdDiv" class="layui-form-item">
-				<label class="layui-form-label layui-col-md2 layui-myform-label">用户密码</label>
-				<div class="layui-input-block layui-col-md10">
-					<input type="password" name="userPwd" lay-verfify=""
-						autocomplete="off" placeholder="请输入密码" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -111,7 +105,7 @@
 			</div>
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn" lay-submit="" lay-filter="addUser">添加</button>
+					<button class="layui-btn" lay-submit="" lay-filter="editUser">编辑</button>
 					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				</div>
 			</div>
@@ -121,6 +115,6 @@
 	<script type="text/javascript" src="../common/jquery.min.js"></script>
 	<script type="text/javascript" src="../layui/layui.js"></script>
 	<script type="text/javascript" src="../common/common.js"></script>
-	<script type="text/javascript" src="../js/addUser.js"></script>
+	<script type="text/javascript" src="../js/editUser.js"></script>
 </body>
 </html>
