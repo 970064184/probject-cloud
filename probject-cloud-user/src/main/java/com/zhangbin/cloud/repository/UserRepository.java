@@ -45,5 +45,17 @@ public interface UserRepository extends JpaRepository<TbUser, Long>, JpaSpecific
 	 */
 	@Query(value = "select * from tb_user t where t.`status` =1 order by t.`created` desc",nativeQuery = true)
 	public List<TbUser> findAllUser();
+	/**
+	 * 根据用户名查询用户记录
+	 * @param userNameList
+	 * @return
+	 */
+	public List<TbUser> findByUserNameIn(List<String> userNameList);
+	/**
+	 * 根据用户手机号码查询用户记录
+	 * @param userPhoneList
+	 * @return
+	 */
+	public List<TbUser> findByUserPhoneIn(List<String> userPhoneList);
 	
 }

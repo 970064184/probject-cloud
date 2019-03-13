@@ -1,7 +1,7 @@
 package com.zhangbin.cloud.controller.system;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -37,45 +37,46 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
-	@ApiOperation(value="添加用户",notes="添加用户")
-	@PostMapping(value="/addUser",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Dto<Long> addUser(@RequestBody @Valid AddUserReq addUserReq){
+
+	@ApiOperation(value = "添加用户", notes = "添加用户")
+	@PostMapping(value = "/addUser", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Dto<Long> addUser(@RequestBody @Valid AddUserReq addUserReq) {
 		Long userId = userService.addUser(addUserReq);
 		return DtoUtils.returnSuccess(userId);
 	}
-	
-	@ApiOperation(value="分页查询所有用户",notes="用户列表数据")
-	@PostMapping(value="/findAllUserByPage",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Dto<PageData<AllUserResp>> findAllUserByPage(@RequestBody PageBean pageBean){
+
+	@ApiOperation(value = "分页查询所有用户", notes = "用户列表数据")
+	@PostMapping(value = "/findAllUserByPage", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Dto<PageData<AllUserResp>> findAllUserByPage(@RequestBody PageBean pageBean) {
 		PageData<AllUserResp> data = userService.findAllUserByPage(pageBean);
 		return DtoUtils.returnSuccess(data);
 	}
-	
-	@ApiOperation(value="删除用户",notes="删除用户")
-	@GetMapping(value="/delUser/{userId}")
-	public Dto<Object> delUser(@PathVariable("userId")Long userId){
+
+	@ApiOperation(value = "删除用户", notes = "删除用户")
+	@GetMapping(value = "/delUser/{userId}")
+	public Dto<Object> delUser(@PathVariable("userId") Long userId) {
 		userService.delUser(userId);
 		return DtoUtils.returnError(CodeEnum.SUCCESS);
 	}
-	
-	@ApiOperation(value="批量导入用户",notes="批量导入用户")
-	@PostMapping(value="/importUser",produces = MediaType.APPLICATION_JSON_UTF8_VALUE,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public Dto<Object> importUser(@RequestParam("file")MultipartFile multipartFile){
+
+	@ApiOperation(value = "批量导入用户", notes = "批量导入用户")
+	@PostMapping(value = "/importUser", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public Dto<Object> importUser(@RequestParam("file") MultipartFile multipartFile) {
+		List<ImportUser> importUser = new ArrayList<>();
 		try {
-			List<ImportUser> importUser = ExcelUtil.convertSheetToList(multipartFile.getInputStream(), ImportUser.class, 1);
-			if(!CollectionUtils.isEmpty(importUser)) {
-				ValidatorUtil.validationData(importUser);
-				userService.saveListUser(importUser);
-			}
+			importUser = ExcelUtil.convertSheetToList(multipartFile.getInputStream(), ImportUser.class, 1);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new BusinessException(CodeEnum.USER_IMPORT_ERROR,e.getMessage());
+			throw new BusinessException(CodeEnum.USER_IMPORT_ERROR, e.getMessage());
+		}
+		if (!CollectionUtils.isEmpty(importUser)) {
+			ValidatorUtil.validationData(importUser);//查必要信息是否已填
+			userService.saveListUser(importUser);
 		}
 		return DtoUtils.returnError(CodeEnum.SUCCESS);
 	}
-	
+
 }

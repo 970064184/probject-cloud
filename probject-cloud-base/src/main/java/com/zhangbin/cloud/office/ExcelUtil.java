@@ -10,7 +10,6 @@ import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.math.BigDecimal;
 import java.security.GeneralSecurityException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -42,7 +41,6 @@ import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.util.CellRangeAddressBase.CellPosition;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -117,7 +115,7 @@ public class ExcelUtil {
 		if(cell.getCellType() == CellType.BOOLEAN) {
 			return String.valueOf(cell.getBooleanCellValue());
 		}else if(cell.getCellType() == CellType.NUMERIC) {
-			DecimalFormat df = new DecimalFormat("0.00");
+			DecimalFormat df = new DecimalFormat("#");
 			String str = df.format(cell.getNumericCellValue());
 			return str;
 		}

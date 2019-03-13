@@ -120,7 +120,7 @@ public class BeanUtil {
 	
 	/**
 	 * 创建新实体，并且把传入实体中的值拷贝到新实体的相同属性
-	 * @param <B>
+	 * @param <B> 源实体
 	 * @param clazz 目标实体的类型
 	 * @return
 	 * @throws Exception

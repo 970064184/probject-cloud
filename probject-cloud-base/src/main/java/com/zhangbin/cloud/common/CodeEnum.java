@@ -35,6 +35,14 @@ public enum CodeEnum {
 	
 	USER_IMPORT_ERROR("BUSER602","导入用户失败：%s"),
 	
+	USER_USERNAME_IN_ISEXIST("BUSER603","用户名已存在:%s"),
+	
+	USER_USERPHONE_IN_ISEXIST("BUSER604","手机号码已注册:%s"),
+	
+	USER_ROLENAME_IN_ISEXIST("BUSER605","角色名称已存在"),
+	
+	USER_AUTHNAME_IN_ISEXIST("BUSER606","权限名称已存在"),
+	
 	COMMON_FILE_ERROR("BCOMMON700","文件上传失败:%s");
 	
 	

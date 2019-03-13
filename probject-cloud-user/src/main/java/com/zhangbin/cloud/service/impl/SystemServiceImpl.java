@@ -30,7 +30,7 @@ public class SystemServiceImpl implements SystemService {
 		List<TbAuthorityResp> list= new ArrayList<>();
 		if(!CollectionUtils.isEmpty(tbAuthorityList)) {
 			for (TbAuthority t : tbAuthorityList) {
-				if (t.getPId() == null) {
+				if (t.getPId() == -1) {
 					TbAuthorityResp r = new TbAuthorityResp();
 					BeanUtils.copyProperties(t, r);
 					list.add(r);

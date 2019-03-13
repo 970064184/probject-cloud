@@ -19,4 +19,11 @@ public interface RoleRepository extends JpaRepository<TbRole, Long>, JpaSpecific
 	 */
 	@Query(value="SELECT ro.role_code FROM tb_roles ro WHERE ro.role_id IN (?1)",nativeQuery=true)
 	public List<String> findByRoleIdIn(List<Long> roleid);
+	
+	/**
+	 * 根据角色名称查询记录
+	 * @param roleName
+	 * @return
+	 */
+	public TbRole findByRoleName(String roleName);
 }

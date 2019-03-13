@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -141,11 +143,25 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void saveListUser(List<ImportUser> importUser) {
 		List<TbUser> tbUserList = new ArrayList<>();
+		List<String> userNameList = new ArrayList<>();
+		userNameList = importUser.stream().map((f)->f.getUserName()).collect(Collectors.toList());
+		List<String> userPhoneList = new ArrayList<>();
+		userPhoneList = importUser.stream().map((f)->f.getUserPhone()).collect(Collectors.toList());
 		/**
-		 * 查必要信息是否已填
 		 * 查用户和手机号码重名
 		 */
-		
+		List<TbUser> findByUserNameIn = userRepository.findByUserNameIn(userNameList);
+		if(!CollectionUtils.isEmpty(findByUserNameIn))
+			throw new BusinessException(CodeEnum.USER_USERNAME_IN_ISEXIST,findByUserNameIn.stream().map((m)->m.getUserName()).collect(Collectors.toList()));
+		List<TbUser> findByUserPhoneIn = userRepository.findByUserPhoneIn(userPhoneList);
+		if(!CollectionUtils.isEmpty(findByUserPhoneIn))
+			throw new BusinessException(CodeEnum.USER_USERPHONE_IN_ISEXIST,findByUserPhoneIn.stream().map((m)->m.getUserPhone()).collect(Collectors.toList()));
+		tbUserList = BeanUtil.createBean(importUser, TbUser.class);
+		tbUserList.forEach((f)->{
+			f.setUserPwd("123");
+			f.setCreated(new Date());
+			f.setRegistType(1);//注册类型(1=系统录入，2=注册)
+		});
 		userRepository.save(tbUserList);
 	}
 }

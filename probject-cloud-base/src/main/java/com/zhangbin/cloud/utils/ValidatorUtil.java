@@ -18,7 +18,7 @@ import com.zhangbin.cloud.common.CodeEnum;
 import com.zhangbin.cloud.exception.BusinessException;
 
 public class ValidatorUtil {
-	
+
 	/**
 	 * 请求体校验
 	 * 
@@ -35,14 +35,15 @@ public class ValidatorUtil {
 			throw new BusinessException(CodeEnum.SYSTEM_PARAM_CHECK_ERROR, map);
 		}
 	}
-	
+
 	/**
 	 * 校验实体参数，并返回校验不通过的字段和描述
+	 * 
 	 * @param t
 	 * @return
 	 * @throws Exception
 	 */
-	public static Map<String, String> validatorParams(Object t) throws Exception {
+	public static Map<String, String> validatorParams(Object t) {
 		Set<ConstraintViolation<Object>> validResult = Validation.buildDefaultValidatorFactory().getValidator()
 				.validate(t);
 		Map<String, String> map = new HashMap<>();
@@ -56,23 +57,19 @@ public class ValidatorUtil {
 		}
 		return map;
 	}
+
 	/**
 	 * 接收一个List集合校验
+	 * 
 	 * @param <T>
 	 * @param list
 	 */
-	public static <T> void validationData(List<T> list){
-		if(!CollectionUtils.isEmpty(list)) {
-			list.forEach((l)->{
-				try {
-					Map<String, String> validatorParams = validatorParams(l);
-					if(!validatorParams.isEmpty())
-						throw new BusinessException(CodeEnum.SYSTEM_PARAM_CHECK_ERROR,validatorParams);
-				} catch (Exception e) {
-					e.printStackTrace();
-					throw new BusinessException(CodeEnum.SYSTEM_PARAM_CHECK_ERROR,e.getMessage());
-				}
-					
+	public static <T> void validationData(List<T> list) {
+		if (!CollectionUtils.isEmpty(list)) {
+			list.forEach((l) -> {
+				Map<String, String> validatorParams = validatorParams(l);
+				if (!validatorParams.isEmpty())
+					throw new BusinessException(CodeEnum.SYSTEM_PARAM_CHECK_ERROR, validatorParams);
 			});
 		}
 	}
