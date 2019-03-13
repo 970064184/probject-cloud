@@ -9,9 +9,20 @@
 	
 	<!-- 操作栏 -->
 	<blockquote class="layui-elem-quote">
-		<a id="addAuthId" href="Javascript:;" class ="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-add-circle-fine"></i>添加权限</a>
-		<a id="editAuthId" href="Javascript:;" class ="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-edit"></i>编辑权限</a>
+		<!--搜索栏  -->
+		<div class="demoTable">
+			<label>权限名称：</label>
+			<div class="layui-inline">
+				<input type="text" name="authName" lay-verify="" autocomplete="off" class="layui-input">
+			</div>
+			<label>权限url：</label>
+			<div class="layui-inline">
+				<input type="text" name="authUrl" lay-verify="" autocomplete="off" class="layui-input">
+			</div>
+			<button class="layui-btn" data-type="reload">搜索</button>
+		</div>
 	</blockquote>
+	
 	<!-- 数据列表 -->
 	<fieldset class="layui-elem-field">
 		<legend>数据列表</legend>
@@ -19,6 +30,16 @@
 			<table class="layui-table" id="authId" lay-filter="auth"></table>
 		</div>
 	</fieldset>
+	
+	<script type="text/html" id="leftToolBar">
+		 <div class="layui-btn-container">
+			<a id="addAuthId" lay-event="addAuthId"  href="Javascript:;" class ="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-add-circle-fine"></i>添加权限</a>
+  		</div>
+	</script>
+	<script type="text/html" id="barDemo">
+		<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">编辑</a>
+   		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
 	
 	<script type="text/javascript" src="../common/jquery.min.js"></script>
 	<script type="text/javascript" src="../layui/layui.js"></script>

@@ -7,7 +7,7 @@ layui.use(['layer','form'],function(){
 	form.on('submit(login)',function(data){
 		http.ajax({
 			url:"http://localhost:8030/login",
-			data:data,
+			data:data.field,
 			success:function(data){
 				if(data.code == "S200"){
 					localStorage.setItem("Authorication", data.data.auth);

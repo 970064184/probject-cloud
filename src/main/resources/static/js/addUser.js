@@ -59,7 +59,7 @@ layui.use(['layer','form','laydate','upload'],function(){
 		})
 		http.ajax({
 			url:http.remoteUrl+"/microservice-provider-user/user/addUser",
-			data:data,
+			data:data.field,
 			beforeSend:function(xhr){
 				var authorication = localStorage.getItem("Authorication");
 				xhr.setRequestHeader("Authorication",authorication);

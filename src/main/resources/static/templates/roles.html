@@ -9,9 +9,20 @@
 	
 	<!-- 操作栏 -->
 	<blockquote class="layui-elem-quote">
-		<a id="addRoleId" href="Javascript:;" class ="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-add-circle-fine"></i>添加角色</a>
-		<a id="editRoleId" href="Javascript:;" class ="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-edit"></i>编辑角色</a>
+		<!--搜索栏  -->
+		<div class="demoTable">
+			<label>角色名称：</label>
+			<div class="layui-inline">
+				<input type="text" name="userName" lay-verify="" autocomplete="off" class="layui-input">
+			</div>
+			<label>角色编码：</label>
+			<div class="layui-inline">
+				<input type="text" name="userPhone" lay-verify="" autocomplete="off" class="layui-input">
+			</div>
+			<button class="layui-btn" data-type="reload">搜索</button>
+		</div>
 	</blockquote>
+	
 	<!-- 数据列表 -->
 	<fieldset class="layui-elem-field">
 		<legend>数据列表</legend>
@@ -19,6 +30,16 @@
 			<table class="layui-table" id="roleId" lay-filter="role"></table>
 		</div>
 	</fieldset>
+	
+	<!-- 工具栏 -->
+	<script type="text/html" id="leftToolBar">
+		 <div class="layui-btn-container">
+			<a id="addRoleId" lay-event="addRoleId"  href="Javascript:;" class ="layui-btn layui-btn-sm"><i class="layui-icon layui-icon-add-circle-fine"></i>添加角色</a>
+  		</div>
+	</script>
+	<script type="text/html" id="barDemo">
+ 		 <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">授权</a>
+	</script>
 	
 	<script type="text/javascript" src="../common/jquery.min.js"></script>
 	<script type="text/javascript" src="../layui/layui.js"></script>

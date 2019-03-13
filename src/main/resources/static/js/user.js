@@ -58,25 +58,12 @@ layui.use(['layer','table','upload'],function(){
 			};
 		}
 	});
-	
 	/**
 	 * 监听头工具栏事件
 	 */
 	table.on('toolbar(user)',function(obj){
 		var layEvent = obj.event;//获得lay-event对应的值
-		if(layEvent ==='LAYTABLE_INPORT'){//导入数据
-			//执行实例
-		  var uploadInst = upload.render({
-		    elem: '#importUserId' //绑定元素
-		    ,url: '/upload/' //上传接口
-		    ,done: function(res){
-		      //上传完毕回调
-		    }
-		    ,error: function(){
-		      //请求异常回调
-		    }
-		  });
-		}else if(layEvent ==='addUserId'){//添加用户
+		 if(layEvent ==='addUserId'){//添加用户
 			layer.open({
 				type:2,
 				title:$(this).text(),
@@ -85,6 +72,26 @@ layui.use(['layer','table','upload'],function(){
 			});
 		}
 	})
+	/**
+	 * 导入用户
+	 */
+	upload.render({
+	    elem: '#importUserId',
+	    url:http.remoteUrl+'/microservice-provider-user/user/importUser',
+	    accept: 'file' ,//普通文件
+    	headers:{
+			Authorication:localStorage.getItem("Authorication")
+		},
+	    done: function(res){
+	    	if(res.code == "200"){
+				layer.msg("成功导入");
+				location.reload();
+			}else{
+				return layer.msg(res.msg);
+			}	
+	    }
+	  });
+
 	/**
 	 * 监听行工具事件
 	 */
@@ -100,12 +107,8 @@ layui.use(['layer','table','upload'],function(){
 		        layer.close(index);
 		        //向服务端发送删除指令
 		        http.ajax({
-		        	url:http.remoteUrl+'/zuul/microservice-provider-user/user/importUser',
-		    		method:'POST',
-		    		accept:'file',
-		    		headers:{
-		    			Authorication:localStorage.getItem("Authorication")
-		    		},
+		        	url:http.remoteUrl+'/microservice-provider-user/user/delUser/'+data.userId,
+		        	type:"GET",
 		    		beforeSend:function(xhr){
 		    			var authorication = localStorage.getItem("Authorication");
 		    			xhr.setRequestHeader("Authorication",authorication);

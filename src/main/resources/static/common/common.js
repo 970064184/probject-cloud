@@ -10,7 +10,7 @@ http.ajax = function(params) {
 		params.contentType = "application/json;charset=UTF-8";
 		params.dataType = "json";
 		if(params.data)
-			params.data = JSON.stringify(params.data.field);
+			params.data = JSON.stringify(params.data);
 	}
 	if (!params.async) {
 		params.async = true;// 默认为异步
