@@ -77,8 +77,14 @@ layui.use(['layer','table','upload'],function(){
 	table.on('tool(role)',function(obj){
 		var data = obj.data,//获得当前行数据
 		layEvent = obj.event;//获得lay-event对应的值
-		 if(layEvent === 'detail'){
-			 	layer.alert('当前行详细信息：<br>'+ JSON.stringify(data))
+		 if(layEvent === 'configAuth'){
+			 	/*layer.alert('当前行详细信息：<br>'+ JSON.stringify(data))*/
+			 layer.open({
+					type:2,
+					title:$(this).text(),
+					area:['400px','380px'],//宽、高
+					content:'configAuth.html'
+				});
 		    } else if(layEvent === 'del'){
 		      layer.confirm('真的删除行么', function(index){
 		        obj.del(); //删除对应行（tr）的DOM结构

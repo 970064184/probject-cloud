@@ -65,7 +65,7 @@ layui.use(['layer','form','laydate','upload'],function(){
 				xhr.setRequestHeader("Authorication",authorication);
 			},
 			success:function(data){
-				if(data.code == "S200"){
+				if(data.code == "200"){
 					//当你在iframe页面关闭自身时
 					var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 					parent.layer.close(index); //再执行关闭
