@@ -51,7 +51,7 @@ public class WeChatServiceImpl implements WeChatService {
 	private void sendEventMsg(WxXmlMessage wxXmlMessage,OutWxXmlMessage out) {
 		logger.info("微信事件");
 		String event = wxXmlMessage.getEvent();
-		if(event.equals("SUBSCRIBE")) {//
+		if(event.equals("subscribe")) {//
 			out.setMsgType("text");
 			out.setContent("感谢关注");
 		}else if(event.equals("SCAN")) {
