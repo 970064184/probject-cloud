@@ -17,8 +17,8 @@ public interface AuthorityRepository extends JpaRepository<TbAuthority,Long>, Jp
 	 * @param authIdList
 	 * @return
 	 */
-	@Query(value="SELECT a.auth_url FROM tb_authority a WHERE a.auth_id IN(?1) ",nativeQuery=true)
-	List<String> findByAuthIdIn(List<Long> authIdList);
+	@Query(value="SELECT a.auth_url FROM tb_authority a WHERE a.auth_id IN(?1)  and is_hide = 0",nativeQuery=true)
+	List<String> findAuthUrlByAuthIdIn(List<Long> authIdList);
 	
 	/**
 	 * 根据类型查出记录
@@ -29,4 +29,17 @@ public interface AuthorityRepository extends JpaRepository<TbAuthority,Long>, Jp
 	List<TbAuthority> findByAuthTypeAndIsHide(Integer authType);
 	
 	TbAuthority findByAuthNameAndIsHide(String authName,int isHide);
+	/**
+	 * 查询有效记录
+	 * @return
+	 */
+	@Query("select t from TbAuthority t where isHide = 0 order by sort asc")
+	List<TbAuthority> findAllByIsHide();
+	/**
+	 * 根据一批权限id查询权限记录
+	 * @param authList
+	 * @return
+	 */
+	@Query("select t from TbAuthority t where t.authId IN(?1) and isHide = 0")
+	List<TbAuthority> findByAuthIdIn(List<Long> authList);
 }

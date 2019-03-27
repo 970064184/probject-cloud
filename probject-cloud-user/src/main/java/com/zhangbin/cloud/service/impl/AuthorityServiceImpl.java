@@ -37,9 +37,9 @@ public class AuthorityServiceImpl implements AuthorityService{
 	}
 
 	@Override
-	public List<String> findByAuthIdIn(List<Long> authList) {
+	public List<String> findAuthUrlByAuthIdIn(List<Long> authList) {
 		if(!CollectionUtils.isEmpty(authList))
-		return authorityRepository.findByAuthIdIn(authList);
+		return authorityRepository.findAuthUrlByAuthIdIn(authList);
 		return null;
 	}
 
@@ -74,6 +74,16 @@ public class AuthorityServiceImpl implements AuthorityService{
 	@Override
 	public void delAuth(Long authId) {
 		authorityRepository.delete(authId);
+	}
+
+	@Override
+	public List<TbAuthority> findByAuthIdIn(List<Long> authList) {
+		return authorityRepository.findByAuthIdIn(authList);
+	}
+
+	@Override
+	public List<TbAuthority> findAllByIsHide() {
+		return authorityRepository.findAllByIsHide();
 	}
 
 }

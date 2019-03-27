@@ -6,6 +6,7 @@ import com.zhangbin.cloud.common.PageBean;
 import com.zhangbin.cloud.common.PageData;
 import com.zhangbin.cloud.controller.system.resData.AddAuthReq;
 import com.zhangbin.cloud.controller.system.resData.AllAuthResp;
+import com.zhangbin.cloud.controller.system.resData.TbAuthorityResp;
 import com.zhangbin.cloud.domain.system.TbAuthority;
 
 public interface AuthorityService {
@@ -16,8 +17,12 @@ public interface AuthorityService {
 	 * @return
 	 */
 	List<TbAuthority> findByAuthTypeAndIsHide(Integer authType);
-
-	List<String> findByAuthIdIn(List<Long> authList);
+	/**
+	 * 根据一批权限ID查找记录的权限url
+	 * @param authList
+	 * @return
+	 */
+	List<String> findAuthUrlByAuthIdIn(List<Long> authList);
 	/**
 	 * 分页查询
 	 * @param pageBean
@@ -35,4 +40,17 @@ public interface AuthorityService {
 	 * @param authId
 	 */
 	void delAuth(Long authId);
+	/**
+	 * 根据一批权限ID查找记录的权限记录
+	 * @param authList
+	 * @return
+	 */
+	List<TbAuthority> findByAuthIdIn(List<Long> authList);
+	/**
+	 * 查询所有有效记录
+	 * @return
+	 */
+	List<TbAuthority> findAllByIsHide();
+	
+	
 }

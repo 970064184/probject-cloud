@@ -6,6 +6,8 @@ import com.zhangbin.cloud.common.PageBean;
 import com.zhangbin.cloud.common.PageData;
 import com.zhangbin.cloud.controller.system.resData.AddRoleReq;
 import com.zhangbin.cloud.controller.system.resData.AllRoleResp;
+import com.zhangbin.cloud.controller.system.resData.ConfigAuthReq;
+import com.zhangbin.cloud.controller.system.resData.TbAuthorityResp;
 
 public interface RoleService {
 	/**
@@ -32,4 +34,15 @@ public interface RoleService {
 	 * @param roleId
 	 */
 	public void delRole(Long roleId);
+	/**
+	 * 为角色分配权限
+	 * @param configAuthReq
+	 */
+	public void configAuth(ConfigAuthReq configAuthReq);
+	/**
+	 * 查询角色对应的权限
+	 * @param roleId
+	 * @return
+	 */
+	public List<TbAuthorityResp> findByRoleId(Long roleId);
 }

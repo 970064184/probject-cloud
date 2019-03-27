@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -78,7 +77,7 @@ public class UserServiceImpl implements UserService {
 		List<Long> roleId = userRoleService.findByUserId(userId);
 		List<Long> authList = tbRolesMenuService.findByRoleIdIn(roleId);
 		if (!CollectionUtils.isEmpty(authList)) {
-			authUrlList = authorityService.findByAuthIdIn(authList);
+			authUrlList = authorityService.findAuthUrlByAuthIdIn(authList);
 		}
 		return authUrlList;
 	}

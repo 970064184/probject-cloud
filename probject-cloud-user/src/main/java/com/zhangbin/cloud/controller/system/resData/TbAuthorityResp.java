@@ -27,6 +27,9 @@ public class TbAuthorityResp implements Serializable {
 	@ApiModelProperty(value="父id")
 	private Long pId;
 	
+	@ApiModelProperty(value="是否选中")
+	private boolean check = false;
+	
 	@ApiModelProperty(value="子菜单")
 	private List<TbAuthorityResp> children;
 }

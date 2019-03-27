@@ -28,10 +28,15 @@ public class SystemController {
 	
 	@ApiOperation(value ="获取菜单",notes = "获取菜单")
 	@GetMapping(value = "/getMenu",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public Dto<List<TbAuthorityResp>> getAllMenu(@ApiParam(name="authType",value="菜单类型:1=导航，2=菜单，3=api，4=按钮",required=true) @RequestParam(value="authType") Integer authType) {
+	public Dto<List<TbAuthorityResp>> getMenu(@ApiParam(name="authType",value="菜单类型:1=导航，2=菜单，3=api，4=按钮",required=true) @RequestParam(value="authType") Integer authType) {
 		List<TbAuthorityResp> findByAuthTypeAndIsHide = systemService.findByAuthTypeAndIsHide(authType);
 		return DtoUtils.returnSuccess(findByAuthTypeAndIsHide);
 	}
 	
-	
+	@ApiOperation(value="获取所有菜单",notes="获取所有菜单")
+	@GetMapping(value="/getAllMenu",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Dto<List<TbAuthorityResp>> getAllMenu(){
+		List<TbAuthorityResp> allMenu = systemService.getAllMenu();
+		return DtoUtils.returnSuccess(allMenu);
+	}
 }

@@ -26,6 +26,12 @@ public class TbRolesMenu implements Serializable {
 
 	public TbRolesMenu() {
 	}
+	
+	public TbRolesMenu(Long authId, Long roleId) {
+		super();
+		this.authId = authId;
+		this.roleId = roleId;
+	}
 
 	public Long getId() {
 		return this.id;

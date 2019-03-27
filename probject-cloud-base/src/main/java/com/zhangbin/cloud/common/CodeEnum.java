@@ -43,6 +43,10 @@ public enum CodeEnum {
 	
 	USER_AUTHNAME_IN_ISEXIST("BUSER606","权限名称已存在"),
 	
+	USER_ROLEID_CANNOT_EXIST("BUSER607","角色ID不存在"),
+	
+	USER_AUTHID_CANNOT_EXIST("BUSER608","权限ID不存在或已下线"),
+	
 	COMMON_FILE_ERROR("BCOMMON700","文件上传失败:%s");
 	
 	

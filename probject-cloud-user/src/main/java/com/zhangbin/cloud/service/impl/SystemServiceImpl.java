@@ -69,4 +69,22 @@ public class SystemServiceImpl implements SystemService {
 		}
 	}
 
+	@Override
+	public List<TbAuthorityResp> getAllMenu() {
+		List<TbAuthority> tbAuthorityList = tbAuthorityRepository.findAllByIsHide();
+		List<TbAuthorityResp> list= new ArrayList<>();
+		if(!CollectionUtils.isEmpty(tbAuthorityList)) {
+			for (TbAuthority t : tbAuthorityList) {
+				if (t.getPId() == -1) {
+					TbAuthorityResp r = new TbAuthorityResp();
+					BeanUtils.copyProperties(t, r);
+					list.add(r);
+				}
+			}
+			subFunction(tbAuthorityList, list);
+			
+		}
+		return list;
+	}
+
 }

@@ -18,5 +18,10 @@ public interface SystemService {
 	 * @return
 	 */
 	List<TbAuthorityResp> findByAuthTypeAndIsHide(Integer authType);
+	/**
+	 * 获取所有菜单
+	 * @return
+	 */
+	List<TbAuthorityResp> getAllMenu();
 
 }
