@@ -7,4 +7,8 @@ package com.zhangbin.cloud.controller.wechat;
 public class WxConstants {
 	/**token*/
 	public static final String TOKEN = "store";
+	
+	public static final String APPID = "wx4d9e4415bbb1ffab";
+	
+	public static final String PAGEPATH="pages/customer/list/list";
 }

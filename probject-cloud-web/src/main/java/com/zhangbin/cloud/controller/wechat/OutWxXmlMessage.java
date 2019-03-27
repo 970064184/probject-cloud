@@ -2,15 +2,17 @@ package com.zhangbin.cloud.controller.wechat;
 
 import java.io.Serializable;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**接收XML请求数据
  * @author admin
  *
  */
-@XStreamAlias("xml")
+@XmlRootElement(name="xml")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class OutWxXmlMessage implements Serializable{
 
 	/**
@@ -18,23 +20,59 @@ public class OutWxXmlMessage implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-  @XStreamAlias("ToUserName")
-  @XStreamConverter(value = XStreamCDataConverter.class)
-  protected String toUserName;
+	  protected String ToUserName;
+	
+	  protected String FromUserName;
+	
+	  protected Long CreateTime;
+	
+	  protected String MsgType;
+	  
+	  protected String Content;
 
-  @XStreamAlias("FromUserName")
-  @XStreamConverter(value = XStreamCDataConverter.class)
-  protected String fromUserName;
+	public String getToUserName() {
+		return ToUserName;
+	}
+	
+	public void setToUserName(String toUserName) {
+		ToUserName = toUserName;
+	}
 
-  @XStreamAlias("CreateTime")
-  protected Long createTime;
+	public String getFromUserName() {
+		return FromUserName;
+	}
 
-  @XStreamAlias("MsgType")
-  @XStreamConverter(value = XStreamCDataConverter.class)
-  protected String msgType;
-  
-  @XStreamAlias("Content")
-  @XStreamConverter(value = XStreamCDataConverter.class)
-  protected String content;
-  
+	public void setFromUserName(String fromUserName) {
+		FromUserName = fromUserName;
+	}
+
+	public Long getCreateTime() {
+		return CreateTime;
+	}
+
+	public void setCreateTime(Long createTime) {
+		CreateTime = createTime;
+	}
+
+	public String getMsgType() {
+		return MsgType;
+	}
+
+	public void setMsgType(String msgType) {
+		MsgType = msgType;
+	}
+
+	public String getContent() {
+		return Content;
+	}
+
+	public void setContent(String content) {
+		Content = content;
+	}
+
+	@Override
+	public String toString() {
+		return "OutWxXmlMessage [ToUserName=" + ToUserName + ", FromUserName=" + FromUserName + ", CreateTime="
+				+ CreateTime + ", MsgType=" + MsgType + ", Content=" + Content + "]";
+	}
 }

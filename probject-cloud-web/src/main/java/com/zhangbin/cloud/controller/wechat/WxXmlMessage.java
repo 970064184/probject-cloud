@@ -2,15 +2,17 @@ package com.zhangbin.cloud.controller.wechat;
 
 import java.io.Serializable;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**接收XML请求数据
  * @author admin
  *
  */
-@XStreamAlias("xml")
+@XmlRootElement(name="xml")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class WxXmlMessage implements Serializable{
 
 	/**
@@ -18,106 +20,110 @@ public class WxXmlMessage implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	  @XStreamAlias("ToUserName")
-	  @XStreamConverter(value = XStreamCDataConverter.class)
-	  protected String toUserName;
+	  protected String ToUserName;
 	
-	  @XStreamAlias("FromUserName")
-	  @XStreamConverter(value = XStreamCDataConverter.class)
-	  protected String fromUserName;
+	  protected String FromUserName;
 	
-	  @XStreamAlias("CreateTime")
-	  protected Long createTime;
+	  protected Long CreateTime;
 	
-	  @XStreamAlias("MsgType")
-	  @XStreamConverter(value = XStreamCDataConverter.class)
-	  protected String msgType;
+	  protected String MsgType;
 	  
-	  @XStreamAlias("MsgId")
-	  @XStreamConverter(value = XStreamCDataConverter.class)
-	  protected String msgId;
+	  protected String MsgId;
 	  
-	  @XStreamAlias("Content")
-	  @XStreamConverter(value = XStreamCDataConverter.class)
-	  protected String content;
+	  protected String Content;
 	  
-	  @XStreamAlias("Event")
-	  @XStreamConverter(value = XStreamCDataConverter.class)
-	  protected String event;
+	  protected String Event;
 	  
-	  @XStreamAlias("EventKey")
-	  @XStreamConverter(value = XStreamCDataConverter.class)
-	  protected String eventKey;
+	  protected String EventKey;
+	  
+	  protected String PicUrl;	//图片链接（由系统生成）
+	  
+	  protected String MediaId;	//图片消息媒体id，可以调用多媒体文件下载接口拉取数据。
 
 	public String getToUserName() {
-		return toUserName;
+		return ToUserName;
 	}
-	
+
 	public void setToUserName(String toUserName) {
-		this.toUserName = toUserName;
+		ToUserName = toUserName;
 	}
-	
+
 	public String getFromUserName() {
-		return fromUserName;
+		return FromUserName;
 	}
-	
+
 	public void setFromUserName(String fromUserName) {
-		this.fromUserName = fromUserName;
+		FromUserName = fromUserName;
 	}
-	
+
 	public Long getCreateTime() {
-		return createTime;
+		return CreateTime;
 	}
-	
+
 	public void setCreateTime(Long createTime) {
-		this.createTime = createTime;
+		CreateTime = createTime;
 	}
-	
+
 	public String getMsgType() {
-		return msgType;
+		return MsgType;
 	}
-	
+
 	public void setMsgType(String msgType) {
-		this.msgType = msgType;
+		MsgType = msgType;
 	}
-	
+
 	public String getMsgId() {
-		return msgId;
+		return MsgId;
 	}
-	
+
 	public void setMsgId(String msgId) {
-		this.msgId = msgId;
+		MsgId = msgId;
 	}
-	
+
 	public String getContent() {
-		return content;
+		return Content;
 	}
-	
+
 	public void setContent(String content) {
-		this.content = content;
+		Content = content;
 	}
-	
+
 	public String getEvent() {
-		return event;
+		return Event;
 	}
-	
+
 	public void setEvent(String event) {
-		this.event = event;
+		Event = event;
 	}
-	
+
 	public String getEventKey() {
-		return eventKey;
+		return EventKey;
 	}
-	
+
 	public void setEventKey(String eventKey) {
-		this.eventKey = eventKey;
+		EventKey = eventKey;
+	}
+
+	public String getPicUrl() {
+		return PicUrl;
+	}
+
+	public void setPicUrl(String picUrl) {
+		PicUrl = picUrl;
+	}
+
+	public String getMediaId() {
+		return MediaId;
+	}
+
+	public void setMediaId(String mediaId) {
+		MediaId = mediaId;
 	}
 
 	@Override
 	public String toString() {
-		return "WxXmlMessage [toUserName=" + toUserName + ", fromUserName=" + fromUserName + ", createTime="
-				+ createTime + ", msgType=" + msgType + ", msgId=" + msgId + ", content=" + content + ", event=" + event
-				+ ", eventKey=" + eventKey + "]";
+		return "WxXmlMessage [ToUserName=" + ToUserName + ", FromUserName=" + FromUserName + ", CreateTime="
+				+ CreateTime + ", MsgType=" + MsgType + ", MsgId=" + MsgId + ", Content=" + Content + ", Event=" + Event
+				+ ", EventKey=" + EventKey + ", PicUrl=" + PicUrl + ", MediaId=" + MediaId + "]";
 	}
-	  
 }

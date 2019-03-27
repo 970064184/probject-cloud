@@ -52,7 +52,8 @@ public class WeChatController {
 		return result;
 	}
 	
-	@PostMapping(value="/checkSignature")
+	@PostMapping(value="/checkSignature",produces="application/xml; charset=UTF-8")
+	@ResponseBody
 	public Object handler(@RequestBody WxXmlMessage wxXmlMessage)throws Exception{
 		System.out.println(wxXmlMessage);
 		Object obj= weChatService.handler(wxXmlMessage);
