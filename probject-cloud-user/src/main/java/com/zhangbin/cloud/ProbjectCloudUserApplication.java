@@ -2,7 +2,9 @@ package com.zhangbin.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
+@EnableFeignClients("com.zhangbin.cloud.feign")
 @SpringBootApplication
 public class ProbjectCloudUserApplication {
 

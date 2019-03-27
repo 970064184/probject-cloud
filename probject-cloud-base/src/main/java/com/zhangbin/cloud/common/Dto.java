@@ -1,5 +1,7 @@
 package com.zhangbin.cloud.common;
 
+import java.util.Date;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
@@ -24,6 +26,9 @@ public class Dto<T> {
 	
 	@ApiModelProperty("返回值")
 	private T data;
+	
+	@ApiModelProperty("返回时间")
+	private Date time = new Date();
 	
 	public void setMsg(String msg) {
 		this.msg = msg;

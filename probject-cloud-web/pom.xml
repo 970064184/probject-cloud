@@ -28,6 +28,13 @@
         	<artifactId>probject-cloud-feign</artifactId>
         	<version>0.0.1-SNAPSHOT</version>
         </dependency>
+        
+		<dependency>
+		    <groupId>com.thoughtworks.xstream</groupId>
+		    <artifactId>xstream</artifactId>
+		    <version>1.4.10</version>
+		</dependency>
+        
 	</dependencies>
 	<build>
 		<plugins>

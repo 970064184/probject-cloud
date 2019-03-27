@@ -22,11 +22,5 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-		<!-- 自定义shiro -->
-		<dependency>
-			<groupId>com.zhangbin</groupId>
-			<artifactId>probject-cloud-shiro</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 </project>

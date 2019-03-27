@@ -22,7 +22,7 @@ public class TbRole implements Serializable {
 	private Date created;
 
 	@Column(name="is_hide")
-	private Integer isHide;
+	private int isHide;
 
 	@Column(name="role_desc", length=300)
 	private String roleDesc;
@@ -33,7 +33,7 @@ public class TbRole implements Serializable {
 	@Column(name="role_code", nullable=false, length=50)
 	private String roleCode;
 
-	private Integer sort;
+	private int sort;
 
 	private Date updated;
 
@@ -41,7 +41,7 @@ public class TbRole implements Serializable {
 	}
 
 	public Long getRoleId() {
-		return this.roleId;
+		return roleId;
 	}
 
 	public void setRoleId(Long roleId) {
@@ -49,23 +49,23 @@ public class TbRole implements Serializable {
 	}
 
 	public Date getCreated() {
-		return this.created;
+		return created;
 	}
 
 	public void setCreated(Date created) {
 		this.created = created;
 	}
 
-	public Integer getIsHide() {
-		return this.isHide;
+	public int getIsHide() {
+		return isHide;
 	}
 
-	public void setIsHide(Integer isHide) {
+	public void setIsHide(int isHide) {
 		this.isHide = isHide;
 	}
 
 	public String getRoleDesc() {
-		return this.roleDesc;
+		return roleDesc;
 	}
 
 	public void setRoleDesc(String roleDesc) {
@@ -73,23 +73,31 @@ public class TbRole implements Serializable {
 	}
 
 	public String getRoleName() {
-		return this.roleName;
+		return roleName;
 	}
 
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
 
-	public Integer getSort() {
-		return this.sort;
+	public String getRoleCode() {
+		return roleCode;
 	}
 
-	public void setSort(Integer sort) {
+	public void setRoleCode(String roleCode) {
+		this.roleCode = roleCode;
+	}
+
+	public int getSort() {
+		return sort;
+	}
+
+	public void setSort(int sort) {
 		this.sort = sort;
 	}
 
 	public Date getUpdated() {
-		return this.updated;
+		return updated;
 	}
 
 	public void setUpdated(Date updated) {
