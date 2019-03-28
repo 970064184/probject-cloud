@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active:
+    - dev
+
+---
+server:
+  port: 80
+
+spring:
+  profiles: dev
+api: 
+  docs: enable
+
+---
+server:
+  port: 7901
+
+spring:
+  profiles: test
+api: 
+  docs: enable
+  
+---
+server:
+  port: 7902
+
+spring:
+  profiles: prod 
+
+api: 
+  docs: disable
+ 

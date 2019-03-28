@@ -1,4 +1,4 @@
-package com.zhangbin.cloud.controller.wechat;
+package com.zhangbin.cloud.constant;
 
 /**微信公众号相关常量
  * @author admin
