@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.zhangbin.cloud.domain.wechat.WxXmlMessage;
+import com.zhangbin.cloud.domain.wechat.Req.WxXmlMessage;
 
 
 /**接收XML请求数据

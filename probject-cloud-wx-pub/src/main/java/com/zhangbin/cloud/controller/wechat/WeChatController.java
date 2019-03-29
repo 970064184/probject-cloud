@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zhangbin.cloud.domain.wechat.WxXmlMessage;
+import com.zhangbin.cloud.domain.wechat.Req.WxXmlMessage;
 import com.zhangbin.cloud.service.CheckSignatureService;
 import com.zhangbin.cloud.service.WeChatService;
 
@@ -19,7 +19,7 @@ import com.zhangbin.cloud.service.WeChatService;
  *
  */
 @RestController
-@RequestMapping("/wechat")
+@RequestMapping("/restaurant-store/wechat")
 public class WeChatController {
 	
 private static final Logger logger = LoggerFactory.getLogger("STORE");
@@ -42,6 +42,11 @@ private static final Logger logger = LoggerFactory.getLogger("STORE");
 	public Object handler(@RequestBody WxXmlMessage wxXmlMessage)throws Exception{
 		logger.info("微信消息，传入参数："+wxXmlMessage);
 		Object obj= weChatService.handler(wxXmlMessage);
+//		String convertToXml = JaxbUtil.convertToXml(obj);
 		return obj;
 	}
+	
+	
+	
+	
 }

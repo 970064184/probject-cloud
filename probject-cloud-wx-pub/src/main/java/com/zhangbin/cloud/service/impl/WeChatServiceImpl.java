@@ -16,7 +16,7 @@ import com.zhangbin.cloud.conf.redis.RedisService;
 import com.zhangbin.cloud.constant.WxConstants;
 import com.zhangbin.cloud.domain.wechat.WxTemplateMessage;
 import com.zhangbin.cloud.domain.wechat.WxTemplateValue;
-import com.zhangbin.cloud.domain.wechat.WxXmlMessage;
+import com.zhangbin.cloud.domain.wechat.Req.WxXmlMessage;
 import com.zhangbin.cloud.domain.wechat.Resp.OutWxXmlMessage;
 import com.zhangbin.cloud.service.SendNewsMsgService;
 import com.zhangbin.cloud.service.SendTextMsgService;

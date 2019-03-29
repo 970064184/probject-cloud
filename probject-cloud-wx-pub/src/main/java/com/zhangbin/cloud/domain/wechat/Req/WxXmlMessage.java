@@ -1,4 +1,4 @@
-package com.zhangbin.cloud.domain.wechat;
+package com.zhangbin.cloud.domain.wechat.Req;
 
 import java.io.Serializable;
 
