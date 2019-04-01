@@ -9,7 +9,7 @@ import com.zhangbin.cloud.domain.wechat.Req.WxXmlMessage;
 import com.zhangbin.cloud.domain.wechat.Resp.Item;
 import com.zhangbin.cloud.domain.wechat.Resp.JaxbUtil;
 import com.zhangbin.cloud.domain.wechat.Resp.OutWxXmlNewsMessage;
-import com.zhangbin.cloud.service.SendNewsMsgService;
+import com.zhangbin.cloud.service.receivemsg.SendNewsMsgService;
 @Service
 public class SendNewsMsgServiceImpl implements SendNewsMsgService {
 

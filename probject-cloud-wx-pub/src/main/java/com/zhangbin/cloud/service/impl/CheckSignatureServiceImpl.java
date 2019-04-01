@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.zhangbin.cloud.constant.WxConstants;
-import com.zhangbin.cloud.service.CheckSignatureService;
+import com.zhangbin.cloud.service.base.CheckSignatureService;
 import com.zhangbin.cloud.util.Sha1Util;
 @Service
 public class CheckSignatureServiceImpl implements CheckSignatureService{

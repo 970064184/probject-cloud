@@ -1,4 +1,4 @@
-package com.zhangbin.cloud.service;
+package com.zhangbin.cloud.service.receivemsg;
 
 import com.zhangbin.cloud.domain.wechat.Req.WxXmlMessage;
 import com.zhangbin.cloud.domain.wechat.Resp.OutWxXmlTextMessage;

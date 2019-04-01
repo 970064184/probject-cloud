@@ -18,9 +18,9 @@ import com.zhangbin.cloud.domain.wechat.WxTemplateMessage;
 import com.zhangbin.cloud.domain.wechat.WxTemplateValue;
 import com.zhangbin.cloud.domain.wechat.Req.WxXmlMessage;
 import com.zhangbin.cloud.domain.wechat.Resp.OutWxXmlMessage;
-import com.zhangbin.cloud.service.SendNewsMsgService;
-import com.zhangbin.cloud.service.SendTextMsgService;
 import com.zhangbin.cloud.service.WeChatService;
+import com.zhangbin.cloud.service.receivemsg.SendNewsMsgService;
+import com.zhangbin.cloud.service.receivemsg.SendTextMsgService;
 @Service
 public class WeChatServiceImpl implements WeChatService {
 	

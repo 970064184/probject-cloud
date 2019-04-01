@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.zhangbin.cloud.constant.WxMessageConstants;
 import com.zhangbin.cloud.domain.wechat.Req.WxXmlMessage;
 import com.zhangbin.cloud.domain.wechat.Resp.OutWxXmlTextMessage;
-import com.zhangbin.cloud.service.SendTextMsgService;
+import com.zhangbin.cloud.service.receivemsg.SendTextMsgService;
 @Service
 public class SendTextMsgServiceImpl implements SendTextMsgService{
 

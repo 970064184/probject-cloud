@@ -8,20 +8,20 @@ import org.springframework.web.client.RestTemplate;
 import com.zhangbin.cloud.constant.WxRequestUrl;
 import com.zhangbin.cloud.domain.wechat.Req.ManageQrLimitCreate;
 import com.zhangbin.cloud.domain.wechat.Resp.OutManageQrLimitCreate;
-import com.zhangbin.cloud.service.GetAccessToken;
 import com.zhangbin.cloud.service.ManageQrLimitCreateService;
+import com.zhangbin.cloud.service.base.GetAccessTokenService;
 @Service
 public class ManageQrLimitCreateServiceImpl implements ManageQrLimitCreateService {
 	
 	@Autowired
-	private GetAccessToken getAccessToken;
+	private GetAccessTokenService getAccessTokenService;
 	@Autowired
 	private RestTemplate restTemplate;
 	
 	@Override
 	public OutManageQrLimitCreate create(ManageQrLimitCreate manageQrLimitCreate) {
 		OutManageQrLimitCreate out = new OutManageQrLimitCreate(); 
-		String accessToken = getAccessToken.getAccessToken();
+		String accessToken = getAccessTokenService.getAccessToken();
 		ResponseEntity<OutManageQrLimitCreate> postForEntity = restTemplate.postForEntity(WxRequestUrl.QRCODE_CREATE+accessToken, manageQrLimitCreate, OutManageQrLimitCreate.class);
 		out = postForEntity.getBody();
 		return out;
