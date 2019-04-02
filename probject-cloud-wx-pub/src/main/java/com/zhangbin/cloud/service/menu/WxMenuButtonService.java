@@ -1,6 +1,7 @@
 package com.zhangbin.cloud.service.menu;
 
 import com.alibaba.fastjson.JSONObject;
+import com.zhangbin.cloud.domain.menu.OutWxMenu;
 import com.zhangbin.cloud.domain.menu.WxMenu;
 
 /**微信自定义菜单
@@ -19,6 +20,10 @@ public interface WxMenuButtonService {
 	 * 自定义菜单查询接口
 	 * @return
 	 */
-	String getMenu();
+	OutWxMenu getMenu();
+	/**
+	 * 自定义菜单删除接口
+	 */
+	JSONObject deleteMenu();
 	
 }

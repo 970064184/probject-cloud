@@ -27,11 +27,18 @@ public class WxMenuButtonServiceImpl implements WxMenuButtonService {
 	}
 
 	@Override
-	public String getMenu() {
+	public OutWxMenu getMenu() {
 		String accessToken = getAccessTokenService.getAccessToken();
 		ResponseEntity<OutWxMenu> forEntity = restTemplate.getForEntity(WxRequestUrl.MENU_GET+accessToken, OutWxMenu.class);
-		String json = forEntity.getBody().toString();
+		OutWxMenu json= forEntity.getBody();
 		return json;
+	}
+
+	@Override
+	public JSONObject deleteMenu() {
+		String accessToken = getAccessTokenService.getAccessToken();
+		ResponseEntity<JSONObject> forEntity = restTemplate.getForEntity(WxRequestUrl.MENU_DELETE+accessToken, JSONObject.class);
+		return forEntity.getBody();
 	}
 
 }

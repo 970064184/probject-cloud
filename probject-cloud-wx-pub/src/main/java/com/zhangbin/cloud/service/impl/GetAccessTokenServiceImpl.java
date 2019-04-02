@@ -27,7 +27,7 @@ public class GetAccessTokenServiceImpl implements GetAccessTokenService{
 	public String getAccessToken() {
 		logger.info("获取access_token接口");
 		String redisKey = WxConstants.SRT_SHOP_WX_ACCESS_TOKEN;
-		String accessToken="20_RaqUAKBNmAvzneFjExsja-P25Y5wcnndyi81lm4xNMtFhDr19zKYZ7DRstb7ddl4evIQ3bYZKr_6hFSuU0Lo-zzLECqEiXY06xDDNFveQKfeUPQrXQ2iUDrqK7zn4RwZGHHN_ceCy18EKpcmYEPaABAQWH";
+		String accessToken="20_WqvDqmcUlyvM1APdFp8zjA3d4PEFcXcPYAu6BvI05-36CPD8telk-BYB39IxxFp7SLprtbRU-_YHHVehEAD47TKYC1-PsLVjbLd2FTxiDek1pswkfg-bZswBgXLmWwpaHDCUXJ5xMQF9HT2SJTObAFAVFA";
 		/*try {
 			accessToken = redisService.get(WxKey.token,redisKey,String.class);
 			logger.info("获取redis上的access_token：",accessToken);

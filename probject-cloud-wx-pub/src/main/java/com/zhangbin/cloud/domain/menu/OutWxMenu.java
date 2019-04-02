@@ -3,9 +3,6 @@ package com.zhangbin.cloud.domain.menu;
 import java.io.Serializable;
 import java.util.List;
 
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.annotation.JSONField;
-
 /**自定义菜单查询接口返回数据组装
  * @author admin
  *
@@ -19,8 +16,7 @@ public class OutWxMenu implements Serializable{
 	
 	private OutWxConditionalMenu menu;
 	
-	@JSONField(name ="conditionalmenu")
-	private List<OutWxConditionalMenu> conditionalMenu;
+	private List<OutWxConditionalMenu> conditionalmenu;
 
 	public OutWxConditionalMenu getMenu() {
 		return menu;
@@ -30,26 +26,21 @@ public class OutWxMenu implements Serializable{
 		this.menu = menu;
 	}
 	
-	@JSONField(name ="conditionalmenu")
-	public List<OutWxConditionalMenu> getConditionalMenu() {
-		return conditionalMenu;
+	public List<OutWxConditionalMenu> getConditionalmenu() {
+		return conditionalmenu;
 	}
 
-	public void setConditionalMenu(List<OutWxConditionalMenu> conditionalMenu) {
-		this.conditionalMenu = conditionalMenu;
+	public void setConditionalmenu(List<OutWxConditionalMenu> conditionalmenu) {
+		this.conditionalmenu = conditionalmenu;
 	}
-	
+
 	public OutWxMenu() {
 		super();
 	}
 
 	@Override
 	public String toString() {
-		return JSONObject.toJSONString(this);
-//		return "OutWxMenu [menu=" + menu + ", conditionalMenu=" + conditionalMenu + "]";
+		return "OutWxMenu [menu=" + menu + ", conditionalmenu=" + conditionalmenu + "]";
 	}
-	
-	public String toJson() {
-		return JSONObject.toJSONString(this);
-	}
+
 }

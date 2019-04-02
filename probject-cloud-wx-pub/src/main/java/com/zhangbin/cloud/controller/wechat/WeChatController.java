@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zhangbin.cloud.domain.menu.OutWxMenu;
 import com.zhangbin.cloud.domain.menu.WxMenu;
 import com.zhangbin.cloud.domain.wechat.Req.WxXmlMessage;
@@ -54,14 +55,21 @@ private static final Logger logger = LoggerFactory.getLogger("STORE");
 	}
 	
 	@PostMapping(value="/createMenu",produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public void createMenu(@RequestBody WxMenu menu) {
-		wxMenuButtonService.createMenu(menu);
+	public JSONObject createMenu(@RequestBody WxMenu menu) {
+		JSONObject createMenu = wxMenuButtonService.createMenu(menu);
+		return createMenu;
 	}
 	
 	@GetMapping(value = "/getMenu",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String getMenu() {
-		String menu = wxMenuButtonService.getMenu();
+	public OutWxMenu getMenu() {
+		OutWxMenu menu = wxMenuButtonService.getMenu();
 		return menu;
+	}
+	
+	@GetMapping(value = "/deleteMenu")
+	public JSONObject deleteMenu() {
+		JSONObject deleteMenu = wxMenuButtonService.deleteMenu();
+		return deleteMenu;
 	}
 	
 }

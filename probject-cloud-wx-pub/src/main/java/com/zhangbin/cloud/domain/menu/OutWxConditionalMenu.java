@@ -3,9 +3,6 @@ package com.zhangbin.cloud.domain.menu;
 import java.io.Serializable;
 import java.util.List;
 
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.annotation.JSONField;
-
 /**自定义菜单查询接口返回数据组装
  * @author admin
  *
@@ -20,11 +17,11 @@ public class OutWxConditionalMenu implements Serializable{
 	/**一级菜单数组，个数为1~3个*/
 	private List<WxMenuButton> button;
 	
-	@JSONField(name="matchrule")
-	private WxMenuMatchRule matchRule;
+//	@JSONField(name="matchrule")
+	private WxMenuMatchRule matchrule;
 	
-	@JSONField(name="menuid")
-	private String menuId;
+//	@JSONField(name="menuid")
+	private String menuid;
 
 	public List<WxMenuButton> getButton() {
 		return button;
@@ -34,35 +31,28 @@ public class OutWxConditionalMenu implements Serializable{
 		this.button = button;
 	}
 
-	public WxMenuMatchRule getMatchRule() {
-		return matchRule;
+	public WxMenuMatchRule getMatchrule() {
+		return matchrule;
 	}
 
-	public void setMatchRule(WxMenuMatchRule matchRule) {
-		this.matchRule = matchRule;
+	public void setMatchrule(WxMenuMatchRule matchrule) {
+		this.matchrule = matchrule;
 	}
 
-	public String getMenuId() {
-		return menuId;
+	public String getMenuid() {
+		return menuid;
 	}
 
-	public void setMenuId(String menuId) {
-		this.menuId = menuId;
+	public void setMenuid(String menuid) {
+		this.menuid = menuid;
 	}
-	
+
+	/*public String toJson() {
+		return JSONObject.toJSONString(this);
+	}*/
+
 	@Override
 	public String toString() {
-		return JSONObject.toJSONString(this);
-//		return "OutWxConditionalMenu [button=" + button + ", matchRule=" + matchRule + ", menuId=" + menuId + "]";
-	}
-
-	public String toJson() {
-		return JSONObject.toJSONString(this);
-	}
-
-	public static void main(String[] args) {
-		OutWxConditionalMenu outWxConditionalMenu = new OutWxConditionalMenu();
-		outWxConditionalMenu.setMenuId("test123");
-		System.out.println(outWxConditionalMenu.toJson());
+		return "OutWxConditionalMenu [button=" + button + ", matchrule=" + matchrule + ", menuid=" + menuid + "]";
 	}
 }

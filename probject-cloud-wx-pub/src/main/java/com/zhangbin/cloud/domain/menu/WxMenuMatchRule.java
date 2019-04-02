@@ -2,9 +2,6 @@ package com.zhangbin.cloud.domain.menu;
 
 import java.io.Serializable;
 
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.annotation.JSONField;
-
 /**微信查询接口返回参数
  * @author admin
  *
@@ -15,8 +12,7 @@ public class WxMenuMatchRule implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@JSONField(name = "group_id")
-	private String groupId;
+	private String group_id;
 	
 	private int sex;
 	
@@ -26,15 +22,8 @@ public class WxMenuMatchRule implements Serializable{
 	
 	private String city;
 	
-	@JSONField(name = "client_platform_type")
-	private int clientPlatformType;
+	private int client_platform_type;
 	
-	public String getGroupId() {
-		return groupId;
-	}
-	public void setGroupId(String groupId) {
-		this.groupId = groupId;
-	}
 	public int getSex() {
 		return sex;
 	}
@@ -59,20 +48,21 @@ public class WxMenuMatchRule implements Serializable{
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public int getClientPlatformType() {
-		return clientPlatformType;
+	public String getGroup_id() {
+		return group_id;
 	}
-	public void setClientPlatformType(int clientPlatformType) {
-		this.clientPlatformType = clientPlatformType;
+	public void setGroup_id(String group_id) {
+		this.group_id = group_id;
+	}
+	public int getClient_platform_type() {
+		return client_platform_type;
+	}
+	public void setClient_platform_type(int client_platform_type) {
+		this.client_platform_type = client_platform_type;
 	}
 	@Override
 	public String toString() {
-//		return "WxMenuMatchRule [groupId=" + groupId + ", sex=" + sex + ", country=" + country + ", province="
-//				+ province + ", city=" + city + ", clientPlatformType=" + clientPlatformType + "]";
-		return JSONObject.toJSONString(this);
-	}
-	
-	public String toJson() {
-		return JSONObject.toJSONString(this);
+		return "WxMenuMatchRule [group_id=" + group_id + ", sex=" + sex + ", country=" + country + ", province="
+				+ province + ", city=" + city + ", client_platform_type=" + client_platform_type + "]";
 	}
 }

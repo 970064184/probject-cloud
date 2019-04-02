@@ -3,7 +3,6 @@ package com.zhangbin.cloud.domain.menu;
 import java.io.Serializable;
 import java.util.List;
 
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 
 /**微信菜单
@@ -25,18 +24,15 @@ public class WxMenuButton implements Serializable{
 	/**网页链接*/
 	private String url;
 	/**小程序APPID*/
-	@JSONField(name = "appid")
-	private String appId;
+	private String appid;
 	/**小程序页面路径*/
-	@JSONField(name = "pagepath")
-	private String pagePath;
+	private String pagepath;
 	/**调用新增永久素材接口返回的合法media_id*/
-	@JSONField(name = "media_id")
-	private String mediaId;
+	private String media_id;
 	
 	/**二级菜单数组，个数为1~5个*/
-	@JSONField(name = "sub_button")
-	private List<WxMenuButton> subButton;
+//	@JSONField(name="sub_button")
+	private List<WxMenuButton> sub_button;
 
 	public String getType() {
 		return type;
@@ -70,38 +66,39 @@ public class WxMenuButton implements Serializable{
 		this.url = url;
 	}
 
-	public String getAppId() {
-		return appId;
+	public String getAppid() {
+		return appid;
 	}
 
-	public void setAppId(String appId) {
-		this.appId = appId;
+	public void setAppid(String appid) {
+		this.appid = appid;
 	}
 
-	public String getPagePath() {
-		return pagePath;
+	public String getPagepath() {
+		return pagepath;
 	}
 
-	public void setPagePath(String pagePath) {
-		this.pagePath = pagePath;
-	}
-	@JSONField(name = "sub_button")
-	public List<WxMenuButton> getSubButton() {
-		return subButton;
+	public void setPagepath(String pagepath) {
+		this.pagepath = pagepath;
 	}
 
-	public void setSubButton(List<WxMenuButton> subButton) {
-		this.subButton = subButton;
+	public String getMedia_id() {
+		return media_id;
 	}
 
-	@Override
-	public String toString() {
-//		return "WxMenuButton [type=" + type + ", name=" + name + ", key=" + key + ", url=" + url + ", appId=" + appId
-//				+ ", pagePath=" + pagePath + ", subButton=" + subButton + "]";
-		return JSONObject.toJSONString(this);
+	public void setMedia_id(String media_id) {
+		this.media_id = media_id;
 	}
-	
-	public String toJson() {
-		return JSONObject.toJSONString(this);
+
+	public List<WxMenuButton> getSub_button() {
+		return sub_button;
 	}
+
+	public void setSub_button(List<WxMenuButton> sub_button) {
+		this.sub_button = sub_button;
+	}
+
+	/*public void setSub_button(List<WxMenuButton> sub_button) {
+		this.subButton = sub_button;
+	}*/
 }
