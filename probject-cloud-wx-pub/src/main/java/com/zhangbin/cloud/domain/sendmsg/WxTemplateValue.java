@@ -2,6 +2,10 @@ package com.zhangbin.cloud.domain.sendmsg;
 
 import java.io.Serializable;
 
+/**消息模板
+ * @author admin
+ *
+ */
 public class WxTemplateValue implements Serializable{
 	
 	 /**

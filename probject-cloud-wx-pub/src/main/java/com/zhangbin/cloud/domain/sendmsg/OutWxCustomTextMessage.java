@@ -2,6 +2,10 @@ package com.zhangbin.cloud.domain.sendmsg;
 
 import com.alibaba.fastjson.JSONObject;
 
+/**客服发送文本消息
+ * @author admin
+ *
+ */
 public class OutWxCustomTextMessage extends OutWxCustomMessage {
 	
 	private OutWxCustomTextMessageContent text;

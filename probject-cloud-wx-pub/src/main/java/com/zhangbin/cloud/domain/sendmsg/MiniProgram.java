@@ -2,6 +2,10 @@ package com.zhangbin.cloud.domain.sendmsg;
 
 import java.io.Serializable;
 
+/**消息模板发送绑定小程序参数
+ * @author admin
+ *
+ */
 public class MiniProgram implements Serializable{
 	
 	 /**

@@ -71,5 +71,4 @@ private static final Logger logger = LoggerFactory.getLogger("STORE");
 		JSONObject deleteMenu = wxMenuButtonService.deleteMenu();
 		return deleteMenu;
 	}
-	
 }

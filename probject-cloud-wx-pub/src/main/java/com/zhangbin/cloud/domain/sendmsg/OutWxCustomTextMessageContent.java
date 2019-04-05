@@ -1,5 +1,9 @@
 package com.zhangbin.cloud.domain.sendmsg;
 
+/**客服消息-发文本消息的内容
+ * @author admin
+ *
+ */
 public class OutWxCustomTextMessageContent {
 	
 	private String content;

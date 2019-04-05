@@ -15,7 +15,7 @@ public class WxConstants {
 	public static final String WX_SMALL_APPID = "wx4d9e4415bbb1ffab";
 	/**微信绑定的小程序跳转页面*/
 	public static final String WX_SMALL_PAGEPATH="pages/customer/list/list/?";
-	
+	/***/
 	public static final String SRT_SHOP_WX_ACCESS_TOKEN="SRT_SHOP_WX_ACCESS_TOKEN";
 	
 }

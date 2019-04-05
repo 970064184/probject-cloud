@@ -1,6 +1,6 @@
 package com.zhangbin.cloud.domain.sendmsg;
 
-/**
+/**客服消息
  * @author admin
  *
  */
