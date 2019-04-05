@@ -1,6 +1,8 @@
 package com.zhangbin.cloud.service.impl;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -14,13 +16,14 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.zhangbin.cloud.conf.redis.RedisService;
 import com.zhangbin.cloud.constant.WxConstants;
-import com.zhangbin.cloud.domain.wechat.WxTemplateMessage;
-import com.zhangbin.cloud.domain.wechat.WxTemplateValue;
-import com.zhangbin.cloud.domain.wechat.Req.WxXmlMessage;
-import com.zhangbin.cloud.domain.wechat.Resp.OutWxXmlMessage;
+import com.zhangbin.cloud.domain.receivemsg.Item;
+import com.zhangbin.cloud.domain.receivemsg.OutWxXmlMessage;
+import com.zhangbin.cloud.domain.receivemsg.WxXmlMessage;
+import com.zhangbin.cloud.domain.sendmsg.WxTemplateMessage;
+import com.zhangbin.cloud.domain.sendmsg.WxTemplateValue;
 import com.zhangbin.cloud.service.WeChatService;
-import com.zhangbin.cloud.service.receivemsg.SendNewsMsgService;
-import com.zhangbin.cloud.service.receivemsg.SendTextMsgService;
+import com.zhangbin.cloud.service.receivemsg.WxNewsMsgService;
+import com.zhangbin.cloud.service.receivemsg.WxTextMsgService;
 @Service
 public class WeChatServiceImpl implements WeChatService {
 	
@@ -31,9 +34,9 @@ public class WeChatServiceImpl implements WeChatService {
 	@Autowired
 	private RedisService jedisCluster;
 	@Autowired
-	private SendTextMsgService sendTextMsgService;
+	private WxTextMsgService sendTextMsgService;
 	@Autowired
-	private SendNewsMsgService sendNewsMsgService;
+	private WxNewsMsgService sendNewsMsgService;
 	
 	@Override
 	public Object handler(WxXmlMessage wxXmlMessage) {
@@ -49,9 +52,12 @@ public class WeChatServiceImpl implements WeChatService {
 		String msgType = wxXmlMessage.getMsgType();
 		if(msgType.equals("text")) {
 			if(wxXmlMessage.getContent().equals("好")) {
-				out = sendNewsMsgService.sendNewsMsgService(wxXmlMessage);
+				String resContent ="<a data-miniprogram-appid=\"wx4d9e4415bbb1ffab\" data-miniprogram-path=\"pages/customer/list/list\">智慧餐厅小程序</a>";
+				List<Item> asList = Arrays.asList(new Item("测试图文消息","测试回复图文消息","http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E5%9B%BE%E7%89%87&hs=0&pn=1&spn=0&di=111426670960&pi=0&rn=1&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=935292084%2C2640874667&os=929535083%2C139004715&simid=3383873348%2C359765392&adpicid=0&lpn=0&ln=30&fr=ala&fm=&sme=&cg=&bdtype=0&oriquery=&objurl=http%3A%2F%2Fwww.pptok.com%2Fwp-content%2Fuploads%2F2012%2F08%2Fxunguang-4.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Brrp5h_z%26e3Bv54AzdH3F2sw6j-us5o-rrp-kwvh2657g1-rtvp76j_z%26e3Bip4s&gsm=0&islist=&querylist=",resContent));
+				out = sendNewsMsgService.WxNewsMsgService(wxXmlMessage,asList);
 			}else {
-				out = sendTextMsgService.sendTextMsg(wxXmlMessage);
+				String resContent ="<a data-miniprogram-appid=\"wx4d9e4415bbb1ffab\" data-miniprogram-path=\"pages/customer/list/list\">智慧餐厅小程序</a>";
+				out = sendTextMsgService.sendTextMsg(wxXmlMessage,resContent);
 			}
 		}else if(msgType.equals("event")) {
 			sendEventMsg(wxXmlMessage,out);

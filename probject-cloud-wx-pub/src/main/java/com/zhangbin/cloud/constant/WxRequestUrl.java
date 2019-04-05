@@ -15,4 +15,8 @@ public class WxRequestUrl {
 	public static final String MENU_GET ="https://api.weixin.qq.com/cgi-bin/menu/get?access_token=";
 	/**自定义菜单删除接口*/
 	public static final String MENU_DELETE ="https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=";
+	/**发送模板消息*/
+	public static final String MESSAGE_TEMPLATE_SEND ="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=";
+	/**客服接口-发消息*/
+	public static final String MESSAGE_CUSTOM_SEND ="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=";
 }

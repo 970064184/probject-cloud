@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSONObject;
 import com.zhangbin.cloud.domain.menu.OutWxMenu;
 import com.zhangbin.cloud.domain.menu.WxMenu;
-import com.zhangbin.cloud.domain.wechat.Req.WxXmlMessage;
+import com.zhangbin.cloud.domain.receivemsg.WxXmlMessage;
 import com.zhangbin.cloud.service.WeChatService;
 import com.zhangbin.cloud.service.base.CheckSignatureService;
 import com.zhangbin.cloud.service.menu.WxMenuButtonService;
