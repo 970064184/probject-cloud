@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<name>probject-cloud</name>
-	<description>Demo project for Spring Cloud</description>
+	<description>Demo 111project fsssor Spring Cloud</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
