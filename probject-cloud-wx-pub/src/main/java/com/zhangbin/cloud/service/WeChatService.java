@@ -1,6 +1,6 @@
 package com.zhangbin.cloud.service;
 
-import com.zhangbin.cloud.domain.wechat.WxXmlMessage;
+import com.zhangbin.cloud.domain.receivemsg.WxXmlMessage;
 
 public interface WeChatService {
 	/**
