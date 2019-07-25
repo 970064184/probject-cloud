@@ -62,5 +62,6 @@
 		<module>probject-cloud-shiro</module>
 		<module>probject-cloud-common</module>
 		<module>probject-cloud-wx-pub</module>
+		<module>probject-cloud-products</module>
 	</modules>
 </project>

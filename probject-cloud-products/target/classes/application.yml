@@ -1,0 +1,39 @@
+spring:
+  profiles:
+    active:
+    - dev
+
+---
+server:
+  port: 6800
+
+spring:
+  profiles: dev
+  jpa:
+    show-sql: true
+api: 
+  docs: enable
+
+---
+server:
+  port: 6801
+
+spring:
+  profiles: test
+  jpa:
+    show-sql: true
+api: 
+  docs: enable
+  
+---
+server:
+  port: 6802
+
+spring:
+  profiles: prod 
+  jpa:
+    show-sql: false 
+
+api: 
+  docs: disable
+ 
