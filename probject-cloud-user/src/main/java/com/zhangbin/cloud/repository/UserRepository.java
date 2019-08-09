@@ -57,5 +57,5 @@ public interface UserRepository extends JpaRepository<TbUser, Long>, JpaSpecific
 	 * @return
 	 */
 	public List<TbUser> findByUserPhoneIn(List<String> userPhoneList);
-	
+
 }

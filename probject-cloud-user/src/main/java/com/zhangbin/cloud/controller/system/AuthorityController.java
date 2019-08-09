@@ -2,6 +2,7 @@ package com.zhangbin.cloud.controller.system;
 
 import javax.validation.Valid;
 
+import com.zhangbin.cloud.controller.system.resData.EditAuthReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,5 +51,12 @@ public class AuthorityController {
 	public Dto<Object> delAuth(@PathVariable("authId") Long authId) {
 		authorityService.delAuth(authId);
 		return DtoUtils.returnError(CodeEnum.SUCCESS);
+	}
+
+	@ApiOperation(value = "编辑权限", notes = "编辑权限")
+	@PostMapping(value = "/editAuth", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Dto<Long> editAuth(@RequestBody @Valid EditAuthReq editAuthReq) {
+		Long userId = authorityService.editAuth(editAuthReq);
+		return DtoUtils.returnSuccess(userId);
 	}
 }

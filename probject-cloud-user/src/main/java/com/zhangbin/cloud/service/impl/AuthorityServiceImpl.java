@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.zhangbin.cloud.controller.system.resData.EditAuthReq;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -38,8 +39,9 @@ public class AuthorityServiceImpl implements AuthorityService{
 
 	@Override
 	public List<String> findAuthUrlByAuthIdIn(List<Long> authList) {
-		if(!CollectionUtils.isEmpty(authList))
-		return authorityRepository.findAuthUrlByAuthIdIn(authList);
+		if(!CollectionUtils.isEmpty(authList)){
+			return authorityRepository.findAuthUrlByAuthIdIn(authList);
+		}
 		return null;
 	}
 
@@ -62,8 +64,9 @@ public class AuthorityServiceImpl implements AuthorityService{
 		 * 查重名
 		 */
 		TbAuthority findByAuthNameAndIsHide = authorityRepository.findByAuthNameAndIsHide(addAuthReq.getAuthName(),0);
-		if(findByAuthNameAndIsHide !=null)
+		if(findByAuthNameAndIsHide !=null){
 			throw new BusinessException(CodeEnum.USER_AUTHNAME_IN_ISEXIST);
+		}
 		TbAuthority authority = new TbAuthority();
 		BeanUtil.copyProperties(addAuthReq, authority);
 		authority.setCreated(new Date());
@@ -84,6 +87,25 @@ public class AuthorityServiceImpl implements AuthorityService{
 	@Override
 	public List<TbAuthority> findAllByIsHide() {
 		return authorityRepository.findAllByIsHide();
+	}
+
+	@Override
+	public Long editAuth(EditAuthReq editAuthReq) {
+		TbAuthority one = authorityRepository.findOne(editAuthReq.getAuthId());
+		if(one == null){
+			throw new BusinessException(CodeEnum.USER_AUTHID_CANNOT_EXIST);
+		}
+		/**
+		 * 查重名
+		 */
+		TbAuthority findByAuthNameAndIsHide = authorityRepository.findByAuthIdNotAndAuthNameAndIsHide(editAuthReq.getAuthId(),editAuthReq.getAuthName(),0);
+		if(findByAuthNameAndIsHide !=null){
+			throw new BusinessException(CodeEnum.USER_AUTHNAME_IN_ISEXIST);
+		}
+		BeanUtil.copyPropertiesIgnoreNull(editAuthReq,one);
+		one.setUpdated(new Date());
+		Long authId = authorityRepository.save(one).getAuthId();
+		return authId;
 	}
 
 }

@@ -6,6 +6,7 @@ import com.zhangbin.cloud.common.PageBean;
 import com.zhangbin.cloud.common.PageData;
 import com.zhangbin.cloud.controller.system.resData.AddAuthReq;
 import com.zhangbin.cloud.controller.system.resData.AllAuthResp;
+import com.zhangbin.cloud.controller.system.resData.EditAuthReq;
 import com.zhangbin.cloud.controller.system.resData.TbAuthorityResp;
 import com.zhangbin.cloud.domain.system.TbAuthority;
 
@@ -51,6 +52,11 @@ public interface AuthorityService {
 	 * @return
 	 */
 	List<TbAuthority> findAllByIsHide();
-	
-	
+
+	/**
+	 * 编辑权限
+	 * @param editAuthReq
+	 * @return
+	 */
+    Long editAuth(EditAuthReq editAuthReq);
 }

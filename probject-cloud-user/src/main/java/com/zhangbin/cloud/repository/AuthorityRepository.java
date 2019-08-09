@@ -5,13 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 
 import com.zhangbin.cloud.domain.system.TbAuthority;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AuthorityRepository extends JpaRepository<TbAuthority,Long>, JpaSpecificationExecutor<TbAuthority> {
-	
 	/**
 	 * 
 	 * @param authIdList
@@ -42,4 +41,10 @@ public interface AuthorityRepository extends JpaRepository<TbAuthority,Long>, Jp
 	 */
 	@Query("select t from TbAuthority t where t.authId IN(?1) and isHide = 0")
 	List<TbAuthority> findByAuthIdIn(List<Long> authList);
+
+	/**
+	 * 权限名称查重
+	 * @return
+	 */
+	TbAuthority findByAuthIdNotAndAuthNameAndIsHide(Long authId,String authName,int isHide);
 }
