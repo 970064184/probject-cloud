@@ -26,9 +26,9 @@ import com.zhangbin.cloud.service.receivemsg.WxNewsMsgService;
 import com.zhangbin.cloud.service.receivemsg.WxTextMsgService;
 @Service
 public class WeChatServiceImpl implements WeChatService {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger("STORE");
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
 	@Autowired
@@ -37,7 +37,7 @@ public class WeChatServiceImpl implements WeChatService {
 	private WxTextMsgService sendTextMsgService;
 	@Autowired
 	private WxNewsMsgService sendNewsMsgService;
-	
+
 	@Override
 	public Object handler(WxXmlMessage wxXmlMessage) {
 		System.out.println(wxXmlMessage);
@@ -47,7 +47,7 @@ public class WeChatServiceImpl implements WeChatService {
 		//接收方
 		out.setToUserName(wxXmlMessage.getFromUserName());
 		out.setCreateTime(new Date().getTime());*/
-		
+
 		//判断消息类型是文本还是图片
 		String msgType = wxXmlMessage.getMsgType();
 		if(msgType.equals("text")) {
@@ -116,7 +116,7 @@ public class WeChatServiceImpl implements WeChatService {
         String resContent ="<a data-miniprogram-appid=\"wx4d9e4415bbb1ffab\" data-miniprogram-path=\"pages/customer/list/list\"href=\"http://www.qq.com\">智慧餐厅小程序</a>";
 		out.setContent(resContent);
 	}*/
-	
+
 	/**
 	 * 获取access_token接口
 	 * @return

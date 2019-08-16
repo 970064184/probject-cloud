@@ -9,7 +9,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * redis 初始化连接 ，将JedisPool注入到容器里
- * 
+ *
  * @author zb
  * @date 2018年7月27日 下午4:24:38
  */

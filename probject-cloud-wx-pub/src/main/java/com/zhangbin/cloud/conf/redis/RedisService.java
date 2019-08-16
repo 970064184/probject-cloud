@@ -11,7 +11,7 @@ import redis.clients.jedis.JedisPool;
 
 /**
  * 序列化、反序列化
- * 
+ *
  * @author zb
  * @date 2018年7月26日 下午5:48:36
  */
@@ -23,7 +23,7 @@ public class RedisService {
 
 	/**
 	 * 获取当个对象
-	 * 
+	 *
 	 * @param prefix
 	 * @param key
 	 * @param cls
@@ -45,7 +45,7 @@ public class RedisService {
 
 	/**
 	 * 设置对象
-	 * 
+	 *
 	 * @param prefix
 	 * @param key
 	 * @param value
@@ -74,7 +74,7 @@ public class RedisService {
 
 	/**
 	 * 判断key是否存在
-	 * 
+	 *
 	 * @param prefix
 	 * @param key
 	 * @return
@@ -93,7 +93,7 @@ public class RedisService {
 
 	/**
 	 * 增加值（+1）
-	 * 
+	 *
 	 * @param prefix
 	 * @param key
 	 * @return
@@ -112,7 +112,7 @@ public class RedisService {
 
 	/**
 	 * 减少值（-1）
-	 * 
+	 *
 	 * @param prefix
 	 * @param key
 	 * @return

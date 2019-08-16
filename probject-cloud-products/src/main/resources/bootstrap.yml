@@ -1,11 +1,11 @@
 spring: 
   application:
     name: microservice-provider-products
-  jpa: #jpa
-    hibernate: 
-      ddl-auto: none
-    database: MYSQL
-    dialect: org.hibernate.dialect.MySQL5Dialect  
+#  jpa: #jpa
+#    hibernate:
+#      ddl-auto: none
+#    database: MYSQL
+#    dialect: org.hibernate.dialect.MySQL5Dialect
   datasource: #druid配置
     username: root
     password: root
@@ -40,3 +40,7 @@ eureka:
     prefer-ip-address: true
     instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
 
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -3,6 +3,8 @@ package com.zhangbin.cloud.domain.system;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,6 +20,8 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@DynamicUpdate
+@DynamicInsert
 public class TbAuthority implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -46,6 +50,7 @@ public class TbAuthority implements Serializable {
 	@Column(name="p_id",insertable = false,updatable = false)
 	private Long pId;
 
+	@Column(name = "sort",columnDefinition = "Integer default 0")
 	private Integer sort;
 
 	private Date updated;
