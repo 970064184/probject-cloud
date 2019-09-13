@@ -16,6 +16,8 @@ api:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
 ---
 server:
   port: 6801
@@ -26,7 +28,9 @@ spring:
     show-sql: true
 api: 
   docs: enable
-  
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 ---
 server:
   port: 6802

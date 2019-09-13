@@ -4,6 +4,7 @@ package com.zhangbin.cloud.conf;
  */
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpRequest;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -35,7 +36,7 @@ public class ControllerLog {
      * </p>
      * @param
      */
-    @Pointcut("execution(public * com.zhangbin.cloud.controller..*.*(..))")
+    @Pointcut("execution(public * com.zhangbin.cloud.*.controller..*.*(..))")
     public void exectionMethod(){}
 
 
