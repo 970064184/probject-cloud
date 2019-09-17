@@ -1,15 +1,16 @@
 package com.zhangbin.cloud.brand.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -17,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * </p>
  *
  * @author zb
- * @since 2019-09-13
+ * @since 2019-09-17
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

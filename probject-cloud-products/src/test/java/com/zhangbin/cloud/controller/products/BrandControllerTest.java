@@ -1,4 +1,3 @@
-/*
 package com.zhangbin.cloud.controller.products;
 
 import com.zhangbin.cloud.ProbjectCloudProductsApplicationTest;
@@ -6,24 +5,35 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-
 public class BrandControllerTest extends ProbjectCloudProductsApplicationTest {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
-    private BrandMapper brandMapper;
+/*    @Autowired
+    private TbBrandMapper brandMapper;
 
     @Test
     public void test(){
         System.out.println("hello");
-        List<Brand> brands = brandMapper.selectList(null);
+        List<TbBrand> brands = brandMapper.selectList(null);
         System.out.println("所有记录："+brands);
         System.out.println("根据条件查询："+brandMapper.selectById(2l));
-    }
 
+        PageBean pageBean = new PageBean();
+        IPage<TbBrand> page = new Page<>(pageBean.getPage(),pageBean.getLimit());
+
+        Map<SqlKeyword,Map<String,Object>> map = new HashMap<>();
+        Map<String,Object> param = new HashMap<>();
+        param.put("brand_ch_name","test");
+        map.put(SqlKeyword.AND,param);
+        QueryWrapper<TbBrand> queryWrapper = QueryWrapperUtils.getQueryWrapper(map);
+
+//        queryWrapper.likeRight("brand_ch_name","test").orderByDesc("created_time");
+        IPage<TbBrand> tbBrandIPage = brandMapper.selectPage(page, queryWrapper);
+        System.out.println("分页："+tbBrandIPage);
+        System.out.println("分页查询："+tbBrandIPage.getRecords());
+    }*/
     @Test
     public void test2(){
         String str1 ="通话";
@@ -66,4 +76,4 @@ public class BrandControllerTest extends ProbjectCloudProductsApplicationTest {
 
     }
 
-}*/
+}

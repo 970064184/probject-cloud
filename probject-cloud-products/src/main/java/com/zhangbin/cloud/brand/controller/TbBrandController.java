@@ -1,16 +1,21 @@
 package com.zhangbin.cloud.brand.controller;
 
 
-import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.zhangbin.cloud.common.Dto;
-import com.zhangbin.cloud.common.DtoUtils;
-import org.springframework.http.MediaType;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.zhangbin.cloud.brand.entity.TbBrand;
 import com.zhangbin.cloud.brand.service.ITbBrandService;
+import com.zhangbin.cloud.common.Dto;
+import com.zhangbin.cloud.common.DtoUtils;
+import com.zhangbin.cloud.utils.PageEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.Serializable;
+
+
 
 /**
  * <p>
@@ -18,7 +23,7 @@ import io.swagger.annotations.ApiOperation;
  * </p>
  *
  * @author zb
- * @since 2019-09-13
+ * @since 2019-09-17
  */
  @Api(tags="品牌表相关接口")
 @RestController
@@ -55,5 +60,12 @@ public class TbBrandController {
         boolean respData = service.updateById(entity);
         return DtoUtils.returnSuccess(respData);
      }
+
+    @ApiOperation(value = "分页查询", notes = "根据 entity 条件，查询全部记录（并翻页）")
+    @PostMapping(value = "/page", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public  Dto<IPage<TbBrand>> page(@RequestBody(required = false) PageEntity pageBean) {
+        IPage<TbBrand> respData = service.page(pageBean);
+        return DtoUtils.returnSuccess(respData);
+    }
 
  }

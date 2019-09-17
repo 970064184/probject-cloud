@@ -1,10 +1,10 @@
 package com.zhangbin.cloud.common;
 
-import java.util.Map;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.util.Map;
 
 @ApiModel("分页查询请求参数")
 @Data
@@ -17,6 +17,5 @@ public class PageBean {
 	private Integer limit = 10;
 	
 	@ApiModelProperty(value="其它查询参数")
-	private Map<String, Object>search;
-	
+	private Map<Object, Object>search;
 }

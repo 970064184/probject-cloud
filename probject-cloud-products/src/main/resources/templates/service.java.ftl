@@ -3,6 +3,8 @@ package ${package.Service};
 import ${package.Entity}.${entity};
 import ${superServiceClassPackage};
 import java.io.Serializable;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.zhangbin.cloud.utils.PageEntity;
 
 
 /**
@@ -17,6 +19,11 @@ import java.io.Serializable;
 interface ${table.serviceName} : ${superServiceClass}<${entity}>
 <#else>
 public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+
+   /**
+   * 根据 entity 条件，查询全部记录（并翻页）
+   */
+   IPage<${entity}> page(PageEntity pageBean);
 
 }
 </#if>

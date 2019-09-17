@@ -15,8 +15,12 @@ import io.swagger.annotations.ApiOperation;
 </#if>
 <#if superControllerClassPackage??>
 import ${superControllerClassPackage};
-
 </#if>
+import com.baomidou.mybatisplus.core.enums.SqlKeyword;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.zhangbin.cloud.utils.PageEntity;
+
+
 
 /**
  * <p>
@@ -99,6 +103,19 @@ public class ${table.controllerName} {
         boolean respData = service.updateById(entity);
         return DtoUtils.returnSuccess(respData);
      }
+
+    <#if swagger2>
+    @ApiOperation(value = "分页查询", notes = "根据 entity 条件，查询全部记录（并翻页）")
+    <#else>
+    /**
+    * 根据 entity 条件，查询全部记录（并翻页）
+    */
+    </#if>
+    @PostMapping(value = "/page", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public  Dto<${"IPage\l${entity}\g"}> page(@RequestBody(required = false) PageEntity pageBean) {
+        IPage<${entity}> respData = service.page(pageBean);
+        return DtoUtils.returnSuccess(respData);
+    }
 
  }
 </#if>

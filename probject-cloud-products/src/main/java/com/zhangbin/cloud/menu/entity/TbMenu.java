@@ -1,13 +1,12 @@
 package com.zhangbin.cloud.menu.entity;
 
-import java.util.Date;
-import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import com.alibaba.fastjson.annotation.JSONField;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -15,43 +14,60 @@ import com.alibaba.fastjson.annotation.JSONField;
  * </p>
  *
  * @author zb
- * @since 2019-09-13
+ * @since 2019-09-17
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="TbMenu对象", description="")
 public class TbMenu implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "id")
+    /**
+     * id
+     */
     private Long id;
 
-    @ApiModelProperty(value = "菜单名称")
+    /**
+     * 菜单名称
+     */
     private String name;
 
-    @ApiModelProperty(value = "菜单图标")
+    /**
+     * 菜单图标
+     */
     private String logo;
 
-    @ApiModelProperty(value = "跳转url")
+    /**
+     * 跳转url
+     */
     private String url;
 
-    @ApiModelProperty(value = "排序")
+    /**
+     * 排序
+     */
     private Integer sort;
 
-    @ApiModelProperty(value = "是否隐藏")
-    private Integer isHide;
+    /**
+     * 是否隐藏(0=否，1=是)
+     */
+    private String isHide;
 
-    @ApiModelProperty(value = "父id")
+    /**
+     * 父id
+     */
     private Long pId;
 
-    @ApiModelProperty(value = "创建时间")
-    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    /**
+     * 创建时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date created;
 
-    @ApiModelProperty(value = "更新时间")
-    @JSONField(format = "yyyy-MM-dd hh:mm:ss")
+    /**
+     * 更新时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updated;
 
 

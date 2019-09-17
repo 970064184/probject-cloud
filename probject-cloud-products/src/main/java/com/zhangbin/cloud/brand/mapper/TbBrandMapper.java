@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author zb
- * @since 2019-09-13
+ * @since 2019-09-17
  */
 @Mapper
 public interface TbBrandMapper extends BaseMapper<TbBrand> {

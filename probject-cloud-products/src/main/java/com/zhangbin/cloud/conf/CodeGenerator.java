@@ -49,7 +49,7 @@ public class CodeGenerator {
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("zb");
         gc.setOpen(false);
-         gc.setSwagger2(true); //实体属性 Swagger2 注解
+//         gc.setSwagger2(true); //实体属性 Swagger2 注解
 //        gc.setKotlin(true);//是否生成kotlin代码
         gc.setFileOverride(true);// 文件覆盖
         mpg.setGlobalConfig(gc);
