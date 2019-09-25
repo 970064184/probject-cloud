@@ -26,7 +26,7 @@ public class SystemController {
 	@Autowired
 	private SystemService systemService;
 	
-	@ApiOperation(value ="获取菜单",notes = "获取菜单")
+	@ApiOperation(value ="根据菜单类型获取菜单",notes = "根据菜单类型获取菜单")
 	@GetMapping(value = "/getMenu",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Dto<List<TbAuthorityResp>> getMenu(@ApiParam(name="authType",value="菜单类型:1=导航，2=菜单，3=api，4=按钮",required=true) @RequestParam(value="authType") Integer authType) {
 		List<TbAuthorityResp> findByAuthTypeAndIsHide = systemService.findByAuthTypeAndIsHide(authType);

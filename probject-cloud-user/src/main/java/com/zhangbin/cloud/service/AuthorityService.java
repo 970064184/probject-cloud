@@ -59,4 +59,11 @@ public interface AuthorityService {
 	 * @return
 	 */
     Long editAuth(EditAuthReq editAuthReq);
+
+	/**
+	 * 查询所有权限
+	 * @param pageBean
+	 * @return
+	 */
+	List<AllAuthResp> findAllAuth(PageBean pageBean);
 }

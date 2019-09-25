@@ -28,19 +28,24 @@ public class SystemServiceImpl implements SystemService {
 	public List<TbAuthorityResp> findByAuthTypeAndIsHide(Integer authType) {
 		List<TbAuthority> tbAuthorityList = tbAuthorityRepository.findByAuthTypeAndIsHide(authType);
 		List<TbAuthorityResp> list= new ArrayList<>();
-		if(!CollectionUtils.isEmpty(tbAuthorityList)) {
+		getAuthorityResp(tbAuthorityList, list);
+		return list;
+	}
+
+	private void getAuthorityResp(List<TbAuthority> tbAuthorityList, List<TbAuthorityResp> list) {
+		if (!CollectionUtils.isEmpty(tbAuthorityList)) {
 			for (TbAuthority t : tbAuthorityList) {
-				if (t.getPId() == -1) {
+				if (t.getPid() == -1) {
 					TbAuthorityResp r = new TbAuthorityResp();
 					BeanUtils.copyProperties(t, r);
 					list.add(r);
 				}
 			}
 			subFunction(tbAuthorityList, list);
-			
+
 		}
-		return list;
 	}
+
 	/**
 	 * 子菜单递归生成函数
 	 * @param tbAuthorityList
@@ -53,7 +58,7 @@ public class SystemServiceImpl implements SystemService {
 				for (TbAuthorityResp tbAuthorityResData : list) {
 					List<TbAuthorityResp> children = new ArrayList<>();
 					for (TbAuthority tbAuthority : tbAuthorityList) {
-						if(tbAuthorityResData.getAuthId().equals(tbAuthority.getPId())) {
+						if(tbAuthorityResData.getAuthId().equals(tbAuthority.getPid())) {
 							TbAuthorityResp r = new TbAuthorityResp();
 							BeanUtils.copyProperties(tbAuthority, r);
 							children.add(r);
@@ -73,17 +78,7 @@ public class SystemServiceImpl implements SystemService {
 	public List<TbAuthorityResp> getAllMenu() {
 		List<TbAuthority> tbAuthorityList = tbAuthorityRepository.findAllByIsHide();
 		List<TbAuthorityResp> list= new ArrayList<>();
-		if(!CollectionUtils.isEmpty(tbAuthorityList)) {
-			for (TbAuthority t : tbAuthorityList) {
-				if (t.getPId() == -1) {
-					TbAuthorityResp r = new TbAuthorityResp();
-					BeanUtils.copyProperties(t, r);
-					list.add(r);
-				}
-			}
-			subFunction(tbAuthorityList, list);
-			
-		}
+		getAuthorityResp(tbAuthorityList, list);
 		return list;
 	}
 

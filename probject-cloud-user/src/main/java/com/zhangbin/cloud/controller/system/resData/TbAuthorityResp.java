@@ -25,7 +25,7 @@ public class TbAuthorityResp implements Serializable {
 	private String authUrl;
 	
 	@ApiModelProperty(value="父id")
-	private Long pId;
+	private Long pid;
 	
 	@ApiModelProperty(value="是否选中")
 	private boolean check = false;

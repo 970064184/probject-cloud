@@ -26,9 +26,9 @@ public class AddAuthReq {
 	@ApiModelProperty(value="跳转url")
 	private String authUrl;
 	
-	@ApiModelProperty(value="父id")
-	private Long pId;
-	
 	@ApiModelProperty(value="权限排序")
 	private Integer sort;
+
+	@ApiModelProperty(value="父id")
+	private Long pid;
 }

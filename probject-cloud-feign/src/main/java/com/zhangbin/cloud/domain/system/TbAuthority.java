@@ -36,7 +36,7 @@ public class TbAuthority implements Serializable {
 	@Column(name="auth_name", nullable=false, length=200)
 	private String authName;
 
-	@Column(name="auth_type",columnDefinition = "Integer default 2")
+	@Column(name="auth_type"/*,columnDefinition = "Integer default 2"*/)
 	private Integer authType;
 
 	@Column(name="auth_url", length=200)
@@ -44,13 +44,13 @@ public class TbAuthority implements Serializable {
 
 	private Date created;
 
-	@Column(name="is_hide",insertable = false,updatable = false)
+	@Column(name="is_hide")
 	private Integer isHide;
 
-	@Column(name="p_id",insertable = false,updatable = false)
-	private Long pId;
+	@Column(name="p_id")
+	private Long pid;
 
-	@Column(name = "sort",columnDefinition = "Integer default 0")
+	@Column(name = "sort"/*,columnDefinition = "Integer default 0"*/)
 	private Integer sort;
 
 	private Date updated;

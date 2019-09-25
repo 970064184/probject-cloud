@@ -43,8 +43,9 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public List<String> findByRoleIdIn(List<Long> roleid) {
-		if(!CollectionUtils.isEmpty(roleid))
-		return roleRepository.findByRoleIdIn(roleid);
+		if(!CollectionUtils.isEmpty(roleid)){
+			return roleRepository.findByRoleIdIn(roleid);
+		}
 		return null;
 	}
 
@@ -64,8 +65,9 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public Long addRole(AddRoleReq addRoleReq) {
 		TbRole findByRoleName = roleRepository.findByRoleName(addRoleReq.getRoleName());
-		if(findByRoleName !=null)
+		if(findByRoleName !=null){
 			throw new BusinessException(CodeEnum.USER_ROLENAME_IN_ISEXIST);
+		}
 		TbRole target = new TbRole();
 		BeanUtil.copyProperties(addRoleReq, target);
 		target.setCreated(new Date());
@@ -82,26 +84,29 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public void configAuth(ConfigAuthReq configAuthReq) {
 		TbRole findOne = roleRepository.findOne(configAuthReq.getRoleId());
-		if(findOne == null)
+		if(findOne == null){
 			throw new BusinessException(CodeEnum.USER_ROLEID_CANNOT_EXIST);
+		}
 		List<TbAuthority> findByAuthIdIn = authorityService.findByAuthIdIn(configAuthReq.getAuthId());
-		if(findByAuthIdIn.size() != configAuthReq.getAuthId().size())
+		if(findByAuthIdIn.size() != configAuthReq.getAuthId().size()){
 			throw new BusinessException(CodeEnum.USER_AUTHID_CANNOT_EXIST);
+		}
 		tbRolesMenuService.saveRolesMenu(configAuthReq.getRoleId(),configAuthReq.getAuthId());
 	}
 
 	@Override
 	public List<TbAuthorityResp> findByRoleId(Long roleId) {
 		TbRole findOne = roleRepository.findOne(roleId);
-		if(findOne == null)
+		if(findOne == null){
 			throw new BusinessException(CodeEnum.USER_ROLEID_CANNOT_EXIST);
+		}
 		List<Long> authIdList = tbRolesMenuService.findByRole(roleId);
 		
 		List<TbAuthority> tbAuthorityList = authorityService.findAllByIsHide();
 		List<TbAuthorityResp> list= new ArrayList<>();
 		if(!CollectionUtils.isEmpty(tbAuthorityList)) {
 			for (TbAuthority t : tbAuthorityList) {
-				if (t.getPId() == -1) {
+				if (t.getPid() == -1) {
 					TbAuthorityResp r = new TbAuthorityResp();
 					r.setCheck(authIdList.contains(t.getAuthId()));
 					BeanUtils.copyProperties(t, r);
@@ -128,11 +133,12 @@ public class RoleServiceImpl implements RoleService {
 				for (TbAuthorityResp tbAuthorityResData : list) {
 					List<TbAuthorityResp> children = new ArrayList<>();
 					for (TbAuthority tbAuthority : tbAuthorityList) {
-						if(tbAuthorityResData.getAuthId().equals(tbAuthority.getPId())) {
+						if(tbAuthorityResData.getAuthId().equals(tbAuthority.getPid())) {
 							TbAuthorityResp r = new TbAuthorityResp();
 							for (Long authId : authIdList) {
-								if(authId.equals(tbAuthority.getAuthId()))
+								if(authId.equals(tbAuthority.getAuthId())){
 									r.setCheck(true);
+								}
 							}
 							BeanUtils.copyProperties(tbAuthority, r);
 							children.add(r);

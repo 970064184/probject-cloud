@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Api(tags="权限相关的接口")
 @RestController
@@ -27,7 +28,14 @@ public class AuthorityController {
 		PageData<AllAuthResp> data = authorityService.findAllAuthByPage(pageBean);
 		return DtoUtils.returnSuccess(data);
 	}
-	
+
+	@ApiOperation(value = "查询所有角色", notes = "角色列表数据")
+	@PostMapping(value = "/findAllAuth", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Dto<List<AllAuthResp>> findAllAuth(@RequestBody(required = false) PageBean pageBean) {
+		List<AllAuthResp> data = authorityService.findAllAuth(pageBean);
+		return DtoUtils.returnSuccess(data);
+	}
+
 	@ApiOperation(value = "添加权限", notes = "添加权限")
 	@PostMapping(value = "/addAuth", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Dto<Long> addAuth(@RequestBody @Valid AddAuthReq addAuthReq) {

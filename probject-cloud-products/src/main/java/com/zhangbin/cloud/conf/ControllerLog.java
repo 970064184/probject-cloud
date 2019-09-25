@@ -36,7 +36,8 @@ public class ControllerLog {
      * </p>
      * @param
      */
-    @Pointcut("execution(public * com.zhangbin.cloud.*.controller..*.*(..))")
+//    @Pointcut("execution(public * com.zhangbin.cloud.*.controller..*.*(..))")
+    @Pointcut("@within(org.springframework.web.bind.annotation.RestController) || @within(org.springframework.stereotype.Controller)")
     public void exectionMethod(){}
 
 

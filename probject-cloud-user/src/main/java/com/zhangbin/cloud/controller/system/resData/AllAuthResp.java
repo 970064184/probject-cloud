@@ -27,7 +27,7 @@ public class AllAuthResp implements Serializable{
 	private String authUrl;
 	
 	@ApiModelProperty(value="父id")
-	private Long pId;
+	private Long pid;
 	
 	@ApiModelProperty(value="菜单类型",notes="类型（1=导航，2=菜单，3=api，4=按钮）")
 	private Integer authType;

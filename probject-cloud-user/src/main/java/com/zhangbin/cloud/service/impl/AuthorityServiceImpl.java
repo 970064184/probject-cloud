@@ -69,6 +69,7 @@ public class AuthorityServiceImpl implements AuthorityService{
 		}
 		TbAuthority authority = new TbAuthority();
 		BeanUtil.copyProperties(addAuthReq, authority);
+		authority.setPid(addAuthReq.getPid());
 		authority.setCreated(new Date());
 		Long authId = authorityRepository.save(authority).getAuthId();
  		return authId;
@@ -106,6 +107,14 @@ public class AuthorityServiceImpl implements AuthorityService{
 		one.setUpdated(new Date());
 		Long authId = authorityRepository.save(one).getAuthId();
 		return authId;
+	}
+
+	@Override
+	public List<AllAuthResp> findAllAuth(PageBean pageBean) {
+		List<TbAuthority> list = authorityRepository.findAll();
+		List<AllAuthResp> allUserResp = new ArrayList<>();
+		allUserResp = BeanUtil.createBean(list, AllAuthResp.class);
+		return allUserResp;
 	}
 
 }
