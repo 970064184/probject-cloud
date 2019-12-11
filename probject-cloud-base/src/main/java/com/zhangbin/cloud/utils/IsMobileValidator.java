@@ -1,9 +1,10 @@
 package com.zhangbin.cloud.utils;
 
+import org.springframework.util.StringUtils;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import org.apache.commons.lang.StringUtils;
 
 /**手机格式验证注解实现类
  * @author admin

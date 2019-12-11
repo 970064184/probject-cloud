@@ -27,4 +27,12 @@ public class BrandController {
         return brands;
     }
 
+    public static void main(String[] args) {
+        /*System.out.println(RandomStringUtils.randomNumeric(3));
+        System.out.println(RandomStringUtils.randomAlphabetic(10));
+        System.out.println(RandomStringUtils.randomAlphanumeric(10));
+        System.out.println(RandomStringUtils.randomAscii(10));
+        System.out.println(RandomStringUtils.random(10,"ABCDE1234567890"));*/
+    }
+
 }

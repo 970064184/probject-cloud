@@ -1,8 +1,9 @@
 package com.zhangbin.cloud.utils;
 
+import org.springframework.util.StringUtils;
+
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang.StringUtils;
 
 public class Validator {
 	/**

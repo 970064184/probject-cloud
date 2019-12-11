@@ -11,44 +11,55 @@
 	<name>probject-cloud-order</name>
 	<description>订单模块</description>
 	<dependencies>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
-		<!-- <dependency> <groupId>com.zhangbin</groupId> <artifactId>probject-cloud-base</artifactId> 
-			<version>0.0.1-SNAPSHOT</version> </dependency> -->
-		<!-- mysql -->
+		&lt;!&ndash; <dependency> <groupId>com.zhangbin</groupId> <artifactId>probject-cloud-base</artifactId>
+			<version>0.0.1-SNAPSHOT</version> </dependency> &ndash;&gt;
+		&lt;!&ndash; mysql &ndash;&gt;
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-		<!-- druid -->
+		&lt;!&ndash; druid &ndash;&gt;
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
 			<version>1.1.6</version>
 		</dependency>
-		<!-- jpa -->
+		&lt;!&ndash; jpa &ndash;&gt;
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<!-- redis -->
+		&lt;!&ndash; redis &ndash;&gt;
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
-		<!-- test -->
+		&lt;!&ndash; test &ndash;&gt;
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency>-->
 		<!-- feign依赖包 -->
 		<dependency>
 			<groupId>com.zhangbin</groupId>
 			<artifactId>probject-cloud-feign</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>guava</artifactId>
+					<groupId>com.google.guava</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 	<build>

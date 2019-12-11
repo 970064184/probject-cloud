@@ -1,15 +1,14 @@
 package com.zhangbin.cloud.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.zhangbin.cloud.domain.system.TbRolesMenu;
+import com.zhangbin.cloud.repository.TbRolesMenuRepository;
+import com.zhangbin.cloud.service.TbRolesMenuService;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.zhangbin.cloud.domain.system.TbRolesMenu;
-import com.zhangbin.cloud.repository.TbRolesMenuRepository;
-import com.zhangbin.cloud.service.TbRolesMenuService;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TbRolesMenuServiceImpl implements TbRolesMenuService {
@@ -32,7 +31,7 @@ public class TbRolesMenuServiceImpl implements TbRolesMenuService {
 			TbRolesMenu tb =new TbRolesMenu(t,roleId);  
 			list.add(tb);
 		});
-		tbRolesMenuRepository.save(list);
+		tbRolesMenuRepository.saveAll(list);
 	}
 
 	@Override

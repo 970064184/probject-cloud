@@ -13,10 +13,12 @@ spring:
     show-sql: true
 api: 
   docs: enable
+
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
+#bamboo:
+#  name: hellostart
 
 ---
 server:

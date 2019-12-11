@@ -1,19 +1,5 @@
 package com.zhangbin.cloud.service.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.collections.CollectionUtils;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.stereotype.Service;
-
 import com.zhangbin.cloud.common.CodeEnum;
 import com.zhangbin.cloud.common.PageBean;
 import com.zhangbin.cloud.common.PageBeanUtils;
@@ -30,6 +16,15 @@ import com.zhangbin.cloud.service.AuthorityService;
 import com.zhangbin.cloud.service.RoleService;
 import com.zhangbin.cloud.service.TbRolesMenuService;
 import com.zhangbin.cloud.utils.BeanUtil;
+import org.apache.commons.collections.CollectionUtils;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.stereotype.Service;
+
+import java.util.*;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -78,12 +73,12 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public void delRole(Long roleId) {
-		roleRepository.delete(roleId);
+		roleRepository.deleteById(roleId);
 	}
 
 	@Override
 	public void configAuth(ConfigAuthReq configAuthReq) {
-		TbRole findOne = roleRepository.findOne(configAuthReq.getRoleId());
+		TbRole findOne = roleRepository.findById(configAuthReq.getRoleId()).get();
 		if(findOne == null){
 			throw new BusinessException(CodeEnum.USER_ROLEID_CANNOT_EXIST);
 		}
@@ -96,7 +91,7 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public List<TbAuthorityResp> findByRoleId(Long roleId) {
-		TbRole findOne = roleRepository.findOne(roleId);
+		TbRole findOne = roleRepository.findById(roleId).get();
 		if(findOne == null){
 			throw new BusinessException(CodeEnum.USER_ROLEID_CANNOT_EXIST);
 		}

@@ -1,21 +1,18 @@
 package com.zhangbin.cloud.feign;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
-import org.springframework.cloud.netflix.feign.FeignClient;
+import com.zhangbin.cloud.common.Dto;
+import com.zhangbin.cloud.domain.system.TbUser;
+import com.zhangbin.cloud.feign.resData.EditUserReq;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.zhangbin.cloud.common.Dto;
-import com.zhangbin.cloud.domain.system.TbUser;
-import com.zhangbin.cloud.feign.resData.EditUserReq;
-
-import io.swagger.annotations.ApiOperation;
+import javax.validation.Valid;
+import java.util.List;
 
 @FeignClient("microservice-provider-user")
 public interface UserFeignClient {

@@ -10,6 +10,7 @@ public class BrandControllerTest extends ProbjectCloudProductsApplicationTest {
     @Autowired
     private RestTemplate restTemplate;
 
+
 /*    @Autowired
     private TbBrandMapper brandMapper;
 
@@ -75,5 +76,6 @@ public class BrandControllerTest extends ProbjectCloudProductsApplicationTest {
         System.out.println(Thread.currentThread().getContextClassLoader().getResource("").getPath());
 
     }
+
 
 }

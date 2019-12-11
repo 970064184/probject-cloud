@@ -11,16 +11,21 @@
 	<name>probject-cloud-user</name>
 	<description>用户模块</description>
 	<dependencies>
-		<dependency>
+		<!--<dependency>
 			<groupId>com.zhangbin</groupId>
 			<artifactId>probject-cloud-base</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>com.zhangbin</groupId>
 			<artifactId>probject-cloud-feign</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+        </dependency>
 
+		<!--<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>2.2.0</version>
+		</dependency>-->
 	</dependencies>
 </project>

@@ -15,14 +15,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.16.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<version>2.2.1.RELEASE</version>
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 	</properties>
 
 	<!-- 引入springcloud的依赖 -->
@@ -31,7 +30,7 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Edgware.SR4</version>
+				<version>Hoxton.RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -63,5 +62,7 @@
 		<module>probject-cloud-common</module>
 		<module>probject-cloud-wx-pub</module>
 		<module>probject-cloud-products</module>
-	</modules>
+		<module>probject-cloud-admin</module>
+        <module>probject-cloud-gateway</module>
+    </modules>
 </project>

@@ -1,12 +1,17 @@
 package com.zhangbin.cloud.service.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.zhangbin.cloud.common.CodeEnum;
+import com.zhangbin.cloud.common.PageBean;
+import com.zhangbin.cloud.common.PageBeanUtils;
+import com.zhangbin.cloud.common.PageData;
+import com.zhangbin.cloud.controller.system.resData.AddAuthReq;
+import com.zhangbin.cloud.controller.system.resData.AllAuthResp;
 import com.zhangbin.cloud.controller.system.resData.EditAuthReq;
+import com.zhangbin.cloud.domain.system.TbAuthority;
+import com.zhangbin.cloud.exception.BusinessException;
+import com.zhangbin.cloud.repository.AuthorityRepository;
+import com.zhangbin.cloud.service.AuthorityService;
+import com.zhangbin.cloud.utils.BeanUtil;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,17 +19,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.zhangbin.cloud.common.CodeEnum;
-import com.zhangbin.cloud.common.PageBean;
-import com.zhangbin.cloud.common.PageBeanUtils;
-import com.zhangbin.cloud.common.PageData;
-import com.zhangbin.cloud.controller.system.resData.AddAuthReq;
-import com.zhangbin.cloud.controller.system.resData.AllAuthResp;
-import com.zhangbin.cloud.domain.system.TbAuthority;
-import com.zhangbin.cloud.exception.BusinessException;
-import com.zhangbin.cloud.repository.AuthorityRepository;
-import com.zhangbin.cloud.service.AuthorityService;
-import com.zhangbin.cloud.utils.BeanUtil;
+import java.util.*;
 
 @Service
 public class AuthorityServiceImpl implements AuthorityService{
@@ -77,7 +72,7 @@ public class AuthorityServiceImpl implements AuthorityService{
 
 	@Override
 	public void delAuth(Long authId) {
-		authorityRepository.delete(authId);
+		authorityRepository.deleteById(authId);
 	}
 
 	@Override
@@ -92,7 +87,7 @@ public class AuthorityServiceImpl implements AuthorityService{
 
 	@Override
 	public Long editAuth(EditAuthReq editAuthReq) {
-		TbAuthority one = authorityRepository.findOne(editAuthReq.getAuthId());
+		TbAuthority one = authorityRepository.findById(editAuthReq.getAuthId()).get();
 		if(one == null){
 			throw new BusinessException(CodeEnum.USER_AUTHID_CANNOT_EXIST);
 		}

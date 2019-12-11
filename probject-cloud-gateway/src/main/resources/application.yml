@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active:
+    - dev
+
+---
+server:
+  port: 8040
+
+spring:
+  profiles: dev
+api: 
+  docs: enable  
+
+---
+server:
+  port: 8041
+
+spring:
+  profiles: test
+  
+---
+server:
+  port: 8042
+
+spring:
+  profiles: prod 
+ 

@@ -1,22 +1,5 @@
 package com.zhangbin.cloud.service.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import javax.transaction.Transactional;
-
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-
 import com.zhangbin.cloud.common.CodeEnum;
 import com.zhangbin.cloud.common.PageBean;
 import com.zhangbin.cloud.common.PageBeanUtils;
@@ -28,12 +11,19 @@ import com.zhangbin.cloud.exception.BusinessException;
 import com.zhangbin.cloud.feign.resData.AddUserReq;
 import com.zhangbin.cloud.feign.resData.EditUserReq;
 import com.zhangbin.cloud.repository.UserRepository;
-import com.zhangbin.cloud.service.AuthorityService;
-import com.zhangbin.cloud.service.RoleService;
-import com.zhangbin.cloud.service.TbRolesMenuService;
-import com.zhangbin.cloud.service.UserRoleService;
-import com.zhangbin.cloud.service.UserService;
+import com.zhangbin.cloud.service.*;
 import com.zhangbin.cloud.utils.BeanUtil;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import javax.transaction.Transactional;
+import java.util.*;
+import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
 	
@@ -55,7 +45,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public TbUser findByOne(Long userId) {
-		return userRepository.findOne(userId);
+		return userRepository.findById(userId).get();
 	}
 	
 	
@@ -102,7 +92,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Long editUser(EditUserReq editUserReq) {
-		TbUser findOne = userRepository.findOne(editUserReq.getUserId());
+		TbUser findOne = userRepository.findById(editUserReq.getUserId()).get();
 		if(findOne ==null) {
 			throw new BusinessException(CodeEnum.SYSTEM_USERNAME_ISNOTEXIST);
 		}
@@ -135,7 +125,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void delUser(Long userId) {
-		userRepository.delete(userId);
+		userRepository.deleteById(userId);
 	}
 
 	@Override
@@ -161,6 +151,6 @@ public class UserServiceImpl implements UserService {
 			f.setCreated(new Date());
 			f.setRegistType(1);//注册类型(1=系统录入，2=注册)
 		});
-		userRepository.save(tbUserList);
+		userRepository.saveAll(tbUserList);
 	}
 }

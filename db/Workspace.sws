@@ -4,10 +4,8 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{27AE4C09-9261-4FD9-974E-B9505F6F33B2}" Loaded="No" Name="probjectCloud" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="probjectCloud.prj"/>
-		<Model Expanded="Yes" ID="{F2C167EE-C4CF-4B2B-AB2F-49F8C1592811}" Loaded="No" Name="probjectCloud" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="file:///D|/Users/admin/Documents/probjectCloud/probjectCloud.prj"/>
-		<Model Expanded="Yes" ID="{A7DF4F06-E0DA-49A7-897E-BF0DC061002C}" Loaded="No" Name="智慧餐厅" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="file:///C|/Users/admin/Desktop/work/智慧餐厅/思路/智慧餐厅.pdm"/>
-		<Model Expanded="Yes" ID="{B508D33B-9355-4E55-9E8C-AA5F3185DEB9}" Name="商品管理" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="../表设计结构图/probject-cloud/商品管理.pdm"/>
+		<Model Expanded="Yes" ID="{B508D33B-9355-4E55-9E8C-AA5F3185DEB9}" Loaded="No" Name="商品管理" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="probject-cloud/商品管理.pdm"/>
+		<Model Expanded="Yes" ID="{9971E63D-0BB8-46D4-9F90-2DCAC354231D}" Name="数据字典" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="probject-cloud/数据字典.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
