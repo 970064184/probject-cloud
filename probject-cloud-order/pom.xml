@@ -11,6 +11,7 @@
 	<name>probject-cloud-order</name>
 	<description>订单模块</description>
 	<dependencies>
+
 		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

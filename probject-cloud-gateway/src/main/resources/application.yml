@@ -5,7 +5,7 @@ spring:
 
 ---
 server:
-  port: 8040
+  port: 8050
 
 spring:
   profiles: dev
@@ -14,14 +14,14 @@ api:
 
 ---
 server:
-  port: 8041
+  port: 8051
 
 spring:
   profiles: test
   
 ---
 server:
-  port: 8042
+  port: 8052
 
 spring:
   profiles: prod 

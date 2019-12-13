@@ -13,12 +13,7 @@
 
 
     <dependencies>
-        <dependency>
-            <groupId>com.zhangbin</groupId>
-            <artifactId>probject-cloud-feign</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <!--网关springcloud gateway-->
+       <!-- 网关springcloud gateway-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>

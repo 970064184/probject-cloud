@@ -14,6 +14,7 @@
     <name>probject-cloud-products</name>
 
     <dependencies>
+
         <dependency>
             <groupId>com.zhangbin</groupId>
             <artifactId>probject-cloud-base</artifactId>

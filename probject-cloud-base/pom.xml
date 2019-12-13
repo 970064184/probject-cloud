@@ -12,6 +12,10 @@
 	<description>基础项目</description>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 		<!--Eureka客户端 -->
 		<!--<dependency>
 			<groupId>org.springframework.cloud</groupId>

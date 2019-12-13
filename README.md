@@ -57,10 +57,21 @@ lombok、  mysql 、jpa
   - ```java
     springboot : 2.2.1.RELEASE
     springcloud : Hoxton.RELEASE
-    swagger2
-        
+    swagger2：2.9.2
+    druid:1.1.10
+    jdk:11
+    spring boot admin：2.2.0（国际化了，可视化界面好看了） （会出现这个问题，听说是这个版本的bug，反正我没有解决，也不会影响使用，java.lang.IllegalStateException: Calling [asyncError()] is not valid for a request with Async state [MUST_DISPATCH]
+    ）   
     ```
 
+- 发现好像废弃Eureka了，所以打算换consul了:sob:
+
 - 升级网关，用springcloud gateway代替zuul
+
 - 用spring security 代替shiro
+
 - 用auth2代替jwt
+
+- 接入分布式任务调度 ：XXL-JOB
+
+  
