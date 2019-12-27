@@ -2,13 +2,11 @@ package com.zhangbin.cloud.controller.products;
 
 import com.zhangbin.cloud.ProbjectCloudProductsApplicationTest;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.client.RestTemplate;
 
 public class BrandControllerTest extends ProbjectCloudProductsApplicationTest {
 
-    @Autowired
-    private RestTemplate restTemplate;
+//    @Autowired
+//    private RestTemplate restTemplate;
 
 
 /*    @Autowired

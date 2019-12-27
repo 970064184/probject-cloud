@@ -14,5 +14,7 @@ public class Client {
         Client c = new Client();
         Target adapter = new Adapter();
         c.test1(adapter);
+        int i = 0;
+        Integer a = 0;
     }
 }

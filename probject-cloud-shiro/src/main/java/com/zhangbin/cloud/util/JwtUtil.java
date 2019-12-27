@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.apache.shiro.authc.ExpiredCredentialsException;
 import org.apache.shiro.authc.pam.UnsupportedTokenException;
-import org.springframework.util.StringUtils;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

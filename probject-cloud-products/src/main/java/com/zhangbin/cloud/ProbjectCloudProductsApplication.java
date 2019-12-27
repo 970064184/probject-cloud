@@ -3,9 +3,11 @@ package com.zhangbin.cloud;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class ProbjectCloudProductsApplication {
 

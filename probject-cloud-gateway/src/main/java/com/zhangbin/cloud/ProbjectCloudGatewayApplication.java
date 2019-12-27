@@ -5,6 +5,7 @@ package com.zhangbin.cloud;
  * 2. 鉴权、登录
  * 3. 服务降级与熔断
  * 4. 限流
+ * 5. 统一异常处理
  */
 
 import org.springframework.boot.SpringApplication;
