@@ -1,7 +1,6 @@
 spring:
   profiles:
-    active:
-    - dev
+    active: prod
 
 ---
 server:
@@ -44,4 +43,8 @@ spring:
 
 api: 
   docs: disable
- 
+
+
+#logging:
+#  file:
+#    path: /mnt/log/prod/products
