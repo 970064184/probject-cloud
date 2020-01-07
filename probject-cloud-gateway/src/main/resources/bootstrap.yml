@@ -1,6 +1,6 @@
 spring: 
   application:
-    name: probject-cloud-gateway-gateway
+    name: probject-cloud-gateway
   cloud:
     gateway:
       routes:
@@ -10,3 +10,19 @@ spring:
             - After=2019-12-12T16:40:06+08:00[Asia/Shanghai]
 #            - Before=2019-12-12T16:38:06+08:00[Asia/Shanghai]
             - Path=/baidu
+        - id: microservice-provider-products
+          uri: lb://microservice-provider-products
+          predicates:
+            - Path=/products/**
+
+    consul:
+      host: 127.0.0.1 #consul的IP
+      port: 8500 #consul启动端口默认8500
+      discovery:
+        health-check-path: /actuator/health #健康检查路径
+        health-check-interval: 10s #健康检查频率
+        hostname: 127.0.0.1 #注册服务所在IP
+        port: ${server.port} #注册服务所在端口
+        service-name: ${spring.application.name} #注册服务名
+        register: true #是否启动注册
+        register-health-check: true #是否启动健康检查

@@ -31,7 +31,21 @@ spring:
 #      connect-properties: 
 #       druid: stat.mergeSql=true;druid.stat.sflowSqlMillis:500  # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
       use-global-data-source-stat: true # 合并多个DruidDataSource的监控数据
-  
+
+  cloud:
+    consul:
+      host: 127.0.0.1 #consul的IP
+      port: 8500 #consul启动端口默认8500
+      discovery:
+        health-check-path: /actuator/health #健康检查路径
+        health-check-interval: 10s #健康检查频率
+        hostname: 127.0.0.1 #注册服务所在IP
+        port: ${server.port} #注册服务所在端口
+        service-name: ${spring.application.name} #注册服务名
+        register: true #是否启动注册
+        register-health-check: true #是否启动健康检查
+
+
 #eureka client    
 eureka: 
   client:
