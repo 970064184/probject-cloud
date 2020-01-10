@@ -14,27 +14,27 @@ public class InsertSort {
         int[] arr = new int[]{33,12,3,4,11,44,53};
         System.out.println(Arrays.toString(arr));
         int[] ints = insertSort(arr);
+        System.out.println(Arrays.toString(ints));
     }
     
     
     /**
-      * @Description: 插入排序思想：
+      * @Description: 插入排序思想：第0个和第1个对比，如果0>1,交换位置，然后第2位置和此时的第0位置对比，0>2 ，那就第0,1位置后移，把2插入到0位置。。。。
       * @Param: 
       * @return: 
       * @Author: zb
       * @Date: 2020/1/7
     */    
     public static int[] insertSort(int[] arr){
-        int temp;
-        for (int i = 0; i < arr.length-1; i++) {
-            for (int j = i+1; j < arr.length-1; j++) {
-                if(arr[i]>arr[j]){
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
+        int tmp  = 0;
+        for (int i = 1; i < arr.length; i++) {
+            tmp = arr[i];
+            int j = i;
+            while(j>0 && arr[j] >= tmp){
+                arr[j] = arr[j-1];
+                j--;
             }
-            System.out.println(Arrays.toString(arr));
+            arr[j] = tmp;
         }
         return arr;
     }
