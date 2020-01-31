@@ -1,9 +1,7 @@
 package com.zhangbin.cloud.conf;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import com.zhangbin.cloud.repository.UserRoleAuthorityRepository;
+import com.zhangbin.cloud.util.JwtUtil;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -15,8 +13,9 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.zhangbin.cloud.repository.UserRoleAuthorityRepository;
-import com.zhangbin.cloud.util.JwtUtil;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 自定义权限匹配和账号密码匹配
