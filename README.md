@@ -8,6 +8,8 @@ springboot 1.5.16 、swagger2 2.5.5、springcloud Edgware.SR3
 
 lombok、  mysql 、jpa
 
+logback
+
 # 服务
 
 - probject-cloud

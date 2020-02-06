@@ -11,7 +11,7 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/probjectcloud?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&useSSL=true
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     # 数据源类型：Druid
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -33,13 +33,26 @@ spring:
       use-global-data-source-stat: true # 合并多个DruidDataSource的监控数据
   
 #eureka client    
-eureka: 
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true
-    instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: true
+#    instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+#20191217升级springboot、springcloud后注册中心改成用springcloud consul
+  cloud:
+    consul:
+      host: 127.0.0.1 #consul的IP
+      port: 8500 #consul启动端口默认8500
+      discovery:
+        health-check-path: /actuator/health #健康检查路径
+        health-check-interval: 10s #健康检查频率
+        hostname: 127.0.0.1 #注册服务所在IP
+        port: ${server.port} #注册服务所在端口
+        service-name: ${spring.application.name} #注册服务名
+        register: true #是否启动注册
+        register-health-check: true #是否启动健康检查
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*Mapper.xml

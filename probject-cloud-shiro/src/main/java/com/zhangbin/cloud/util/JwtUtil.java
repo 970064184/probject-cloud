@@ -1,19 +1,18 @@
 package com.zhangbin.cloud.util;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.shiro.authc.ExpiredCredentialsException;
-import org.apache.shiro.authc.pam.UnsupportedTokenException;
-import org.springframework.util.StringUtils;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.authc.ExpiredCredentialsException;
+import org.apache.shiro.authc.pam.UnsupportedTokenException;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**登录Token的生成和解析
  * @author zb

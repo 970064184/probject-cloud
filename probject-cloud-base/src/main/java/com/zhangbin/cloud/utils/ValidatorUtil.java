@@ -1,21 +1,15 @@
 package com.zhangbin.cloud.utils;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-
-import org.apache.commons.collections.CollectionUtils;
+import com.zhangbin.cloud.common.CodeEnum;
+import com.zhangbin.cloud.exception.BusinessException;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
-import com.zhangbin.cloud.common.CodeEnum;
-import com.zhangbin.cloud.exception.BusinessException;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import java.util.*;
 
 public class ValidatorUtil {
 

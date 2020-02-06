@@ -5,10 +5,11 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.*;
 import java.util.stream.IntStream;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class ProbjectCloudProductsApplicationTest {
 
     static int data = 0;
@@ -42,6 +43,18 @@ public class ProbjectCloudProductsApplicationTest {
             }
 
             System.out.println("data :"+data);
+    }
+
+    @Test
+    public void test1(){
+        ClassLoader classLoader = this.getClass().getClassLoader();
+
+        try (InputStream resourceAsStream = classLoader.getResourceAsStream("C:\\Users\\admin\\Desktop\\7t.sql");OutputStream outputStream = new FileOutputStream("src\\test.sql")){
+            resourceAsStream.transferTo(outputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
